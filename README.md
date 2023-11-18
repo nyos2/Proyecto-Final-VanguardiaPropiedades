@@ -1,39 +1,58 @@
-# Proyecto-Final-VanguardiaPropiedades
- Proyecto Final Egg
+# Proyecto Final VanguardiaPropiedades
 
- Abrir la Terminal o el Símbolo del Sistema:
+Proyecto Final Egg
 
-Abre la terminal o el símbolo del sistema en tu PC.
-Navegar a la Carpeta de Destino:
+## Clonar el Repositorio
 
-Utiliza el comando cd para navegar a la carpeta donde deseas clonar el repositorio.
+1. **Abrir la Terminal o el Símbolo del Sistema:**
+   - Abre la terminal o el símbolo del sistema en tu PC.
 
-cd ruta/donde/quieres/clonar
-Clonar el Repositorio:
+2. **Navegar a la Carpeta de Destino:**
+   - Utiliza el comando `cd` para navegar a la carpeta donde deseas clonar el repositorio.
 
-Usa el comando git clone seguido de la URL del repositorio.
+     ```bash
+     cd ruta/donde/quieres/clonar
+     ```
 
-git clone URL_del_repositorio
-Esto creará una copia del repositorio en tu máquina.
+3. **Clonar el Repositorio:**
+   - Usa el comando `git clone` seguido de la URL del repositorio.
 
-Crear y Cambiar a una Rama:
-Navegar a la Carpeta del Repositorio:
+     ```bash
+     git clone URL_del_repositorio
+     ```
 
-Navega a la carpeta recién clonada usando el comando cd.
+   - Esto creará una copia del repositorio en tu máquina.
 
-cd nombre_del_repositorio
-Crear una Nueva Rama:
+## Crear y Cambiar a una Rama
 
-Utiliza el comando git branch seguido del nombre de la nueva rama para crearla.
+1. **Navegar a la Carpeta del Repositorio:**
+   - Navega a la carpeta recién clonada usando el comando `cd`.
 
-git branch nombre_de_la_rama
-Cambiar a la Nueva Rama:
+     ```bash
+     cd nombre_del_repositorio
+     ```
 
-Usa el comando git checkout para cambiar a la nueva rama.
+2. **Crear una Nueva Rama:**
+   - Utiliza el comando `git branch` seguido del nombre de la nueva rama para crearla.
 
-git checkout nombre_de_la_rama
-Otra forma más reciente de cambiar y crear una rama en un solo paso es usando el comando git switch:
+     ```bash
+     git branch nombre_de_la_rama
+     ```
 
+3. **Cambiar a la Nueva Rama:**
+   - Usa el comando `git checkout` para cambiar a la nueva rama.
+
+     ```bash
+     git checkout nombre_de_la_rama
+     ```
+
+   - Otra forma más reciente de cambiar y crear una rama en un solo paso es usando el comando `git switch`:
+
+     ```bash
+     git switch -c nombre_de_la_rama
+     ```
+
+   - Ahora estás en tu nueva rama y puedes comenzar a trabajar en ella.
 bash
 Copy code
 git switch -c nombre_de_la_rama
