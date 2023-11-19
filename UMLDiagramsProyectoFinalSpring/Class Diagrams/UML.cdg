@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UML">
+  <ClassDiagramComponents>
+    <Class name="Usuario" package="" visibility="public" xPosition="288.0" yPosition="34.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Inmobilaria" package="" visibility="public" xPosition="591.0" yPosition="34.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Rol" package="" visibility="public" xPosition="83.0" yPosition="355.0">
+      <Literals>
+        <Literal name="USER"/>
+        <Literal name="ENTE"/>
+        <Literal name="ADMIN"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
