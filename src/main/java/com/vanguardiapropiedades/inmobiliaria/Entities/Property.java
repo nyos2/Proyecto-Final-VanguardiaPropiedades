@@ -17,7 +17,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Property {
-    
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -28,5 +28,5 @@ public class Property {
     private User usuario;
     private ArrayList<MultipartFile> imagen;
     private Boolean estado;
-    
+
 }
