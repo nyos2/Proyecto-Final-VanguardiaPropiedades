@@ -22,10 +22,10 @@ public class Image {
     private String mime;
     private String nombre;
     @ManyToOne
-    @JoinColumn(name = "property_id", nullable = false)
+    @JoinColumn(name = "property_id")
     private Property propiedad;
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
     @Lob
     @Basic(fetch = FetchType.LAZY)
