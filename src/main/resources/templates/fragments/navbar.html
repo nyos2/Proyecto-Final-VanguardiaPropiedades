@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
-    <a class="navbar-brand" href="/">Biblioteca Digital</a>
+    <a class="navbar-brand" href="/">Inmobiliaria Digital</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,23 +14,11 @@
                 <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
                     <a class="dropdown-item" href="/propiedades/lista"> Lista de Propiedades</a>
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="librosDropdown" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Libros
-                </a>
-                <div class="dropdown-menu" aria-labelledby="librosDropdown">
-                    <a class="dropdown-item" href="/libro/lista"> Lista de Libros</a>
+                <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
+                    <a class="dropdown-item" href="/propiedades/lista"> Listar Propiedades</a>
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Editoriales
-                </a>
-                <div class="dropdown-menu" aria-labelledby="editorialesDropdown">
-                    <a class="dropdown-item" href="/editorial/lista"> Lista de Editoriales</a>
+                <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
+                    <a class="dropdown-item" href="/propiedades/lista"> Modificar Propiedades</a>
                 </div>
             </li>
 
@@ -43,7 +31,6 @@
                 <div class="dropdown-menu"><a class="dropdown-item" href="/perfil">Perfil</a>
                     <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
                 </div>
-
             </li>
         </ul>
     </div>
