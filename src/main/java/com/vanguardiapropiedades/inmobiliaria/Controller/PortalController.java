@@ -15,6 +15,11 @@ public class PortalController {
         return "index.html";
     }
 
+    @GetMapping("/registrar")
+    public String registrar(){
+        return "registrar.html";
+    }
+
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
         if (error != null) {
@@ -23,3 +28,4 @@ public class PortalController {
         return "login.html";
     }
 }
+

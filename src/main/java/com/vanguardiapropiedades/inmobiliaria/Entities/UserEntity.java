@@ -19,7 +19,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(generator = "uuid")

@@ -26,7 +26,7 @@ public class Image {
     private Property propiedad;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;

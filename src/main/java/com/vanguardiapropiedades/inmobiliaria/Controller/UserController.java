@@ -1,14 +1,18 @@
 package com.vanguardiapropiedades.inmobiliaria.Controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vanguardiapropiedades.inmobiliaria.Entities.UserEntity;
 import com.vanguardiapropiedades.inmobiliaria.Exceptions.MyException;
 import com.vanguardiapropiedades.inmobiliaria.Services.UserService;
 
@@ -42,16 +46,24 @@ public class UserController {
 
     }
 
-    @GetMapping("/editar")
-    public String editarUsuario() {
+    @GetMapping("/editar/{id}")
+    public String editarUsuario(@PathVariable String id, ModelMap modelo) {
+        Optional<UserEntity> usuario = userService.buscarPorId(id);
+        if (usuario.isPresent()) {
+            modelo.put("usuario", usuario.get());
+        } else {
+            modelo.put("usuario", null);
+        }
         return "Usuario/usuario_mod.html";
     }
 
-    @PostMapping("/editar-usuario")
-    public String editarUsuario(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
-            @RequestParam String password2,@RequestParam(required = false) MultipartFile foto, ModelMap modelo) throws MyException {
+    @PostMapping("/editar-usuario/{id}")
+    public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
+            throws MyException {
         try {
-            userService.editarUsuario(nombre, email, password, password2, foto);
+            userService.editarUsuario(id,nombre, email, password, password2, foto);
 
             modelo.put("exito", "Usuario actualizado con éxito");
 
