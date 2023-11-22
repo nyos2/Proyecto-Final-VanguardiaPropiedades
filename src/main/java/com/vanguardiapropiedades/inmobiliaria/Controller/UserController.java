@@ -28,14 +28,14 @@ public class UserController {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password,
+    public String registro(@RequestParam String nombre,@RequestParam String dni, @RequestParam String email, @RequestParam String password,
             @RequestParam String password2, ModelMap modelo) throws MyException {
         try {
-            userService.userRegister(nombre, email, password, password2);
+            userService.userRegister(nombre,dni, email, password, password2);
 
             modelo.put("exito", "Usuario registrado con éxito");
 
-            return "Usuario/usuario_form.html";
+            return "redirect:/index.html";
 
         } catch (Exception e) {
             modelo.put("nombre", nombre);

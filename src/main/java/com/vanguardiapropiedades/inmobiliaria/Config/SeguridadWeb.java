@@ -39,11 +39,12 @@ public class SeguridadWeb {
                 // Direcciones permitidas
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin/*").hasRole("ADMIN");
+                    auth.requestMatchers("/**").permitAll();
                     // auth.requestMatchers("/").authenticated();
-                    auth.requestMatchers("/login", "/registrar").permitAll();
-                    auth.requestMatchers("/css/*", "/js/*", "/img/*", "/registrar", "/registro")
-                            .permitAll();
-                    auth.anyRequest().authenticated();
+                    // auth.requestMatchers("/login", "/registrar").permitAll();
+                    // auth.requestMatchers("/css/*", "/js/*", "/img/*", "/registrar", "/registro")
+                    //         .permitAll();
+                    // auth.anyRequest().authenticated();
                 })
                 // Formulario de login
                 .formLogin(form -> {

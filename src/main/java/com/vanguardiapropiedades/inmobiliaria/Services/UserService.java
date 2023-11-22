@@ -40,12 +40,13 @@ public class UserService implements UserDetailsService {
 
     // TODO: Agregar DNI
     @Transactional
-    public void userRegister(String nombre, String email, String password, String password2)
+    public void userRegister(String nombre,String dni, String email, String password, String password2)
             throws MyException {
         UserEntity user = new UserEntity();
-        validar(nombre, email, password, password2);
+        // validar(nombre, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
+        user.setDni(dni);
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setRol(Rol.CLIENT);
 
