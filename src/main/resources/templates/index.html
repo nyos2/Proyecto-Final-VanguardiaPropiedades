@@ -6,100 +6,15 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <title>Formulario</title>
-</head>
-<body>
-  <div class="container">
-    <h1>Formulario</h1>
-    <form>
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-      </div>
-      <div class="form-group">
-        <label for="dni">DNI:</label>
-        <input type="text" class="form-control" id="dni" placeholder="Ingrese su DNI">
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
-      </div>
-      <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
-      </div>
-      <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" class="form-control" id="password2" placeholder="Reingrese su contraseña">
-      </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    <main class="container">
+        <h1>Inmobiliaria Digital</h1>
+        <p>Inmobiliaria Digital</p>
+    </main>
 
     <div th:replace="fragments/footer :: footer"></div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <style>
-        .navbar {
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .navbar-brand {
-            color: white;
-            font-weight: bold;
-        }
-
-        .navbar-toggler-icon {
-            background-color: white;
-        }
-
-        .nav-link {
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Estilos para el menú desplegable */
-        .dropdown-menu {
-            background-color: #333;
-            border-radius: 10px;
-        }
-
-        .dropdown-item {
-            color: white;
-            /* Color del texto de los elementos del menú desplegable */
-            transition: background-color 0.3s, color 0.3s;
-            /* Transición para cambio de color y fondo de los elementos */
-        }
-
-        .dropdown-item:hover {
-            background-color: #555;
-            /* Cambia el color de fondo al pasar el mouse */
-            color: #ffd700;
-            /* Cambia el color del texto al pasar el mouse */
-        }
-
-        .logo {
-            display: block;
-            margin: 10px auto;
-            max-width: 100%;
-            max-height: 200px;
-            margin-top: 10px;
-            border-radius: 30px;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script> 
 </body>
 
 </html>
