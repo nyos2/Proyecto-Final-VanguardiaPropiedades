@@ -26,6 +26,7 @@ public class UserEntity {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
+    private Double dni;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)

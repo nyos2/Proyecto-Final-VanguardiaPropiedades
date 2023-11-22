@@ -30,7 +30,7 @@ import com.vanguardiapropiedades.inmobiliaria.Repositories.UserRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -38,6 +38,7 @@ public class UserService implements UserDetailsService{
     @Autowired
     private ImageService imageService;
 
+    // TODO: Agregar DNI
     @Transactional
     public void userRegister(String nombre, String email, String password, String password2)
             throws MyException {
@@ -55,6 +56,7 @@ public class UserService implements UserDetailsService{
 
     }
 
+    // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MyException {
 
         // verificar que el email sea valido
@@ -115,6 +117,12 @@ public class UserService implements UserDetailsService{
         return Optional.ofNullable(user);
     }
 
+    /**
+     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre DNI. 
+     * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
+     * gestionados por un ENTE a través de la app.
+     */
+    // TODO: Agregar DNI y actualizar los campos correspondientes
     public void editarUsuario(String id, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MyException {
