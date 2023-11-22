@@ -118,7 +118,7 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre DNI. 
+     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre y DNI. 
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
