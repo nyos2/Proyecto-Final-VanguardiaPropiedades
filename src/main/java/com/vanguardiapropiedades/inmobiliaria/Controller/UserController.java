@@ -35,7 +35,8 @@ public class UserController {
 
             modelo.put("exito", "Usuario registrado con éxito");
 
-            return "redirect:/index.html";
+            // return "redirect:../index";
+            return "Usuario/usuario_form.html";
 
         } catch (Exception e) {
             modelo.put("nombre", nombre);

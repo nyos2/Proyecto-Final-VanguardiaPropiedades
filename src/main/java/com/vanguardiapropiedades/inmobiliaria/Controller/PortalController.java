@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PortalController {
 
     @GetMapping("/")
+    public String home() {
+        return "index.html";
+    }
+
+    @GetMapping("/index")
     public String index() {
         return "index.html";
     }
 
-    @GetMapping("/registrar")
-    public String registrar(){
-        return "registrar.html";
-    }
+    // @GetMapping("/registrar")
+    // public String registrar(){
+    // return "registrar.html";
+    // }
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
@@ -28,4 +33,3 @@ public class PortalController {
         return "login.html";
     }
 }
-
