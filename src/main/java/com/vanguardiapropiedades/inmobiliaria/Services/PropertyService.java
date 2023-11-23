@@ -50,13 +50,13 @@ public class PropertyService {
         }
 
     }
-
+    // Listar propiedades
     public List<Property> listarProperty(){
         
         List<Property> propertys = propertyRepository.findAll();
         return propertys;
     }
-
+    //Buscar por tipo de propiedad
     public Optional<Property> buscarPorTipo(String tipo) {
         Property property = propertyRepository.findByTipo(tipo);
         return Optional.ofNullable(property);
