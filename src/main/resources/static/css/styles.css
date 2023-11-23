@@ -1,8 +1,8 @@
 /* Selector universal (*): */
 * {
-padding: 0;
-margin: 0;
-box-sizing: border-box !important
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box !important;
 }
 
 /* Estilo de la barra de navegación */
@@ -27,23 +27,23 @@ box-sizing: border-box !important
 }
 
 /* Estilo del texto en la sección principal */
-.principal p, h6{
+.principal p, .principal h6 {
     position: absolute;
     color: white;
     text-align: right;
     right: 10%;
     top: 50% !important;
     bottom: 50% !important;
-    font-size: 17px
+    font-size: 17px;
 }
 
 /* Selector universal (*): */
 .nav {
-    background-color:#11111F !important;
+    background-color: #11111F !important;
 }
 
 /* Estilo de los enlaces de navegación */
-.nav a{
+.nav a {
     color: #fff !important;
-    font-style: none !important;
+    text-decoration: none !important; /* Cambiado de font-style a text-decoration */
 }
