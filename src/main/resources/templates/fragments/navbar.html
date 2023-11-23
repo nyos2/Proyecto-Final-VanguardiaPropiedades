@@ -13,9 +13,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
                     <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    <a class="dropdown-item" href="/propiedades/lista">Listar Propiedades</a>
-                    <a class="dropdown-item" href="/propiedades/lista">Modificar Propiedades</a>
-           
+                    <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
+                    <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>   
+                       
                     <!-- Opciones con login 
                     <th:block th:if="${request.isUserInRole('ROLE_USER')}">
                         <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
@@ -42,7 +42,7 @@
                 <div class="dropdown-menu">  
                     <th:block th:if="${session.usuariosession == null}">
                         <a class="dropdown-item" href="/user/registrar">Crear Cuenta</a>
-                        <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>
+                        <a class="dropdown-item" href="/user/login">Iniciar Sesión</a>
                     </th:block>
                     <th:block th:if="${session.usuariosession != null}">
                         <a class="dropdown-item" href="/perfil">Perfil</a>
