@@ -19,13 +19,14 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombre;
+    private String dni;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
