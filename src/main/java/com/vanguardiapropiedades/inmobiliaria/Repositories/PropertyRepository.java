@@ -7,5 +7,5 @@ import com.vanguardiapropiedades.inmobiliaria.Entities.Property;
 
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, String> {
-
+ public Property findByTipo(String tipo);
 }

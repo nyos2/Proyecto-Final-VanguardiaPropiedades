@@ -25,7 +25,7 @@ public class Property {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    private int precio;
+    private Integer precio;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
     @OneToOne
