@@ -29,7 +29,7 @@ public class Property {
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
     @OneToOne
-    private User usuario;
+    private UserEntity usuario;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Image> imagenes;
     private Boolean estado;
