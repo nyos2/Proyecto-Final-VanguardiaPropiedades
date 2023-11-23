@@ -84,7 +84,6 @@ public class UserService implements UserDetailsService {
 
     }
 
-    // TODO Imprement
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserEntity usuario = userRepository.findByEmail(email);

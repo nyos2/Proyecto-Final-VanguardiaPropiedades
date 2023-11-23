@@ -35,11 +35,12 @@ public class UserController {
 
             modelo.put("exito", "Usuario registrado con éxito");
 
-            return "redirect:/index.html";
+            return "Usuario/usuario_form.html";
 
         } catch (Exception e) {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
+            modelo.put("dni", dni);
             modelo.put("error", e.getMessage());
         }
         return "Usuario/usuario_form.html";
