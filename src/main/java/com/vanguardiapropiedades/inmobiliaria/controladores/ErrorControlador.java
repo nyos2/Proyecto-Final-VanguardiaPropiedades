@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Controller;
+package com.vanguardiapropiedades.inmobiliaria.controladores;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class Error_Controller implements ErrorController {
+public class ErrorControlador implements ErrorController {
 
     @RequestMapping(value = "/error", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView renderErrorPage(HttpServletRequest httpRequest) {
