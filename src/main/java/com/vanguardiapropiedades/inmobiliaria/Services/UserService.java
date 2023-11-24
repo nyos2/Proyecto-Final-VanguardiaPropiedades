@@ -40,10 +40,10 @@ public class UserService implements UserDetailsService {
 
     // TODO: Agregar DNI
     @Transactional
-    public void userRegister(String nombre,String dni, String email, String password, String password2)
+    public void userRegister(String nombre, String dni, String email, String password, String password2)
             throws MyException {
         UserEntity user = new UserEntity();
-        // validar(nombre, email, password, password2);
+        validar(nombre, dni, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -58,30 +58,42 @@ public class UserService implements UserDetailsService {
     }
 
     // TODO: Agregar DNI
-    private void validar(String nombre, String email, String password, String password2) throws MyException {
+    private void validar(String nombre, String dni, String email, String password, String password2)
+            throws MyException {
 
         // verificar que el email sea valido
         String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
         Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
-
+        // Verifica si nombre está vacío
         if (nombre.isEmpty() || nombre.isBlank()) {
             throw new MyException("El nombre no puede estar vacio");
         }
-        if (email.isEmpty()) {
+        // verficar dni
+        if (dni.isEmpty() || dni.isBlank()) {
+            throw new MyException("El dni no puede estar vacio");
+        }
+        // Verifica que el dni sea numérico
+        try {
+            Integer.parseInt(dni);
+        } catch (NumberFormatException e) {
+            throw new MyException("El dni debe ser numérico");
+        }
+        // Verfica email vacío
+        if (email.isEmpty() || email.isBlank()) {
             throw new MyException("El email no puede estar vacio");
         }
-
+        // Verfica email formato correo
         if (!pattern.matcher(email).matches()) {
             throw new MyException("El email no es valido");
         }
-
-        if (password.isEmpty()) {
+        // Verifica passwords vacios
+        if (password.isEmpty() || password.isBlank()) {
             throw new MyException("La contraseña no puede estar vacia");
         }
         if (!password.equals(password2)) {
             throw new MyException("La contraseñas no coinciden");
         }
-
+        // TODO: condiciones de contraseña (cantidad de caracteres, etc)
     }
 
     @Override
@@ -118,7 +130,8 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre y DNI. 
+     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre
+     * y DNI.
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
@@ -129,7 +142,7 @@ public class UserService implements UserDetailsService {
         Optional<UserEntity> respuesta = userRepository.findById(id);
         if (respuesta.isPresent()) {
             UserEntity user = respuesta.get();
-            validar(nombre, email, password, password2);
+            // validar(nombre, email, password, password2);
             if (foto != null) {
                 Image img = imageService.guardarImagen(foto);
                 user.setImagen(img);
