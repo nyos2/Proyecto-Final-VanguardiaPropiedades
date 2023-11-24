@@ -1,11 +1,12 @@
-package com.vanguardiapropiedades.inmobiliaria.Repositories;
+package com.vanguardiapropiedades.inmobiliaria.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.vanguardiapropiedades.inmobiliaria.Entities.Property;
+
+import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 
 @Repository
-public interface PropertyRepository extends JpaRepository<Property, String> {
+public interface PropiedadRepositorio extends JpaRepository<PropiedadEntidad, String> {
 
 }

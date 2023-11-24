@@ -1,7 +1,7 @@
-package com.vanguardiapropiedades.inmobiliaria.Exceptions;
+package com.vanguardiapropiedades.inmobiliaria.excepciones;
 
-public class MyException extends Exception {
-    public MyException(String message) {
+public class MiException extends Exception {
+    public MiException(String message) {
         super(message);
     }
 }
