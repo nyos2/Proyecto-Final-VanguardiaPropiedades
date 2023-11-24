@@ -11,7 +11,6 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
-
 @Service
 public class ImagenServicio {
     @Autowired

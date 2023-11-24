@@ -15,8 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
-
-
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -45,7 +43,7 @@ public class SeguridadWeb {
                     auth.requestMatchers("/user/**").permitAll();
                     // auth.requestMatchers("/").authenticated();
                     // auth.requestMatchers("/css/*", "/js/*", "/img/*", "/registrar", "/registro")
-                    //         .permitAll();
+                    // .permitAll();
                     // auth.anyRequest().authenticated();
                 })
                 // Formulario de login

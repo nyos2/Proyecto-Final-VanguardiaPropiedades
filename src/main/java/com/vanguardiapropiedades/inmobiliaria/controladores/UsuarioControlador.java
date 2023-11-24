@@ -16,8 +16,6 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
-
-
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
@@ -30,10 +28,11 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre,@RequestParam String dni, @RequestParam String email, @RequestParam String password,
+    public String registro(@RequestParam String nombre, @RequestParam String dni, @RequestParam String email,
+            @RequestParam String password,
             @RequestParam String password2, ModelMap modelo) throws MiException {
         try {
-            userService.userRegister(nombre,dni, email, password, password2);
+            userService.userRegister(nombre, dni, email, password, password2);
 
             modelo.put("exito", "Usuario registrado con éxito");
 
@@ -66,7 +65,7 @@ public class UsuarioControlador {
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
             throws MiException {
         try {
-            userService.editarUsuario(id,nombre, email, password, password2, foto);
+            userService.editarUsuario(id, nombre, email, password, password2, foto);
 
             modelo.put("exito", "Usuario actualizado con éxito");
 
