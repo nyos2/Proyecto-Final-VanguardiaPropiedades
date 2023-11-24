@@ -1,4 +1,5 @@
 package com.vanguardiapropiedades.inmobiliaria.controladores;
+package com.vanguardiapropiedades.inmobiliaria.controladores;
 
 import java.util.Optional;
 
@@ -15,8 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
+import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
+import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
+import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
 @Controller
+@RequestMapping("/usuario")
+public class UsuarioControlador {
 @RequestMapping("/usuario")
 public class UsuarioControlador {
     @Autowired
@@ -67,6 +73,7 @@ public class UsuarioControlador {
     public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
             @RequestParam String password,
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
+            throws MiException {
             throws MiException {
         try {
             usuarioServicio.editarUsuario(id, nombre, email, password, password2, foto);

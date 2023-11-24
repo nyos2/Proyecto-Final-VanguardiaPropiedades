@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<div th:replace="fragments/head :: head"></div>
+<div th:replace="~{fragments/head :: head}"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
 
-    <main class="container">
-        <h1>Inmobiliaria Digital</h1>
-        <p>Inmobiliaria Digital</p>
-    </main>
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div th:replace="fragments/footer :: footer"></div>
+  <main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <style>
-        .navbar {
-            padding: 10px;
-            border-radius: 5px;
-        }
+    <div class="principal">
+      <div class="banner-info text-center">
+        <p>
+          <b style="font-size:19px">¿Quienes somos?</b><br>
+          Nos conocimos en la universidad, diez jóvenes estudiantes con una pasión compartida por el mundo
+          inmobiliario.<br>
+          Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
+          Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, con poco dinero, <br>
+          pero mucha energía y entusiasmo. Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
+          Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
+          <br><br>
+          <a th:href="@{/login}">
+            <button class="btn" type="button" style="background-color: #0D2E2F; color:#fff">Servicios</button>
+          </a>
+        </p>
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="card bg-dark text-white mb-3">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img th:src="@{/images/cartel.jpg}" class="img-fluid rounded-start" alt="Cartel">
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title">PROPIEDADES VANGUARDISTAS</h5>
+              <p class="card-text">
+                Localización: Calle Falsa 123, 18th Floor
+                Honolulu, HI. 96815 <br>
+                (666) 666-9666 <br>
+                Teléfono: 666-666-9666 <br>
+                Horarios: Lunes - Viernes | 7:53am - 18:13pm <br>
+                Correo Electronico: propiedadesVanguardistas@mail.com <br>
+                Redes Sociales: 
+                <a href="#" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a> <br>
+              </p>
+              <a href="#" class="btn btn-outline-light">Ir hacia arriba</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
 
-        .navbar-brand {
-            color: white;
-            font-weight: bold;
-        }
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
-        .navbar-toggler-icon {
-            background-color: white;
-        }
-
-        .nav-link {
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Estilos para el menú desplegable */
-        .dropdown-menu {
-            background-color: #333;
-            border-radius: 10px;
-        }
-
-        .dropdown-item {
-            color: white;
-            /* Color del texto de los elementos del menú desplegable */
-            transition: background-color 0.3s, color 0.3s;
-            /* Transición para cambio de color y fondo de los elementos */
-        }
-
-        .dropdown-item:hover {
-            background-color: #555;
-            /* Cambia el color de fondo al pasar el mouse */
-            color: #ffd700;
-            /* Cambia el color del texto al pasar el mouse */
-        }
-
-        .logo {
-            display: block;
-            margin: 10px auto;
-            max-width: 100%;
-            max-height: 200px;
-            margin-top: 10px;
-            border-radius: 30px;
-        }
-    </style>
 </body>
+
 </html>

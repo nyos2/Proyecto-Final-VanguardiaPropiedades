@@ -1,4 +1,5 @@
 package com.vanguardiapropiedades.inmobiliaria.servicios;
+package com.vanguardiapropiedades.inmobiliaria.servicios;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -11,8 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
+import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
+import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
+import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
 @Service
+public class ImagenServicio {
 public class ImagenServicio {
     @Autowired
     private ImagenRepositorio ImagenRepositorio;

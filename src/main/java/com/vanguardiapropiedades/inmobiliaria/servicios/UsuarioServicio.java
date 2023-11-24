@@ -1,4 +1,5 @@
 package com.vanguardiapropiedades.inmobiliaria.servicios;
+package com.vanguardiapropiedades.inmobiliaria.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ import jakarta.servlet.http.HttpSession;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
 
 @Service
+public class UsuarioServicio implements UserDetailsService {
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
@@ -93,6 +95,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MiException {
+    private void validar(String nombre, String email, String password, String password2) throws MiException {
 
         // verificar que el email sea valido
         String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
@@ -100,19 +103,24 @@ public class UsuarioServicio implements UserDetailsService {
 
         if (nombre.isEmpty() || nombre.isBlank()) {
             throw new MiException("El nombre no puede estar vacio");
+            throw new MiException("El nombre no puede estar vacio");
         }
         if (email.isEmpty()) {
+            throw new MiException("El email no puede estar vacio");
             throw new MiException("El email no puede estar vacio");
         }
 
         if (!pattern.matcher(email).matches()) {
             throw new MiException("El email no es valido");
+            throw new MiException("El email no es valido");
         }
 
         if (password.isEmpty()) {
             throw new MiException("La contraseña no puede estar vacia");
+            throw new MiException("La contraseña no puede estar vacia");
         }
         if (!password.equals(password2)) {
+            throw new MiException("La contraseñas no coinciden");
             throw new MiException("La contraseñas no coinciden");
         }
 
