@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Controller;
+package com.vanguardiapropiedades.inmobiliaria.controladores;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,17 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class PortalController {
+public class PortalControlador {
 
-    @GetMapping("/")
+    @GetMapping({"/","/index"}) //Me permite usar dos url sin duplicar el codigo
     public String home() {
         return "index.html";
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "index.html";
-    }
 
     // @GetMapping("/registrar")
     // public String registrar(){
