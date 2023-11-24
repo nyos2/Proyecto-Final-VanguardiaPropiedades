@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class PortalControlador {
 
-    @GetMapping({"/","/index"}) //Me permite usar dos url sin duplicar el codigo
+    @GetMapping({ "/", "/index" }) // Me permite usar dos url sin duplicar el codigo
     public String home() {
         return "index.html";
     }
-
 
     // @GetMapping("/registrar")
     // public String registrar(){

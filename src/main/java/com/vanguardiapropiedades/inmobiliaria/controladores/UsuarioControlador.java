@@ -22,14 +22,15 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    //CREATE
+    // CREATE
     @GetMapping("/registrar")
     public String registrarUsuario() {
         return "Usuario/usuario_form.html";
     }
 
     @PostMapping("/registro")
-    public String registroUsuario(@RequestParam String nombre,@RequestParam String dni, @RequestParam String email, @RequestParam String password,
+    public String registroUsuario(@RequestParam String nombre, @RequestParam String dni, @RequestParam String email,
+            @RequestParam String password,
             @RequestParam String password2, ModelMap modelo) throws MiException {
         try {
             usuarioServicio.crearUsuario(nombre, dni, email, password, password2);
@@ -47,9 +48,9 @@ public class UsuarioControlador {
 
     }
 
-    //TODO agregar list
+    // TODO agregar list
 
-    //UPDATE
+    // UPDATE
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable String id, ModelMap modelo) {
         Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
@@ -67,7 +68,7 @@ public class UsuarioControlador {
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id,nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, nombre, email, password, password2, foto);
 
             modelo.put("exito", "Usuario actualizado con éxito");
 
@@ -82,16 +83,13 @@ public class UsuarioControlador {
 
     }
 
-    
-    //DELETE
-   @RequestMapping("/eliminar-usuario/{id}")
-   // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) throws MiException{
+    // DELETE
+    @RequestMapping("/eliminar-usuario/{id}")
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) throws MiException {
         usuarioServicio.eliminarUsuario(id);
-        
+
         return "Usuario/usuario_list.html";
     }
-    
-   
 
 }

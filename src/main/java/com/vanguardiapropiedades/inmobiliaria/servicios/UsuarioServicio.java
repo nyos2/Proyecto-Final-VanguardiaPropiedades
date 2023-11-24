@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
-import com.vanguardiapropiedades.inmobiliaria.enums.Rol;
+import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 
 import jakarta.servlet.http.HttpSession;
@@ -37,10 +37,10 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio ImagenServicio;
 
-    //TODO: Agregar DNI
-    //CREATE
+    // TODO: Agregar DNI
+    // CREATE
     @Transactional
-    public void crearUsuario(String nombre,String dni, String email, String password, String password2)
+    public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
         // validar(nombre, email, password, password2);
@@ -57,14 +57,14 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-
     /**
-     * Un CLIENTE puede registrarse y modificar sus datos personales, excepto nombre y DNI. 
+     * Un CLIENTE puede registrarse y modificar sus datos personales, excepto nombre
+     * y DNI.
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
     // TODO: Agregar DNI y actualizar los campos correspondientes
-    //UPDATE
+    // UPDATE
     public void editarUsuario(String id, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
@@ -83,10 +83,10 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-    //DELETE
+    // DELETE
     @Transactional
-    public void eliminarUsuario(String id) throws MiException{
-        
+    public void eliminarUsuario(String id) throws MiException {
+
         UsuarioRepositorio.deleteById(id);
 
     }

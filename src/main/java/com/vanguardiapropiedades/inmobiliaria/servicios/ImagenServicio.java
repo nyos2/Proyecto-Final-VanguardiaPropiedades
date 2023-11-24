@@ -12,13 +12,12 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
-
 @Service
 public class ImagenServicio {
     @Autowired
     private ImagenRepositorio ImagenRepositorio;
 
-    //CREATE
+    // CREATE
     public ImagenEntidad crearImagen(MultipartFile archivo) throws MiException {
         if (archivo != null) {
             try {
@@ -34,7 +33,7 @@ public class ImagenServicio {
         return null;
     }
 
-    //UPDATE
+    // UPDATE
     public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {
             try {
@@ -59,10 +58,10 @@ public class ImagenServicio {
 
     }
 
-    //DELETE
+    // DELETE
     @Transactional
-    public void eliminarImagen(String id) throws MiException{
-        
+    public void eliminarImagen(String id) throws MiException {
+
         ImagenRepositorio.deleteById(id);
 
     }
