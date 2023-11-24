@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Config;
+package com.vanguardiapropiedades.inmobiliaria.configuracion;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,14 +13,14 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.vanguardiapropiedades.inmobiliaria.Services.UserService;
+import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SeguridadWeb {
     @Autowired
-    public UserService userService;
+    public UsuarioServicio userService;
 
     // Encryptar contraseñas
     @Autowired
@@ -43,7 +43,7 @@ public class SeguridadWeb {
                     auth.requestMatchers("/user/**").permitAll();
                     // auth.requestMatchers("/").authenticated();
                     // auth.requestMatchers("/css/*", "/js/*", "/img/*", "/registrar", "/registro")
-                    //         .permitAll();
+                    // .permitAll();
                     // auth.anyRequest().authenticated();
                 })
                 // Formulario de login
