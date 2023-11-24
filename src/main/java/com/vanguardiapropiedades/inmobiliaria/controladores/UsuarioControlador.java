@@ -48,6 +48,8 @@ public class UsuarioControlador {
 
     }
 
+    
+
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable String id, ModelMap modelo) {
         Optional<UsuarioEntidad> usuario = userService.buscarPorId(id);
