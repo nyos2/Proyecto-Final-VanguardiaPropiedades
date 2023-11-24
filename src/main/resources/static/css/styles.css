@@ -1,0 +1,49 @@
+/* Selector universal (*): */
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box !important
+}
+
+/* Estilo de la barra de navegación */
+.navbar {
+    background-color: #2D2E2F !important;
+}
+
+.navbar img {
+    width: 200px !important;
+}
+
+.navbar h5 {
+    color: #fff;
+}
+
+/* Estilo del texto en la sección principal */
+.principal {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/ba1.jpg) !important;
+    height: 100vh !important;
+    background-size: cover;
+    position: relative;
+}
+
+/* Estilo del texto en la sección principal */
+.principal p, h6{
+    position: absolute;
+    color: white;
+    text-align: right;
+    right: 10%;
+    top: 50% !important;
+    bottom: 50% !important;
+    font-size: 17px
+}
+
+/* Selector universal (*): */
+.nav {
+    background-color:#11111F !important;
+}
+
+/* Estilo de los enlaces de navegación */
+.nav a{
+    color: #fff !important;
+    font-style: none !important;
+}
