@@ -91,6 +91,8 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
+    
+
     // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MiException {
 

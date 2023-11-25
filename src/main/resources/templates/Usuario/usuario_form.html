@@ -1,55 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="wnameth=device-wnameth, initial-scale=1.0" />
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-        <title>Formulario</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="container col-md-4 text-center">
-              <h2>Formulario de Registro</h2>
-              <form th:action="@{/usuario/registro}" method="post">
-                  <div class="form-group mb-2">
-                      <label for="nombre">Nombre:</label>
-                      <input type="text" class="form-control" id="nombre" name="nombre" th:value="${nombre}" required />
-                  </div>
-                  <div class="form-group mb-2">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container">
+        <div class="container col-md-8 text-center">
+            <h2>Formulario de Registro</h2>
+            <form th:action="@{/usuario/registro}" method="post">
+                <div class="form-group mb-2">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" th:value="${nombre}" required />
+                </div>
+                <div class="form-group mb-2">
                     <label for="dni">Dni:</label>
                     <input type="text" class="form-control" id="dni" name="dni" th:value="${dni}" required />
                 </div>
-                  <div class="form-group mb-2">
-                      <label for="email">Email:</label>
-                      <input type="email" class="form-control" id="email" name="email" th:value="${email}" required />
-                  </div>
-                  <div class="form-group mb-2">
-                      <label for="password">Contraseña:</label>
-                      <input type="password" class="form-control" id="password" name="password" th:value="${password}" required />
-                  </div>
-                  <div class="form-group mb-2">
-                      <label for="password2">Repetir Contraseña:</label>
-                      <input type="password" class="form-control" id="password2" name="password2" th:value="${password2}" required />
-                  </div>
-                  <!-- Mensajes Condicionales -->
-                  <div th:if="${error != null}">
-                      <div class="alert text-center alert-danger fade show" role="alert">
-                          <strong>ERROR</strong>
-                          <p th:text="${error}"></p>
-                      </div>
-                  </div>
-                  <div th:if="${exito != null}">
-                      <div class="alert text-center alert-success fade show" role="alert">
-                          <strong>EXITO</strong>
-                          <p th:text="${exito}"></p>
-                      </div>
-                  </div>
-                  <!-- Mensajes Condicionales -->
-                  <button type="submit" class="btn btn-primary">Registrarme ✔</button>
-              </form>
-          </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+                <div class="form-group mb-2">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" th:value="${email}" required />
+                </div>
+                <div class="form-group mb-2">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" th:value="${password}"
+                        required />
+                </div>
+                <div class="form-group mb-2">
+                    <label for="password2">Repetir Contraseña:</label>
+                    <input type="password" class="form-control" id="password2" name="password2" th:value="${password2}"
+                        required />
+                </div>
+                <!-- Mensajes Condicionales -->
+                <div th:if="${error != null}">
+                    <div class="alert text-center alert-danger fade show" role="alert">
+                        <strong>ERROR</strong>
+                        <p th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}">
+                    <div class="alert text-center alert-success fade show" role="alert">
+                        <strong>EXITO</strong>
+                        <p th:text="${exito}"></p>
+                    </div>
+                </div>
+                <!-- Mensajes Condicionales -->
+                <button type="submit" class="btn btn-primary">Registrarme ✔</button>
+            </form>
+        </div>
+        <br>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    
+</body>
+
 </html>
