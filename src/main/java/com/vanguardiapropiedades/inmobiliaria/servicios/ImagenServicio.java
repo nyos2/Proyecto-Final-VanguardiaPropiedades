@@ -5,27 +5,27 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
-//import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
-import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
-//import com.vanguardiapropiedades.inmobiliaria.repositorios.PropiedadRepositorio;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
+import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
 @Service
 public class ImagenServicio {
     @Autowired
-    private ImagenRepositorio imageRepository;
+    private ImagenRepositorio imagenRepositorio;
 
-    public ImagenEntidad guardarImagen(MultipartFile archivo) throws MiException {
+    // CREATE
+    public ImagenEntidad crearImagen(MultipartFile archivo) throws MiException {
         if (archivo != null) {
             try {
-                ImagenEntidad image = new ImagenEntidad();
-                image.setMime(archivo.getContentType());
-                image.setNombre(UUID.randomUUID().toString());
-                image.setContenido(archivo.getBytes());
-                return imageRepository.save(image);
+                ImagenEntidad imagen = new ImagenEntidad();
+                imagen.setMime(archivo.getContentType());
+                imagen.setNombre(UUID.randomUUID().toString());
+                imagen.setContenido(archivo.getBytes());
+                return imagenRepositorio.save(imagen);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -33,27 +33,36 @@ public class ImagenServicio {
         return null;
     }
 
-    public ImagenEntidad actualizarImagen(MultipartFile archivo, String idImagen) throws MiException {
+    // UPDATE
+    public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {
             try {
-                ImagenEntidad image = new ImagenEntidad();
+                ImagenEntidad imagen = new ImagenEntidad();
 
                 if (idImagen != null) {
-                    Optional<ImagenEntidad> respuesta = imageRepository.findById(idImagen);
+                    Optional<ImagenEntidad> respuesta = imagenRepositorio.findById(idImagen);
                     if (respuesta.isPresent()) {
-                        image = respuesta.get();
+                        imagen = respuesta.get();
                     }
                 }
 
-                image.setMime(archivo.getContentType());
-                image.setNombre(UUID.randomUUID().toString());
-                image.setContenido(archivo.getBytes());
-                return imageRepository.save(image);
+                imagen.setMime(archivo.getContentType());
+                imagen.setNombre(UUID.randomUUID().toString());
+                imagen.setContenido(archivo.getBytes());
+                return imagenRepositorio.save(imagen);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
         return null;
+
+    }
+
+    // DELETE
+    @Transactional
+    public void eliminarImagen(String id) throws MiException {
+
+        imagenRepositorio.deleteById(id);
 
     }
 }

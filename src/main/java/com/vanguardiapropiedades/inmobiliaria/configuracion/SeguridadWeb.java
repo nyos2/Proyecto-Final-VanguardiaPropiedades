@@ -43,7 +43,7 @@ public class SeguridadWeb {
                     auth.requestMatchers("/user/**").permitAll();
                     // auth.requestMatchers("/").authenticated();
                     // auth.requestMatchers("/css/*", "/js/*", "/img/*", "/registrar", "/registro")
-                    //         .permitAll();
+                    // .permitAll();
                     // auth.anyRequest().authenticated();
                 })
                 // Formulario de login

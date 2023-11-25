@@ -21,29 +21,27 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 //import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
-//import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
-//import com.vanguardiapropiedades.inmobiliaria.Enums.Tipo;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
-//import com.vanguardiapropiedades.inmobiliaria.repositorios.PropiedadRepositorio;
-import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
 
 import jakarta.servlet.http.HttpSession;
+import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepositorio userRepository;
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
-    private ImagenServicio imageService;
+    private ImagenServicio imagenServicio;
 
     // TODO: Agregar DNI
-    @Transactional
-    public void userRegister(String nombre,String dni, String email, String password, String password2)
+    // CREATE
+/**    @Transactional
+    public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
         // validar(nombre, email, password, password2);
@@ -56,9 +54,45 @@ public class UsuarioServicio implements UserDetailsService {
         // Image img = imageService.guardarImagen(imagen);
         // user.setImagen(img);
 
-        userRepository.save(user);
+        UsuarioRepositorio.save(user);
+
+    }*/
+
+    /**
+     * Un CLIENTE puede registrarse y modificar sus datos personales, excepto nombre
+     * y DNI.
+     * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
+     * gestionados por un ENTE a través de la app.
+     */
+    // TODO: Agregar DNI y actualizar los campos correspondientes
+    // UPDATE
+   /** public void editarUsuario(String id, String nombre, String email, String password, String password2,
+            MultipartFile foto)
+            throws MiException {
+        Optional<UsuarioEntidad> respuesta = UsuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            UsuarioEntidad user = respuesta.get();
+            validar(nombre, email, password, password2);
+            if (foto != null) {
+                ImagenEntidad img = ImagenServicio.crearImagen(foto);
+                user.setImagen(img);
+            }
+            user.setNombre(nombre);
+            user.setEmail(email);
+            user.setPassword(password);
+            UsuarioRepositorio.save(user);
+        }
+    }*/
+
+    // DELETE
+    @Transactional
+    public void eliminarUsuario(String id) throws MiException {
+
+        usuarioRepositorio.deleteById(id);
 
     }
+
+    
 
     // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MiException {
@@ -89,7 +123,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UsuarioEntidad usuario = userRepository.findByEmail(email);
+        UsuarioEntidad usuario = usuarioRepositorio.findByEmail(email);
         if (usuario != null) {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
@@ -115,9 +149,9 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-    public Optional<UsuarioEntidad> buscarPorId(String id) {
-        UsuarioEntidad user = userRepository.findById(id).orElse(null);
-        return Optional.ofNullable(user);
+    public Optional<UsuarioEntidad>buscarPorId(String id) {
+        Optional<UsuarioEntidad> user = usuarioRepositorio.findById(id);
+        return user;
     }
 
     /**
@@ -129,18 +163,23 @@ public class UsuarioServicio implements UserDetailsService {
     public void editarUsuario(String id, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
-        Optional<UsuarioEntidad> respuesta = userRepository.findById(id);
+        Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
           validar(nombre, email, password, password2);
             if (foto != null) {
-                ImagenEntidad img = imageService.guardarImagen(foto);
+                ImagenEntidad img = imagenServicio.crearImagen(foto);
                 user.setImagen(img);
             }
             user.setNombre(nombre);
             user.setEmail(email);
             user.setPassword(password);
-            userRepository.save(user);
+            usuarioRepositorio.save(user);
         }
+    }
+
+
+
+    public void crearUsuario(String nombre, String dni, String email, String password, String password2) {
     }
 }

@@ -16,23 +16,24 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
-
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/usuario")
 public class UsuarioControlador {
     @Autowired
-    private UsuarioServicio userService;
+    private UsuarioServicio usuarioServicio;
 
+    // CREATE
     @GetMapping("/registrar")
-    public String registrar() {
+    public String registrarUsuario() {
         return "Usuario/usuario_form.html";
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre,@RequestParam String dni, @RequestParam String email, @RequestParam String password,
+    public String registroUsuario(@RequestParam String nombre, @RequestParam String dni, @RequestParam String email,
+            @RequestParam String password,
             @RequestParam String password2, ModelMap modelo) throws MiException {
         try {
-            userService.userRegister(nombre,dni, email, password, password2);
+            usuarioServicio.crearUsuario(nombre, dni, email, password, password2);
 
             modelo.put("exito", "Usuario registrado con éxito");
 
@@ -48,9 +49,12 @@ public class UsuarioControlador {
 
     }
 
+    // TODO agregar list
+
+    // UPDATE
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable String id, ModelMap modelo) {
-        Optional<UsuarioEntidad> usuario = userService.buscarPorId(id);
+        Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
         if (usuario.isPresent()) {
             modelo.put("usuario", usuario.get());
         } else {
@@ -65,7 +69,7 @@ public class UsuarioControlador {
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
             throws MiException {
         try {
-            userService.editarUsuario(id,nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, nombre, email, password, password2, foto);
 
             modelo.put("exito", "Usuario actualizado con éxito");
 
@@ -78,6 +82,15 @@ public class UsuarioControlador {
         }
         return "Usuario/usuario_form.html";
 
+    }
+
+    // DELETE
+    @RequestMapping("/eliminar-usuario/{id}")
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) throws MiException {
+        usuarioServicio.eliminarUsuario(id);
+
+        return "Usuario/usuario_list.html";
     }
 
 }
