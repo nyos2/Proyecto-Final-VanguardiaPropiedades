@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container">
+        <div class="container col-md-4 text-center">
+            <h2>Formulario de Registro de Propiedad</h2>
+            <form th:action="@{/property/registro}" method="post">
+
+                <div class="form-group mb-2">
+                    <label for="precio">Precio:</label>
+                    <input type="number" class="form-control" id="precio" name="precio" th:value="${precio}" required />
+                </div>
+
+                <div class="form-group mb-2">
+                    <label for="tipo">Tipo:</label>
+                    <select class="form-control" id="tipo" name="tipo" th:field="${tipo}" required>
+                        <option value="APARTMENT">Apartamento</option>
+                        <option value="HOUSE">Casa</option>
+                        <!-- Agrega más opciones según tus necesidades -->
+                    </select>
+                </div>
+
+                <div class="form-group mb-2">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" th:value="${usuario}" required />
+                </div>
+
+                <div class="form-group mb-2">
+                    <label for="estado">Estado:</label>
+                    <select class="form-control" id="estado" name="estado" th:field="${estado}" required>
+                        <option value="true">Activo</option>
+                        <option value="false">Inactivo</option>
+                    </select>
+                </div>
+
+                <!-- Mensajes Condicionales -->
+                
+                <div th:if="${error != null}">
+                    <div class="alert text-center alert-danger fade show" role="alert">
+                        <strong>ERROR</strong>
+                        <p th:text="${error}"></p>
+                    </div>
+                </div>
+
+                <div th:if="${exito != null}">
+                    <div class="alert text-center alert-success fade show" role="alert">
+                        <strong>EXITO</strong>
+                        <p th:text="${exito}"></p>
+                    </div>
+                </div>
+
+                <!-- Mensajes Condicionales -->
+
+                <button type="submit" class="btn btn-primary">Registrar Propiedad ✔</button>
+            </form>
+        </div>
+
+        <div th:replace="~{fragments/footer :: footer}"></div>
+        
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>

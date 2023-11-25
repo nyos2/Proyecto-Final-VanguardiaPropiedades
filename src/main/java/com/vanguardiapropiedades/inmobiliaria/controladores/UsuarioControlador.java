@@ -42,6 +42,7 @@ public class UsuarioControlador {
         } catch (Exception e) {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
+            modelo.put("dni", dni);
             modelo.put("error", e.getMessage());
         }
         return "Usuario/usuario_form.html";
