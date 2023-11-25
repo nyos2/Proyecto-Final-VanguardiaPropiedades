@@ -65,7 +65,7 @@ public class UsuarioServicio implements UserDetailsService {
      */
     // TODO: Agregar DNI y actualizar los campos correspondientes
     // UPDATE
-    public void editarUsuario(String id, String nombre, String email, String password, String password2,
+    public void editarUsuario(String id,String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = UsuarioRepositorio.findById(id);
@@ -75,10 +75,13 @@ public class UsuarioServicio implements UserDetailsService {
             if (foto != null) {
                 ImagenEntidad img = ImagenServicio.crearImagen(foto);
                 user.setImagen(img);
+            }else{
+                foto = null;
             }
             user.setNombre(nombre);
             user.setEmail(email);
-            user.setPassword(password);
+            user.setDni(dni);
+            user.setPassword(new BCryptPasswordEncoder().encode(password));
             UsuarioRepositorio.save(user);
         }
     }

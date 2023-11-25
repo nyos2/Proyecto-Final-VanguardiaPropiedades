@@ -64,23 +64,24 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/editar-usuario/{id}")
-    public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String email,
+    public String editarUsuario(@PathVariable String id, @RequestParam String nombre,@RequestParam String dni, @RequestParam String email,
             @RequestParam String password,
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, nombre, email, password, password2, foto);
-
+            usuarioServicio.editarUsuario(id,dni, nombre, email, password, password2, foto);
+            Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
+             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");
 
-            return "Usuario/usuario_form.html";
+            return "Usuario/usuario_mod.html";
 
         } catch (Exception e) {
             modelo.put("nombre", nombre);
             modelo.put("email", email);
             modelo.put("error", e.getMessage());
         }
-        return "Usuario/usuario_form.html";
+        return "Usuario/usuario_mod.html";
 
     }
 
@@ -92,5 +93,18 @@ public class UsuarioControlador {
 
         return "Usuario/usuario_list.html";
     }
+
+    @GetMapping("/perfil")
+    public String perfilUsuario() {
+        return "Usuario/usuario_perfil.html";
+    }
+
+    @GetMapping("/editar-perfil/{id}")
+    public String editarPerfil(@PathVariable String id, ModelMap modelo){
+        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
+        modelo.put("usuario", usuario);
+        return "Usuario/usuario_mod.html";
+    }
+
 
 }
