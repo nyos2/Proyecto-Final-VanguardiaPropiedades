@@ -3,7 +3,11 @@ package com.vanguardiapropiedades.inmobiliaria.controladores;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -94,7 +98,6 @@ public class UsuarioControlador {
 
         return "Usuario/usuario_list.html";
     }
-    
 
     @GetMapping("/perfil")
     public String perfilUsuario() {
@@ -108,4 +111,13 @@ public class UsuarioControlador {
         return "Usuario/usuario_mod.html";
     }
 
+    @GetMapping("/listar")
+    public String paginarUsuarios(@PageableDefault(page = 0, size = 5) Pageable pageable, Model model) {
+        Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+        model.addAttribute("page", page);
+        model.addAttribute("currentPage", page.getNumber());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("totalPages", page.getTotalPages());
+        return "Usuario/usuario_list.html";
+    }
 }
