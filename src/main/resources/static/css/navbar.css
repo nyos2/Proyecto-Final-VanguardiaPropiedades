@@ -1,47 +1,49 @@
+/* Estilos para la barra de navegación */
 .navbar {
-  padding: 0px;
-  border-radius: 10px;
+  padding: 0px; /* Espaciado interno cero para la barra de navegación */
+  border-radius: 10px; /* Bordes redondeados de 10px para la barra de navegación */
 }
 
+/* Estilos para el texto del logotipo en la barra de navegación */
 .navbar-brand {
-  padding: 0px;
-  color: white;
-  font-weight: bold;
-  margin: 0px;
+  padding: 0px; /* Espaciado interno cero para el logotipo */
+  color: #ffffff; /* Color del texto del logotipo en blanco */
+  font-weight: bold; /* Texto del logotipo en negrita */
+  margin: 0px; /* Margen cero para el logotipo */
 }
 
+/* Estilos para el icono del botón de alternancia en la barra de navegación */
 .navbar-toggler-icon {
-  background-color: white;
+  background-color: #11111F; /* Color de fondo del icono del botón de alternancia */
 }
 
+/* Estilos para los enlaces en la barra de navegación */
 .nav-link {
-  color: white;
-  font-weight: bold;
+  color: white; /* Color del texto de los enlaces en blanco */
+  font-weight: bold; /* Texto de los enlaces en negrita */
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
-  background-color: #333;
-  border-radius: 10px;
+  background-color: #333; /* Color de fondo del menú desplegable */
+  border-radius: 10px; /* Bordes redondeados de 10px para el menú desplegable */
 }
 
+/* Estilos para los elementos del menú desplegable */
 .dropdown-item {
-  color: white;
-  /* Color del texto de los elementos del menú desplegable */
-  transition: background-color 0.3s, color 0.3s;
-  /* Transición para cambio de color y fondo de los elementos */
+  color: white; /* Color del texto de los elementos del menú desplegable */
+  transition: background-color 0.3s, color 0.3s; /* Transición para cambios de color y fondo en 0.3 segundos */
 }
 
+/* Estilos al pasar el mouse sobre los elementos del menú desplegable */
 .dropdown-item:hover {
-  background-color: #555;
-  /* Cambia el color de fondo al pasar el mouse */
-  color: #ffd700;
-  /* Cambia el color del texto al pasar el mouse */
+  background-color: #555; /* Cambia el color de fondo al pasar el mouse */
+  color:#D9D9D9; /* Cambia el color del texto al pasar el mouse */
 }
 
+/* Estilos para la imagen dentro del logotipo en la barra de navegación */
 .navbar-brand img {
-  padding: 0px;
-  border: 0px;
-  max-height: 80px;
-  border-radius: 0 0 0 300px;
+  padding: 0px; /* Espaciado interno cero para la imagen del logotipo */
+  border: 0px; /* Borde cero para la imagen del logotipo */
+  max-height: 80px; /* Altura máxima de la imagen del logotipo */
 }
