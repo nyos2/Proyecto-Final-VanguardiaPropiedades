@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Entities;
+package com.vanguardiapropiedades.inmobiliaria.entidades;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class UserEntity {
+public class UsuarioEntidad {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -32,7 +32,7 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private Rol rol;
     @OneToMany
-    private List<Property> propiedades;
+    private List<PropiedadEntidad> propiedades;
     @OneToOne
-    private Image imagen;
+    private ImagenEntidad imagen;
 }

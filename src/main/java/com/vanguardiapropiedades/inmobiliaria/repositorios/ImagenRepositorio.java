@@ -1,11 +1,11 @@
-package com.vanguardiapropiedades.inmobiliaria.Repositories;
+package com.vanguardiapropiedades.inmobiliaria.repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.vanguardiapropiedades.inmobiliaria.Entities.Image;
+import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 
 @Repository
-public interface ImageRepository extends JpaRepository<Image, String> {
+public interface ImagenRepositorio extends JpaRepository<ImagenEntidad, String> {
 
 }

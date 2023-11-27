@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Services;
+package com.vanguardiapropiedades.inmobiliaria.servicios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -20,30 +22,30 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 //import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.vanguardiapropiedades.inmobiliaria.Entities.Image;
-//import com.vanguardiapropiedades.inmobiliaria.Entities.Image;
-import com.vanguardiapropiedades.inmobiliaria.Entities.UserEntity;
+import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
-import com.vanguardiapropiedades.inmobiliaria.Exceptions.MyException;
-import com.vanguardiapropiedades.inmobiliaria.Repositories.UserRepository;
+import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 
 import jakarta.servlet.http.HttpSession;
+import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UsuarioRepositorio UsuarioRepositorio;
 
     @Autowired
-    private ImageService imageService;
+    private ImagenServicio ImagenServicio;
 
     // TODO: Agregar DNI
+    // CREATE
     @Transactional
-    public void userRegister(String nombre, String dni, String email, String password, String password2)
-            throws MyException {
-        UserEntity user = new UserEntity();
-        validar(nombre, dni, email, password, password2);
+    public void crearUsuario(String nombre, String dni, String email, String password, String password2)
+            throws MiException {
+        UsuarioEntidad user = new UsuarioEntidad();
+        // validar(nombre, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -53,52 +55,77 @@ public class UserService implements UserDetailsService {
         // Image img = imageService.guardarImagen(imagen);
         // user.setImagen(img);
 
-        userRepository.save(user);
+        UsuarioRepositorio.save(user);
+
+    }
+
+    /**
+     * Un CLIENTE puede registrarse y modificar sus datos personales, excepto nombre
+     * y DNI.
+     * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
+     * gestionados por un ENTE a través de la app.
+     */
+    // TODO: Agregar DNI y actualizar los campos correspondientes
+    // UPDATE
+    public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
+            MultipartFile foto)
+            throws MiException {
+        Optional<UsuarioEntidad> respuesta = UsuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            UsuarioEntidad user = respuesta.get();
+            validar(nombre, email, password, password2);
+            if (foto != null) {
+                ImagenEntidad img = ImagenServicio.crearImagen(foto);
+                user.setImagen(img);
+            } else {
+                foto = null;
+            }
+            user.setNombre(nombre);
+            user.setEmail(email);
+            user.setDni(dni);
+            user.setPassword(new BCryptPasswordEncoder().encode(password));
+            UsuarioRepositorio.save(user);
+        }
+    }
+
+    // DELETE
+    @Transactional
+    public void eliminarUsuario(String id) throws MiException {
+
+        UsuarioRepositorio.deleteById(id);
 
     }
 
     // TODO: Agregar DNI
-    private void validar(String nombre, String dni, String email, String password, String password2)
-            throws MyException {
+    private void validar(String nombre, String email, String password, String password2) throws MiException {
 
         // verificar que el email sea valido
         String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
         Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
         // Verifica si nombre está vacío
         if (nombre.isEmpty() || nombre.isBlank()) {
-            throw new MyException("El nombre no puede estar vacio");
+            throw new MiException("El nombre no puede estar vacio");
         }
-        // verficar dni
-        if (dni.isEmpty() || dni.isBlank()) {
-            throw new MyException("El dni no puede estar vacio");
-        }
-        // Verifica que el dni sea numérico
-        try {
-            Integer.parseInt(dni);
-        } catch (NumberFormatException e) {
-            throw new MyException("El dni debe ser numérico");
-        }
-        // Verfica email vacío
-        if (email.isEmpty() || email.isBlank()) {
-            throw new MyException("El email no puede estar vacio");
+        if (email.isEmpty()) {
+            throw new MiException("El email no puede estar vacio");
         }
         // Verfica email formato correo
         if (!pattern.matcher(email).matches()) {
-            throw new MyException("El email no es valido");
+            throw new MiException("El email no es valido");
         }
-        // Verifica passwords vacios
-        if (password.isEmpty() || password.isBlank()) {
-            throw new MyException("La contraseña no puede estar vacia");
+
+        if (password.isEmpty()) {
+            throw new MiException("La contraseña no puede estar vacia");
         }
         if (!password.equals(password2)) {
-            throw new MyException("La contraseñas no coinciden");
+            throw new MiException("La contraseñas no coinciden");
         }
         // TODO: condiciones de contraseña (cantidad de caracteres, etc)
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserEntity usuario = userRepository.findByEmail(email);
+        UsuarioEntidad usuario = UsuarioRepositorio.findByEmail(email);
         if (usuario != null) {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
@@ -124,33 +151,12 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public Optional<UserEntity> buscarPorId(String id) {
-        UserEntity user = userRepository.findById(id).orElse(null);
+    public Optional<UsuarioEntidad> buscarPorId(String id) {
+        UsuarioEntidad user = UsuarioRepositorio.findById(id).orElse(null);
         return Optional.ofNullable(user);
     }
 
-    /**
-     * Un CLIENT puede registrarse y modificar sus datos personales, excepto nombre
-     * y DNI.
-     * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
-     * gestionados por un ENTE a través de la app.
-     */
-    // TODO: Agregar DNI y actualizar los campos correspondientes
-    public void editarUsuario(String id, String nombre, String email, String password, String password2,
-            MultipartFile foto)
-            throws MyException {
-        Optional<UserEntity> respuesta = userRepository.findById(id);
-        if (respuesta.isPresent()) {
-            UserEntity user = respuesta.get();
-            // validar(nombre, email, password, password2);
-            if (foto != null) {
-                Image img = imageService.guardarImagen(foto);
-                user.setImagen(img);
-            }
-            user.setNombre(nombre);
-            user.setEmail(email);
-            user.setPassword(password);
-            userRepository.save(user);
-        }
+    public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
+        return UsuarioRepositorio.findAll(pageable);
     }
 }
