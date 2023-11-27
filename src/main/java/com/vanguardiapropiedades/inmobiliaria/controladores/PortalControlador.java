@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Controller;
+package com.vanguardiapropiedades.inmobiliaria.controladores;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/")
-public class PortalController {
+public class PortalControlador {
 
     @GetMapping("/")
     public String home() {
