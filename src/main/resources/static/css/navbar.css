@@ -37,11 +37,8 @@
   /* Cambia el color del texto al pasar el mouse */
 }
 
-.logo {
-  display: block;
-  margin: 10px auto;
-  max-width: 100%;
-  max-height: 200px;
-  margin-top: 10px;
-  border-radius: 30px;
+
+.navbar-brand img {
+  max-height: 150px;
+  border-radius: 300px;
 }

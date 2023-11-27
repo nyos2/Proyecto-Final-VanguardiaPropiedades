@@ -150,4 +150,5 @@ public class UsuarioServicio implements UserDetailsService {
         UsuarioEntidad user = UsuarioRepositorio.findById(id).orElse(null);
         return Optional.ofNullable(user);
     }
+
 }
