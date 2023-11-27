@@ -1,0 +1,43 @@
+/* Estilo del texto en la sección principal */
+.principal {
+  background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
+  height: 50vh !important; /* Altura del 50% del viewport height */
+  background-size: cover; /* Ajusta la imagen de fondo para cubrir todo el contenedor */
+  position: relative; /* Posición relativa para que los elementos secundarios se posicionen relativos a este contenedor */
+}
+
+/* Estilo del texto en la sección principal */
+.principal p,
+.principal h6 {
+  padding-top: 50px; /* Espaciado superior de 50px para párrafos y encabezados h6 */
+  color: white; /* Color del texto en blanco */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  font-size: 17px; /* Tamaño de fuente de 17px para párrafos y encabezados h6 */
+}
+
+/* Estilo para los íconos de redes sociales */
+.social-icon {
+  font-size: 24px; /* Tamaño de fuente de 24px para los íconos de redes sociales */
+  margin-right: 10px; /* Margen derecho de 10px entre los íconos de redes sociales */
+  text-decoration: none; /* Sin decoración de texto para los íconos de redes sociales */
+}
+
+/* Estilo específico para Facebook */
+.social-icon.facebook {
+  color: #F2F2F2; /* Color de Facebook */
+}
+
+/* Estilo específico para Twitter */
+.social-icon.twitter {
+  color: #F2F2F2; /* Color de Twitter */
+}
+
+/* Estilo específico para Instagram */
+.social-icon.instagram {
+  color: #F2F2F2; /* Color de Instagram */
+}
+
+/* Estilo específico para YouTube */
+.social-icon.youtube {
+  color: #F2F2F2; /* Color de YouTube */
+}

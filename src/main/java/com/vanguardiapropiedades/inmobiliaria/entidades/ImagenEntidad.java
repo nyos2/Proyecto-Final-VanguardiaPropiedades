@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Entities;
+package com.vanguardiapropiedades.inmobiliaria.entidades;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Image {
+public class ImagenEntidad {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2") // Estrategia alternativa
@@ -23,10 +23,10 @@ public class Image {
     private String nombre;
     @ManyToOne
     @JoinColumn(name = "property_id")
-    private Property propiedad;
+    private PropiedadEntidad propiedad;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UsuarioEntidad user;
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
