@@ -1,49 +1,57 @@
-/* Estilos para la barra de navegación */
+/* Estilos generales para la barra de navegación */
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
-  padding: 0px; /* Espaciado interno cero para la barra de navegación */
-  border-radius: 10px; /* Bordes redondeados de 10px para la barra de navegación */
+  margin: 10px; /* Ajusta el margen alrededor de la barra de navegación */
+  padding: 10px; /* Ajusta el espacio interno de la barra de navegación */
 }
 
-/* Estilos para el texto del logotipo en la barra de navegación */
+/* Estilos para el logotipo en la barra de navegación */
 .navbar-brand {
-  padding: 0px; /* Espaciado interno cero para el logotipo */
-  color: #ffffff; /* Color del texto del logotipo en blanco */
-  font-weight: bold; /* Texto del logotipo en negrita */
-  margin: 0px; /* Margen cero para el logotipo */
+  padding: 0px;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 20px; /* Ajusta el margen a la derecha del logotipo */
 }
 
-/* Estilos para el icono del botón de alternancia en la barra de navegación */
+/* Estilos para el botón de alternancia en la barra de navegación */
 .navbar-toggler-icon {
-  background-color: #11111F; /* Color de fondo del icono del botón de alternancia */
+  background-color: #11111F;
 }
 
-/* Estilos para los enlaces en la barra de navegación */
-.nav-link {
-  color: white; /* Color del texto de los enlaces en blanco */
-  font-weight: bold; /* Texto de los enlaces en negrita */
+/* Estilos para los botones en la barra de navegación */
+.navbar-nav .nav-link {
+  border: 2px solid #97999B; /* Borde de 2px en color #97999B */
+  border-radius: 5px; /* Bordes redondeados */
+  color: #ffffff !important; /* Cambié el color del texto a blanco */
+  font-weight: bold;
+  margin-right: 10px; /* Ajusta el margen a la derecha de los botones */
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
-  background-color: #333; /* Color de fondo del menú desplegable */
-  border-radius: 10px; /* Bordes redondeados de 10px para el menú desplegable */
+  background-color: #2D2E2F; /* Cambia el color de fondo del menú desplegable */
+  border-radius: 5px; /* Bordes redondeados */
 }
 
 /* Estilos para los elementos del menú desplegable */
 .dropdown-item {
-  color: white; /* Color del texto de los elementos del menú desplegable */
-  transition: background-color 0.3s, color 0.3s; /* Transición para cambios de color y fondo en 0.3 segundos */
+  color: #97999B; /* Color del texto igual al color de los bordes */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Estilos al pasar el mouse sobre los elementos del menú desplegable */
 .dropdown-item:hover {
-  background-color: #555; /* Cambia el color de fondo al pasar el mouse */
-  color:#D9D9D9; /* Cambia el color del texto al pasar el mouse */
+  background-color: #555;
+  color: #D9D9D9;
 }
 
 /* Estilos para la imagen dentro del logotipo en la barra de navegación */
 .navbar-brand img {
-  padding: 0px; /* Espaciado interno cero para la imagen del logotipo */
-  border: 0px; /* Borde cero para la imagen del logotipo */
-  max-height: 80px; /* Altura máxima de la imagen del logotipo */
+  padding: 0px;
+  border: 0px;
+  max-height: 80px;
 }
