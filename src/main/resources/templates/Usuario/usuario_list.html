@@ -1,53 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+    <div th:replace="~{fragments/head :: head}"></div>
+    <body>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+        <div class="container">
+            <div class="row">
+                <div th:each="usuario : ${page.content}" class="col-md-5">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
+                            <p class="card-text" th:text="'DNI: ' + ${usuario.dni}"></p>
+                            <p class="card-text" th:text="'Email: ' + ${usuario.email}"></p>
+                            <!-- <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
+                            alt="Sin Imagen del Usuario"> -->
 
-<div th:replace="~{fragments/head :: head}"></div>
-
-<body>
-
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
-
-    <div class="container">
-        <h2>Lista de Usuarios</h2>
-        <div class="row">
-            <div th:each="usuario : ${page.content}" class="col-md-5">
-                <div class="card mb-4 box-shadow">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
-                        <p class="card-text" th:text="'DNI: ' + ${usuario.dni}"></p>
-                        <p class="card-text" th:text="'Email: ' + ${usuario.email}"></p>
-                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
-                            alt="Sin Imagen del Usuario">
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a th:href="@{'/usuario/editar-perfil/' + ${usuario.id}}"
-                                    class="btn btn-sm btn-outline-secondary">Modificar</a>
-                                <a th:href="@{'/usuario/eliminar-usuario/' + ${usuario.id}}"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a th:href="@{'/usuario/editar-perfil/' + ${usuario.id}}" class="btn btn-sm btn-outline-secondary">Modificar</a>
+                                    <a th:href="@{'/usuario/eliminar-usuario/' + ${usuario.id}}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Paginación -->
-            <!-- <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li th:class="${currentPage == 0} ? 'page-item disabled' : 'page-item'">
-                        <a class="page-link" th:href="@{'/usuarios/listar?page=' + (currentPage - 1)}">Anterior</a>
-                    </li>
-                    <li th:each="pageItem : ${#numbers.sequence(0, totalPages - 1)}"
-                        th:class="${currentPage == pageItem} ? 'page-item active' : 'page-item'">
-                        <a class="page-link" th:href="@{'/usuarios/listar?page=' + pageItem}"
-                            th:text="${pageItem + 1}">1</a>
-                    </li>
-                    <li th:class="${currentPage == totalPages - 1} ? 'page-item disabled' : 'page-item'">
-                        <a class="page-link" th:href="@{'/usuarios/listar?page=' + (currentPage + 1)}">Siguiente</a>
-                    </li>
-                </ul>
-            </nav> -->
+            <div>
+                <!-- Selector de cantidad de registros a mostrar -->
+                <label for="pageSize">Mostrar:</label>
+                <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
+                    <option value="0" th:selected="${pageSize == 0}">-</option>
+                    <option value="5" th:selected="${pageSize == 5}">5</option>
+                    <option value="10" th:selected="${pageSize == 10}">10</option>
+                    <option value="20" th:selected="${pageSize == 20}">20</option>
+                    <!-- Agrega más opciones según sea necesario -->
+                </select>
+
+                <!-- Paginación -->
+                <nav>
+                    <!-- justify-content-center/end/start -->
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:if="${currentPage > 0}">
+                            <a class="page-link" th:href="@{usuario/listar(page=${currentPage - 1}, size=${page.Size})}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}" th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                            <a class="page-link" th:href="@{usuario/listar(page=i, size=${page.Size})}" th:text="${i + 1}"></a>
+                        </li>
+
+                        <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                            <a class="page-link" th:href="@{usuario/listar(page=${currentPage + 1}, size=${page.Size})}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="text-center">
+                <p>Total de páginas <span th:text="${page.totalPages}"></span>, total de resultados <span th:text="${page.totalElements}"></span></p>
+            </div>
         </div>
     </div>
 
