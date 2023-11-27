@@ -7,7 +7,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-     
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -52,7 +52,22 @@
           </th:block>
         </div>
 
-        <!-- Opciones con login
+
+      <li class="nav-item dropdown">
+        <th:block th:if="${session.usuariosession != null}">
+          <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/propiedad/lista">Lista Propiedades </a>
+            <a class="dropdown-item" href="/usuario/listar">Lista Usuarios </a>
+          </div>
+        </th:block>
+      </li>
+
+
+      <!-- Opciones con login
                     <th:block th:if="${session.usuariosession == null}>
                         <a class="dropdown-item" href="/perfil">Crear Cuenta</a>
                         <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>

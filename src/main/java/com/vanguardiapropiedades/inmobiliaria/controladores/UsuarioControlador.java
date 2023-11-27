@@ -99,6 +99,7 @@ public class UsuarioControlador {
         return "Usuario/usuario_list.html";
     }
 
+    // AGREGAR el Model de la foto.
     @GetMapping("/perfil")
     public String perfilUsuario() {
         return "Usuario/usuario_perfil.html";

@@ -17,6 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Información del Usuario </h5>
                         <p><strong>Nombre:</strong> <span th:text="${session.usuariosession.nombre}"></span></p>
+                        <p><strong>DNI:</strong> <span th:text="${session.usuariosession.dni}"></span></p>
                         <p><strong>Email:</strong> <span th:text="${session.usuariosession.email}"></span></p>
                         <p><strong>Rol:</strong> <span th:text="${session.usuariosession.rol}"></span></p>
                     </div>
@@ -26,19 +27,24 @@
                 <div class="card mt-4">
                     <div class="card-body">
                         <h5 class="card-title">Imagen del Usuario</h5>
-                        <!-- Aquí puedes mostrar la imagen del usuario  --> 
-                        <!-- TODO IMPLEMENTAR LOGICA IMAGEN --> 
-                        <!-- <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" -->
+                        <!-- TODO IMPLEMENTAR LOGICA IMAGEN -->
+                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
                             alt="Imagen del Usuario">
                     </div>
                 </div>
 
+                <!-- Inmuebles Adquiridos -->
+
+                <!-- <h3>Inmuebles Adquiridos</h3>
+                <div th:each="propiedad : ${cliente.propiedad}">
+                    <h4 th:text="${propiedad.titulo}"></h4>
+                </div> -->
+                
                 <!-- Botones de Acción -->
                 <div class="mt-4">
                     <!-- <a href="/editar-perfil/__${id}__" class="btn btn-info">Editar Perfil</a> -->
-                    <a th:href="@{/usuario/editar-perfil/__${session.usuariosession.id}__}" class="btn btn-info">Editar Perfil</a>
-                    
-
+                    <a th:href="@{/usuario/editar-perfil/__${session.usuariosession.id}__}" class="btn btn-info">Editar
+                        Perfil</a>
                 </div>
 
                 <!-- <div class="mt-4">

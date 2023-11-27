@@ -17,6 +17,13 @@
                         <p class="card-text" th:text="${property.precio}"></p>
                         <p class="card-text" th:text="${property.usuario.nombre}"></p>
                     </div>
+                    <!-- Formulario para ofertar -->
+                    <form action="/ofertar" method="post">
+                        <input type="hidden" name="propertyId" th:value="${property.id}" />
+                        <label for="monto">Tu oferta:</label>
+                        <input type="text" name="monto" required />
+                        <button type="submit" class="btn btn-primary">Ofertar</button>
+                    </form>
                 </div>
                 <!-- Agrega un salto de línea después de cada 3 bloques -->
                 <th:block th:if="${iterStat.count % 3 == 0}"><br /></th:block>
