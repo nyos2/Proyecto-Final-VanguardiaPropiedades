@@ -14,7 +14,94 @@
 
 <main>
 
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+  <!-- Contenedor del carrusel -->
+  <div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Contenido de los ítems del carrusel -->
+    <div class="carousel-inner">
+      <!-- Primer ítem del carrusel (activo por defecto) -->
+      <div class="carousel-item active">
+        <!-- Imagen del primer ítem -->
+        <img class="w-100" th:src="@{/images/banner1.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del primer ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del primer ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Puede encontrar nuestra oficina en la zona de negocios</h1>
+          </div>
+        </div>
+      </div>
+      <!-- Segundo ítem del carrusel -->
+      <div class="carousel-item">
+        <!-- Imagen del segundo ítem -->
+        <img class="w-100" th:src="@{/images/banner2.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del segundo ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del segundo ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Visite nuestras cómodas instalaciones</h1>
+          </div>
+        </div>
+      </div>
+      <!-- Tercer ítem del carrusel -->
+      <div class="carousel-item">
+        <!-- Imagen del tercer ítem -->
+        <img class="w-100" th:src="@{/images/banner3.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del tercer ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del tercer ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Comience a cumplir el sueño de su hogar reuniéndose con nosotros</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Controles del carrusel -->
+    <!-- Botón de control para retroceder al ítem anterior -->
+    <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+      <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+        <!-- Ícono de flecha hacia la izquierda -->
+        <span class="carousel-control-prev-icon mb-n2"></span>
+      </div>
+    </a>
+    <!-- Botón de control para avanzar al siguiente ítem -->
+    <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+      <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+        <!-- Ícono de flecha hacia la derecha -->
+        <span class="carousel-control-next-icon mb-n2"></span>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- Carousel End -->
 
+<br>
+
+<!-- Contenido de la sección principal -->
+<div class="principal">
+  <div class="banner-info col-6 text-center">
+    <!-- Utiliza la clase "text-center" para alinear el texto al centro -->
+    <p>
+      <b style="font-size:19px">¿Quiénes somos?</b><br>
+      Nos conocimos en la universidad, diez jóvenes estudiantes<br>
+      con una pasión compartida por el mundo inmobiliario.<br>
+      Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
+      Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, <br>
+      con poco dinero, pero mucha energía y entusiasmo. <br>
+      Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
+      Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
+      <br><br>
+      <a th:href="@{/login}">
+        <button class="btn" type="button" style="background-color: #0D2E2F; color:#fff;">Servicios</button>
+        <!-- Agregamos estilos directamente al botón para centrarlo -->
+      </a>
+    </p>
+  </div>
+</div>
 
 <br>
 
