@@ -39,6 +39,7 @@ public class SeguridadWeb {
                 // Direcciones permitidas
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
+                    auth.requestMatchers("/propiedades/modificar").hasRole("ADMIN");
                     auth.requestMatchers("/**").permitAll();
                     auth.requestMatchers("/user/**").permitAll();
                     // auth.requestMatchers("/").authenticated();

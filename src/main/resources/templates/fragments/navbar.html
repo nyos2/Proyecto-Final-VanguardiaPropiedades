@@ -7,7 +7,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-     
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -15,22 +15,16 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
           <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+          <a class="dropdown-item" href="/propiedades/listar">Agregar Propiedades</a>
 
-          <!-- Opciones con login 
-                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
-                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    -->
+          <!-- <th:block th:if="${#authorization.expression('hasRole(''ROLE_CLIENT''))}"> 
+            
+          th:text="${#authorization.expression('hasRole(''ROLE_PEPE'')')}"
+          -->
+          <a class="dropdown-item" href="/propiedades/modificar">Modificar
+            Propiedades</a>
+
+          <!-- </th:block> -->
 
         </div>
       </li>
@@ -52,16 +46,15 @@
           </th:block>
         </div>
 
-        <!-- Opciones con login
-                    <th:block th:if="${session.usuariosession == null}>
-                        <a class="dropdown-item" href="/perfil">Crear Cuenta</a>
-                        <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>
-                    </th:block>
-                    <th:block th:if="${session.usuariosession != null}>
-                        <a class="dropdown-item" href="/perfil">Perfil</a>
-                        <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-                    </th:block>
-                -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <!-- Verifica si el usuario está autenticado -->
+            <th:block th:if="${session.usuario != null}">
+              <!-- Muestra el logotipo o indicador para usuarios autenticados -->
+              <img src="/images/indicador_autenticado.png" alt="Usuario Autenticado" />
+            </th:block>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
