@@ -6,8 +6,6 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -67,7 +65,7 @@ public class UsuarioServicio implements UserDetailsService {
      */
     // TODO: Agregar DNI y actualizar los campos correspondientes
     // UPDATE
-    public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
+    public void editarUsuario(String id,String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = UsuarioRepositorio.findById(id);
@@ -77,7 +75,7 @@ public class UsuarioServicio implements UserDetailsService {
             if (foto != null) {
                 ImagenEntidad img = ImagenServicio.crearImagen(foto);
                 user.setImagen(img);
-            } else {
+            }else{
                 foto = null;
             }
             user.setNombre(nombre);
@@ -95,6 +93,8 @@ public class UsuarioServicio implements UserDetailsService {
         UsuarioRepositorio.deleteById(id);
 
     }
+
+    
 
     // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MiException {
@@ -154,9 +154,5 @@ public class UsuarioServicio implements UserDetailsService {
     public Optional<UsuarioEntidad> buscarPorId(String id) {
         UsuarioEntidad user = UsuarioRepositorio.findById(id).orElse(null);
         return Optional.ofNullable(user);
-    }
-
-    public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
-        return UsuarioRepositorio.findAll(pageable);
     }
 }

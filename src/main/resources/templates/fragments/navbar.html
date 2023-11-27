@@ -7,7 +7,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-
+     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -17,7 +17,22 @@
           <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
           <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
           <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+          <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
+          <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
 
+          <!-- Opciones con login 
+                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
+                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
+                    </th:block>
+                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
+                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
+                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+                    </th:block>
+                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
+                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
+                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+                    </th:block>
+                    -->
           <!-- Opciones con login 
                     <th:block th:if="${request.isUserInRole('ROLE_USER')}">
                         <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
