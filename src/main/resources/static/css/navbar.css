@@ -1,11 +1,13 @@
 .navbar {
-  padding: 10px;
-  border-radius: 5px;
+  padding: 0px;
+  border-radius: 10px;
 }
 
 .navbar-brand {
+  padding: 0px;
   color: white;
   font-weight: bold;
+  margin: 0px;
 }
 
 .navbar-toggler-icon {
@@ -38,6 +40,8 @@
 }
 
 .navbar-brand img {
-  max-height: 150px;
-  border-radius: 300px;
+  padding: 0px;
+  border: 0px;
+  max-height: 80px;
+  border-radius: 0 0 0 300px;
 }
