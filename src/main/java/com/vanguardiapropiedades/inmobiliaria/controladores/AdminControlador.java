@@ -21,7 +21,7 @@ public class AdminControlador {
     
     @GetMapping("/dashboard")
     public String panelAdministrativo() {
-        return "panel.html";
+        return "/Admin/admin_panel.html";
         
     }
     
