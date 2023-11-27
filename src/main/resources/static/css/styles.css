@@ -1,44 +1,44 @@
 /* Estilo del texto en la sección principal */
 .principal {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url(../images/ba1.jpg) !important;
-    height: 50vh !important;
-    background-size: cover;
-    position: relative;
-  }
-  
-  /* Estilo del texto en la sección principal */
-  .principal p,
-  .principal h6 {
-      padding-top: 50px;
-    color: white;
-    text-align: center;
-    font-size: 17px;
-  }
-  
-  /* Estilo para los íconos de redes sociales */
-  .social-icon {
-    font-size: 24px;
-    margin-right: 10px;
-    text-decoration: none;
-  }
-  
-  /* Estilo específico para Facebook */
-  .social-icon.facebook {
-    color: #3b5998; /* Color de Facebook */
-  }
-  
-  /* Estilo específico para Twitter */
-  .social-icon.twitter {
-    color: #1da1f2; /* Color de Twitter */
-  }
-  
-  /* Estilo específico para Instagram */
-  .social-icon.instagram {
-    color: #bc2a8d; /* Color de Instagram */
-  }
-  
-  /* Estilo específico para YouTube */
-  .social-icon.youtube {
-    color: #ff0000; /* Color de YouTube */
-  }
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../images/ba1.jpg) !important;
+  height: 50vh !important;
+  background-size: cover;
+  position: relative;
+}
+
+/* Estilo del texto en la sección principal */
+.principal p,
+.principal h6 {
+    padding-top: 50px;
+  color: white;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* Estilo para los íconos de redes sociales */
+.social-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+/* Estilo específico para Facebook */
+.social-icon.facebook {
+  color: #3b5998; /* Color de Facebook */
+}
+
+/* Estilo específico para Twitter */
+.social-icon.twitter {
+  color: #1da1f2; /* Color de Twitter */
+}
+
+/* Estilo específico para Instagram */
+.social-icon.instagram {
+  color: #bc2a8d; /* Color de Instagram */
+}
+
+/* Estilo específico para YouTube */
+.social-icon.youtube {
+  color: #ff0000; /* Color de YouTube */
+}
