@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
-  <a class="navbar-brand" href="/"><img th:src="@{images/logo.png}">
+  <a class="navbar-brand" href="/"><img th:src="@{/images/LogoModificado.png}">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -14,10 +14,23 @@
           Propiedades
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
-          <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/registrar">Listar Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
 
+          <!-- Opciones con login 
+                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
+                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
+                    </th:block>
+                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
+                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
+                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+                    </th:block>
+                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
+                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
+                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+                    </th:block>
+                    -->
           <!-- Opciones con login 
                     <th:block th:if="${request.isUserInRole('ROLE_USER')}">
                         <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
@@ -47,12 +60,27 @@
             <a class="dropdown-item" href="/login">Iniciar Sesión</a>
           </th:block>
           <th:block th:if="${session.usuariosession != null}">
-            <a class="dropdown-item" href="/perfil">Perfil</a>
+            <a class="dropdown-item" href="/usuario/perfil">Perfil</a>
             <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
           </th:block>
         </div>
 
-        <!-- Opciones con login
+
+      <li class="nav-item dropdown">
+        <th:block th:if="${session.usuariosession != null}">
+          <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
+            <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
+          </div>
+        </th:block>
+      </li>
+
+
+      <!-- Opciones con login
                     <th:block th:if="${session.usuariosession == null}>
                         <a class="dropdown-item" href="/perfil">Crear Cuenta</a>
                         <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>
