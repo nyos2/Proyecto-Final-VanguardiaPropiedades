@@ -31,10 +31,10 @@ public class PropiedadServicio {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public void crearPropiedad(String precio,String tipo,String usuario,String estado) throws Exception{
+    public void crearPropiedad(Integer precio,String tipo,String usuario,String estado) throws Exception{
         PropiedadEntidad propiedad = new PropiedadEntidad();
         UsuarioEntidad usu = usuarioRepositorio.findById(usuario).orElse(null);
-        propiedad.setPrecio(Integer.parseInt(precio));
+        propiedad.setPrecio(precio);
         propiedad.setTipo(Tipo.valueOf(tipo));
         propiedad.setEstado(Boolean.valueOf(estado));
         // propiedad.setPrecio(precio);
