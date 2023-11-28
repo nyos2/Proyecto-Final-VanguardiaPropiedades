@@ -1,13 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
-  <a class="navbar-brand" href="/"><img th:src="@{/images/LogoModificado.png}">
-  </a>
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11111F;" th:fragment="navbar">
+  <!-- Botones izquierdos -->
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/nosotros">Servicios</a>
+    </li>
+  </ul>
+
+  <!-- Logo y enlace a la página principal, centrado -->
+  <a class="navbar-brand mx-auto" href="/"><img th:src="@{/images/logo.png}"></a>
+
+  <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+
+  <!-- Contenido de la barra de navegación -->
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
-     
+      <!-- Menú desplegable "Propiedades" -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -48,13 +63,14 @@
         </div>
       </li>
 
-      <!-- Opción "Iniciar" -->
+      <!-- Menú desplegable "Usuarios" -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Usuarios
         </a>
         <div class="dropdown-menu">
+          <!-- Opciones del menú desplegable "Usuarios" con respecto al estado de sesión -->
           <th:block th:if="${session.usuariosession == null}">
             <a class="dropdown-item" href="/usuario/registrar">Crear Cuenta</a>
             <a class="dropdown-item" href="/login">Iniciar Sesión</a>

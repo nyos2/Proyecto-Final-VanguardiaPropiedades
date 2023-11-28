@@ -1,47 +1,56 @@
-.navbar {
-  padding: 0px;
-  border-radius: 10px;
+/* Estilos generales para la barra de navegación */
+body {
+  margin: 0;
+  padding: 0;
 }
 
+.navbar {
+  margin: 10px; /* Ajusta el margen alrededor de la barra de navegación */
+  padding: 10px; /* Ajusta el espacio interno de la barra de navegación */
+}
+
+/* Estilos para el logotipo en la barra de navegación */
 .navbar-brand {
   padding: 0px;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
-  margin: 0px;
 }
 
+/* Estilos para el botón de alternancia en la barra de navegación */
 .navbar-toggler-icon {
-  background-color: white;
+  background-color: #11111F;
 }
 
-.nav-link {
-  color: white;
+/* Estilos para los botones en la barra de navegación */
+.navbar-nav .nav-link {
+  border: 2px solid #97999B; /* Borde de 2px en color #97999B */
+  border-radius: 5px; /* Bordes redondeados */
+  color: #ffffff !important; /* Cambié el color del texto a blanco */
   font-weight: bold;
+  margin-right: 10px; /* Ajusta el margen a la derecha de los botones */
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
-  background-color: #333;
-  border-radius: 10px;
+  background-color: #2D2E2F; /* Cambia el color de fondo del menú desplegable */
+  border-radius: 5px; /* Bordes redondeados */
 }
 
+/* Estilos para los elementos del menú desplegable */
 .dropdown-item {
-  color: white;
-  /* Color del texto de los elementos del menú desplegable */
+  color: #97999B; /* Color del texto igual al color de los bordes */
   transition: background-color 0.3s, color 0.3s;
-  /* Transición para cambio de color y fondo de los elementos */
 }
 
+/* Estilos al pasar el mouse sobre los elementos del menú desplegable */
 .dropdown-item:hover {
   background-color: #555;
-  /* Cambia el color de fondo al pasar el mouse */
-  color: #ffd700;
-  /* Cambia el color del texto al pasar el mouse */
+  color: #D9D9D9;
 }
 
+/* Estilos para la imagen dentro del logotipo en la barra de navegación */
 .navbar-brand img {
   padding: 0px;
   border: 0px;
   max-height: 80px;
-  border-radius: 0 0 0 300px;
 }
