@@ -1,6 +1,7 @@
-background-color{
-  color:#97999B;
+body {
+  background-color: #97999B !important;
 }
+
 /* Estilo del contenedor principal */
 .principal {
   background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
