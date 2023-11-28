@@ -47,7 +47,7 @@
                         </li>
 
                         <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}" th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
-                            <a class="page-link" th:href="@{/usuario/listar(page=i, size=${page.Size})}" th:text="${i + 1}"></a>
+                            <a class="page-link" th:href="@{/usuario/listar(page=${i}, size=${page.Size})}" th:text="${i + 1}"></a>
                         </li>
 
                         <li class="page-item" th:if="${currentPage < totalPages - 1}">

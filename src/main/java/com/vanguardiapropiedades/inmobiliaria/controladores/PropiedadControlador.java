@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.vanguardiapropiedades.inmobiliaria.Enums.Tipo;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
-import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.PropiedadServicio;
 
@@ -28,19 +26,21 @@ public class PropiedadControlador {
     @Autowired
     private PropiedadServicio propiedadServicio;
 
+
     @GetMapping("/registrar")
     public String registrarPropiedad(){
-        return "Propiedad/propiedad_form.html";
+        return "Propiedades/propiedad_form.html";
     }
 
     @PostMapping("/registro")
-    public String registroPropiedad(@RequestParam int precio,@RequestParam Tipo tipo,@RequestParam UsuarioEntidad usuario,@RequestParam Boolean estado) throws MiException {
+    public String registroPropiedad(@RequestParam String precio,@RequestParam String tipo,@RequestParam String usuario,@RequestParam String estado, ModelMap modelo) throws MiException {
         try {
             propiedadServicio.crearPropiedad(precio, tipo, usuario, estado);
+            modelo.put("exito", "Propiedad registrada correctamente");
         } catch (Exception e) {
-            
+            modelo.put("error", e.getMessage());
         }
-        return "Propiedad/propiedad_form.html";
+        return "Propiedades/propiedad_form.html";
     }
 
     @GetMapping("/listar")
@@ -50,7 +50,7 @@ public class PropiedadControlador {
         model.addAttribute("currentPage", page.getNumber());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("totalPages", page.getTotalPages()); 
-        return "Propiedad/propiedad_list.html";
+        return "Propiedades/propiedad_list.html";
     }
 
     @GetMapping("/editar/{id}")
@@ -61,6 +61,6 @@ public class PropiedadControlador {
         } else {
             modelo.put("propiedad", null);
         }
-        return "Propiedad/propiedad_mod.html";
+        return "Propiedades/propiedad_mod.html";
     }
 }

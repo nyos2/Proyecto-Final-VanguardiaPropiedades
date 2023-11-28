@@ -15,6 +15,8 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.PropiedadRepositorio;
+import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
+
 import jakarta.transaction.Transactional;
 
 @Service
@@ -25,13 +27,19 @@ public class PropiedadServicio {
 
     @Autowired
     private ImagenServicio imagenServicio;
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public void crearPropiedad(int precio,Tipo tipo,UsuarioEntidad usuario,Boolean estado) throws Exception{
+    public void crearPropiedad(String precio,String tipo,String usuario,String estado) throws Exception{
         PropiedadEntidad propiedad = new PropiedadEntidad();
-        propiedad.setPrecio(precio);
-        propiedad.setUsuario(usuario);
-        propiedad.setEstado(estado);
+        UsuarioEntidad usu = usuarioRepositorio.findById(usuario).orElse(null);
+        propiedad.setPrecio(Integer.parseInt(precio));
+        propiedad.setTipo(Tipo.valueOf(tipo));
+        propiedad.setEstado(Boolean.valueOf(estado));
+        // propiedad.setPrecio(precio);
+        propiedad.setUsuario(usu);
+        // propiedad.setEstado(estado);
         propiedadRepositorio.save(propiedad);
     }
 
