@@ -1,65 +1,156 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
+<!-- Incluye el fragmento de la cabeza -->
 <div th:replace="~{fragments/head :: head}"></div>
+
+<!-- Enlace a la hoja de estilo de Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <body>
 
-  <div th:replace="~{fragments/navbar :: navbar}"></div>
+<!-- Incluye el fragmento de la barra de navegación -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
-  <main>
+<main>
 
-    <div class="principal">
-      <div class="banner-info text-center">
-        <p>
-          <b style="font-size:19px">¿Quienes somos?</b><br>
-          Nos conocimos en la universidad, diez jóvenes estudiantes con una pasión compartida por el mundo
-          inmobiliario.<br>
-          Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
-          Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, con poco dinero, <br>
-          pero mucha energía y entusiasmo. Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
-          Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
-          <br><br>
-          <a th:href="@{/login}">
-            <button class="btn" type="button" style="background-color: #0D2E2F; color:#fff">Servicios</button>
-          </a>
-        </p>
-      </div>
-    </div>
-    <br>
-    <div>
-      <div class="card bg-dark text-white mb-3">
-        <div class="row g-0">
-          <div class="col-md-6">
-            <img th:src="@{/images/cartel.jpg}" class="img-fluid rounded-start" alt="Cartel">
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+  <!-- Contenedor del carrusel -->
+  <div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <!-- Contenido de los ítems del carrusel -->
+    <div class="carousel-inner">
+      <!-- Primer ítem del carrusel (activo por defecto) -->
+      <div class="carousel-item active">
+        <!-- Imagen del primer ítem -->
+        <img class="w-100" th:src="@{/images/banner1.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del primer ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del primer ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Puede encontrar nuestra oficina en la zona de negocios</h1>
           </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h5 class="card-title">PROPIEDADES VANGUARDISTAS</h5>
-              <p class="card-text">
-                Localización: Calle Falsa 123, 18th Floor
-                Honolulu, HI. 96815 <br>
-                (666) 666-9666 <br>
-                Teléfono: 666-666-9666 <br>
-                Horarios: Lunes - Viernes | 7:53am - 18:13pm <br>
-                Correo Electronico: propiedadesVanguardistas@mail.com <br>
-                Redes Sociales: 
-                <a href="#" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a> <br>
-              </p>
-              <a href="#" class="btn btn-outline-light">Ir hacia arriba</a>
-            </div>
+        </div>
+      </div>
+      <!-- Segundo ítem del carrusel -->
+      <div class="carousel-item">
+        <!-- Imagen del segundo ítem -->
+        <img class="w-100" th:src="@{/images/banner2.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del segundo ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del segundo ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Visite nuestras cómodas instalaciones</h1>
+          </div>
+        </div>
+      </div>
+      <!-- Tercer ítem del carrusel -->
+      <div class="carousel-item">
+        <!-- Imagen del tercer ítem -->
+        <img class="w-100" th:src="@{/images/banner3.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+        <!-- Descripción del tercer ítem -->
+        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+          <div class="p-3" style="max-width: 900px;">
+            <!-- Títulos y texto del tercer ítem -->
+            <h4 class="text-white text-uppercase mb-md-3">BIENVENIDOS</h4>
+            <h1 class="display-6 text-white mb-md-4">Comience a cumplir el sueño de su hogar reuniéndose con nosotros</h1>
           </div>
         </div>
       </div>
     </div>
-    <br>
+    <!-- Controles del carrusel -->
+    <!-- Botón de control para retroceder al ítem anterior -->
+    <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+      <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+        <!-- Ícono de flecha hacia la izquierda -->
+        <span class="carousel-control-prev-icon mb-n2"></span>
+      </div>
+    </a>
+    <!-- Botón de control para avanzar al siguiente ítem -->
+    <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+      <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+        <!-- Ícono de flecha hacia la derecha -->
+        <span class="carousel-control-next-icon mb-n2"></span>
+      </div>
+    </a>
+  </div>
+</div>
+<!-- Carousel End -->
+
+<br>
+
+<!-- Contenido de la sección principal -->
+<div class="principal">
+  <div class="banner-info col-6 text-center">
+    <!-- Utiliza la clase "text-center" para alinear el texto al centro -->
+    <p>
+      <b style="font-size:19px">¿Quiénes somos?</b><br>
+      Nos conocimos en la universidad, diez jóvenes estudiantes<br>
+      con una pasión compartida por el mundo inmobiliario.<br>
+      Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
+      Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, <br>
+      con poco dinero, pero mucha energía y entusiasmo. <br>
+      Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
+      Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
+      <br><br>
+      <a th:href="@{/login}">
+        <button class="btn" type="button" style="background-color: #0D2E2F; color:#fff;">Servicios</button>
+        <!-- Agregamos estilos directamente al botón para centrarlo -->
+      </a>
+    </p>
+  </div>
+</div>
+
+<br>
+
+<!-- Sección de información de contacto y redes sociales -->
+<div>
+  <!-- Card con fondo oscuro y texto blanco -->
+  <div class="card" style="background-color: #11111F; color: white;">
+    <!-- Fila de la card -->
+    <div class="row g-0">
+      <!-- Columna izquierda con una imagen -->
+      <div class="col-md-6">
+        <img th:src="@{/images/cartel.jpg}" class="img-fluid rounded-start" alt="Cartel">
+      </div>
+      <!-- Columna derecha con el contenido de la card -->
+      <div class="col-md-6">
+        <!-- Cuerpo de la card -->
+        <div class="card-body">
+          <!-- Título de la card -->
+          <h5 class="card-title">PROPIEDADES VANGUARDISTAS</h5>
+          <!-- Texto de la card -->
+          <p class="card-text">
+            Localización: Calle Falsa 123, 18th Floor
+            Honolulu, HI. 96815 <br>
+            (666) 666-9666 <br>
+            Teléfono: 666-666-9666 <br>
+            Horarios: Lunes - Viernes | 7:53am - 18:13pm <br>
+            Correo Electrónico: propiedadesVanguardistas@mail.com <br>
+            Redes Sociales:
+            <!-- Enlaces a redes sociales con íconos -->
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a> <br>
+          </p>
+          <!-- Botón con estilo outline-light -->
+          <a href="#" class="btn btn-outline-light">Ir hacia arriba</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <br>
 
+    <!-- Incluye el fragmento del pie de página -->
     <div th:replace="~{fragments/footer :: footer}"></div>
+
+  </main>
 
 </body>
 

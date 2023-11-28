@@ -1,44 +1,73 @@
-/* Estilo del texto en la sección principal */
+/* Estilo del fonde de la página completa */
+body {
+  background-color: #97999B ;
+} 
+
+/* Estilo del contenedor principal */
 .principal {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(../images/ba1.jpg) !important;
-  height: 50vh !important;
+  background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
+  height: 80vh !important;
   background-size: cover;
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo de la imagen */
+.principal img {
+  max-width: none;
+  max-height: 300px;
+  width: auto;
+  margin-right: 20px;
 }
 
 /* Estilo del texto en la sección principal */
 .principal p,
 .principal h6 {
-    padding-top: 50px;
   color: white;
-  text-align: center;
+  text-align: center; /* Alinea el texto al centro */
   font-size: 17px;
 }
 
+/* Estilo del contenedor de texto */
+.banner-info {
+  flex: 1;
+  padding: 0 20px;
+  margin: 0 auto; /* Centra el contenedor de texto horizontalmente */
+}
+
+/* Estilo del botón */
+.banner-info button {
+  margin-top: 10px; /* Ajusta el margen superior del botón según tu preferencia */
+  display: block; /* Hace que el botón ocupe el ancho completo del contenedor */
+  margin: 0 auto; /* Centra el botón dentro del contenedor de texto */
+}
+
+
 /* Estilo para los íconos de redes sociales */
 .social-icon {
-  font-size: 24px;
-  margin-right: 10px;
-  text-decoration: none;
+  font-size: 24px; /* Tamaño de fuente de 24px para los íconos de redes sociales */
+  margin-right: 10px; /* Margen derecho de 10px entre los íconos de redes sociales */
+  text-decoration: none; /* Sin decoración de texto para los íconos de redes sociales */
 }
 
 /* Estilo específico para Facebook */
 .social-icon.facebook {
-  color: #3b5998; /* Color de Facebook */
+  color: #F2F2F2; /* Color de Facebook */
 }
 
 /* Estilo específico para Twitter */
 .social-icon.twitter {
-  color: #1da1f2; /* Color de Twitter */
+  color: #F2F2F2; /* Color de Twitter */
 }
 
 /* Estilo específico para Instagram */
 .social-icon.instagram {
-  color: #bc2a8d; /* Color de Instagram */
+  color: #F2F2F2; /* Color de Instagram */
 }
 
 /* Estilo específico para YouTube */
 .social-icon.youtube {
-  color: #ff0000; /* Color de YouTube */
+  color: #F2F2F2; /* Color de YouTube */
 }
+
