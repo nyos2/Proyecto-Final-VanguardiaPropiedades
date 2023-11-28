@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.Enums;
+package com.vanguardiapropiedades.inmobiliaria.enums;
 
 public enum Tipo {
     CASA,

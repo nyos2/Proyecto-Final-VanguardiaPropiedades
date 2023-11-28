@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
-import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
+import com.vanguardiapropiedades.inmobiliaria.enums.Rol;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 
 import jakarta.servlet.http.HttpSession;

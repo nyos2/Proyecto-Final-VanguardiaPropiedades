@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
+import com.vanguardiapropiedades.inmobiliaria.enums.Rol;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
