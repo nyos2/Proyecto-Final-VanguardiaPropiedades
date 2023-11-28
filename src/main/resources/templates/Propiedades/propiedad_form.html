@@ -20,8 +20,9 @@
                 <div class="form-group mb-2">
                     <label for="tipo">Tipo:</label>
                     <select class="form-control" id="tipo" name="tipo"  required>
-                        <option value="DEPARTAMENTO">Apartamento</option>
+                        <option value="DEPARTAMENTO">Departamento</option>
                         <option value="CASA">Casa</option>
+                        <option value="OFICINA">Oficina</option>
                         <!-- Agrega más opciones según tus necesidades -->
                     </select>
                 </div>
@@ -63,8 +64,7 @@
         </div>
 
         <div th:replace="~{fragments/footer :: footer}"></div>
-        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     </div>
 </body>
 </html>

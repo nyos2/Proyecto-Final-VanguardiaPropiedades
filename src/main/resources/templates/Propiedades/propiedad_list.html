@@ -2,11 +2,12 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
     <div th:replace="~{fragments/head :: head}"></div>
 
-    <body>
-        <div th:replace="~{fragments/navbar :: navbar}"></div>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-        <div class="container">
-            <h2>Lista de Propiedades</h2>
+    <div class="container">
+        <h2>Lista de Propiedades</h2>
+        <div class="row">
             <div class="row">
                 <div th:each="page, iterStat : ${page.content}" class="col-md-4">
                     <div class="card mb-4 box-shadow">
@@ -15,10 +16,18 @@
                             <p class="card-text" th:text="${page.tipo}"></p>
                             <p class="card-text" th:text="${page.precio}"></p>
                             <p class="card-text" th:text="${page.usuario.nombre}"></p>
-                        </div>
+                        </div> 
+
+                        <!-- Formulario para ofertar -->
+                        <form action="/ofertar" method="post">
+                            <input type="hidden" name="propertyId" th:value="${page.id}" />
+                            <label for="monto">Tu oferta:</label>
+                            <input type="text" name="monto" required />
+                            <button type="submit" class="btn btn-primary">Ofertar</button>
+                        </form>
                     </div>
-                    <!-- Agrega un salto de línea después de cada 3 bloques -->
-                    <!-- <th:block th:if="${iterStat.count % 3 == 0}"><br /></th:block> -->
+                     <!-- Agrega un salto de línea después de cada 3 bloques  -->
+                  <th:block th:if="${iterStat.count % 3 == 0}"><br /></th:block> 
                 </div>
             </div>
 
