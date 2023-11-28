@@ -13,8 +13,9 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Entity
@@ -28,7 +29,8 @@ public class PropiedadEntidad {
     private int precio;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private UsuarioEntidad usuario;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ImagenEntidad> imagenes;

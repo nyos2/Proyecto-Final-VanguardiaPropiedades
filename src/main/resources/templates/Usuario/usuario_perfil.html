@@ -8,52 +8,63 @@
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container mt-5">
-        <h1 class="text-center">Perfil de Usuario <span th:text="${session.usuariosession.nombre}"></span></h1>
+        <h1 class="text-center">Perfil de <span th:text="${session.usuariosession.nombre}"></span></h1>
+        <hr>
 
         <div class="row justify-content-center">
+            <!-- Información del Usuario -->
             <div class="col-md-6">
-                <!-- Información del Usuario -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Información del Usuario </h5>
                         <p><strong>Nombre:</strong> <span th:text="${session.usuariosession.nombre}"></span></p>
+                        <p><strong>DNI:</strong> <span th:text="${session.usuariosession.dni}"></span></p>
                         <p><strong>Email:</strong> <span th:text="${session.usuariosession.email}"></span></p>
                         <p><strong>Rol:</strong> <span th:text="${session.usuariosession.rol}"></span></p>
                     </div>
-                </div>
-
-                <!-- Imagen del Usuario -->
-                <div class="card mt-4">
+                    <!-- Imagen del Usuario -->
                     <div class="card-body">
                         <h5 class="card-title">Imagen del Usuario</h5>
-                        <!-- Aquí puedes mostrar la imagen del usuario  --> 
-                        <!-- TODO IMPLEMENTAR LOGICA IMAGEN --> 
-                        <!-- <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" -->
-                            alt="Imagen del Usuario">
+                        <!-- TODO IMPLEMENTAR LOGICA IMAGEN -->
+                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
+                            alt="Sin Imagen del Usuario">
                     </div>
                 </div>
+            </div>
 
-                <!-- Botones de Acción -->
-                <div class="mt-4">
-                    <!-- <a href="/editar-perfil/__${id}__" class="btn btn-info">Editar Perfil</a> -->
-                    <a th:href="@{/usuario/editar-perfil/__${session.usuariosession.id}__}" class="btn btn-info">Editar Perfil</a>
-                    
+            <!-- Inmuebles Adquiridos -->
+            <div class="col-md-6">
+                <h3>Inmuebles Adquiridos</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Datos</h3>
+                        <!-- Verificar si hay propiedades -->
+                        <!-- <th:block th:if="${not #lists.isEmpty(session.usuariosession.propiedades)}">
+                                <div th:each="propiedad : ${session.usuariosession.propiedades}">
+                                    <h4 th:text="${propiedad.titulo}"></h4>
+                                </div>
+                            </th:block> -->
 
+                        <!-- Mostrar mensaje si no hay propiedades -->
+                        <!-- <th:block th:if="${#lists.isEmpty(session.usuariosession.propiedades)}">
+                                <p>No tiene propiedades aún.</p>
+                            </th:block> -->
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- <div class="mt-4">
-                    <a href="/cambiar-contrasena" class="btn btn-info">Cambiar Contraseña</a>
-                </div> -->
-
-                <div class="mt-4">
-                    <a href="/" class="btn btn-primary">Volver a Inicio</a>
-                </div>
-
-                <br>
+        <!-- Botones de Acción -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a th:href="@{/usuario/editar-perfil/__${session.usuariosession.id}__}" class="btn btn-info">Editar
+                    Perfil</a>
+                <a href="/" class="btn btn-primary">Volver a Inicio</a>
             </div>
         </div>
     </div>
-    </div>
+
+    <br>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
 

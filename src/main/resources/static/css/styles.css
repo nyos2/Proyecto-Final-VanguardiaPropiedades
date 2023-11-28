@@ -24,6 +24,9 @@ body {
 /* Estilo del texto en la sección principal */
 .principal p,
 .principal h6 {
+
+  padding-top: 50px;
+
   color: white;
   text-align: center; /* Alinea el texto al centro */
   font-size: 17px;
@@ -69,5 +72,64 @@ body {
 /* Estilo específico para YouTube */
 .social-icon.youtube {
   color: #F2F2F2; /* Color de YouTube */
+}
+
+/* Estilos para LISTAS DE USUARIO las tarjetas de usuario */
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sutil sombra */
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.logo {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 30px;
+}
+
+/* Estilos para los botones en la tarjeta */
+.btn-group {
+  margin-top: 15px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+/* Estilos para la paginación */
+.pagination {
+  margin-top: 20px;
+}
+
+/* Estilos para los botones de paginación */
+.page-link {
+  cursor: pointer;
+}
+
+/* Estilo para la página activa */
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
