@@ -8,33 +8,62 @@
 
     <div class="container">
         <h2>Lista de Propiedades</h2>
-        <div class="row">
-            <div th:each="property, iterStat : ${propertyList}" class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image">
-                    <div class="card-body">
-                        <p class="card-text" th:text="${property.tipo}"></p>
-                        <p class="card-text" th:text="${property.precio}"></p>
-                        <p class="card-text" th:text="${property.usuario.nombre}"></p>
-                    </div>
-                    <!-- Formulario para ofertar -->
-                    <form action="/ofertar" method="post">
-                        <input type="hidden" name="propertyId" th:value="${property.id}" />
-                        <label for="monto">Tu oferta:</label>
-                        <input type="text" name="monto" required />
-                        <button type="submit" class="btn btn-primary">Ofertar</button>
-                    </form>
-                </div>
-                <!-- Agrega un salto de línea después de cada 3 bloques -->
-                <th:block th:if="${iterStat.count % 3 == 0}"><br /></th:block>
-            </div>
-        </div>
+        <!-- <div class="row">
+            <div class="row">
+                <div th:each="property, iterStat : ${page.content}" class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image">
+                        <div class="card-body">
+                            <p class="card-text" th:text="${property.tipo}"></p>
+                            <p class="card-text" th:text="${property.precio}"></p>
+                            <p class="card-text" th:text="${property.usuario.nombre}"></p>
+                        </div> -->
 
+                        <!-- Formulario para ofertar -->
+                        <!-- <form action="/ofertar" method="post">
+                            <input type="hidden" name="propertyId" th:value="${property.id}" />
+                            <label for="monto">Tu oferta:</label>
+                            <input type="text" name="monto" required />
+                            <button type="submit" class="btn btn-primary">Ofertar</button>
+                        </form>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Agrega un salto de línea después de cada 3 bloques -->
+            <!-- <th:block th:if="${iterStat.count % 3 == 0}"><br /></th:block> -->
+        </div>
     </div>
+
+    <!-- Paginación -->
+    <nav>
+        <!-- justify-content-center/end/start -->
+        <!-- <ul class="pagination justify-content-center">
+            <li class="page-item" th:if="${currentPage > 0}">
+                <a class="page-link" th:href="@{usuario/listar(page=${currentPage - 1}, size=${page.Size})}"
+                    aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
+                th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                <a class="page-link" th:href="@{usuario/listar(page=i, size=${page.Size})}" th:text="${i + 1}"></a>
+            </li>
+
+            <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                <a class="page-link" th:href="@{usuario/listar(page=${currentPage + 1}, size=${page.Size})}"
+                    aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul> -->
+    </nav>
+    </div>
+
 
     <div th:replace="~{fragments/footer :: footer}"></div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
