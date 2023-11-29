@@ -43,16 +43,6 @@ public class ImagenServicio {
         return null;
     }
 
-    
-
-    public ImagenEntidad actualizarImagen(MultipartFile archivo, String idImagen) throws MiException {
-        if (archivo != null) {
-            try {
-                ImagenEntidad image = new ImagenEntidad();
-
-                if (idImagen != null) {
-                    Optional<ImagenEntidad> respuesta = imageRepository.findById(idImagen);
-    
     // UPDATE
     public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {

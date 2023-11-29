@@ -29,7 +29,7 @@ public class ImagenEntidad {
     @JoinColumn(name = "user_id")
     private UsuarioEntidad user;
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "LONGBLOB")
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
 }
