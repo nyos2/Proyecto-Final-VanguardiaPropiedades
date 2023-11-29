@@ -74,11 +74,17 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             validar(nombre, email, password, password2);
-            if (foto != null) {
-                ImagenEntidad img = imagenServicio.crearImagen(foto);
-                user.setImagen(img);
-            } else {
-                foto = null;
+            // ? Verificar si el usuario tiene foto
+            if (user.getImagen() == null) {
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.crearImagen(foto);
+                    user.setImagen(img);
+                } 
+            }else{
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.editarImagen(foto, user.getImagen().getId());
+                    user.setImagen(img);
+                }
             }
             user.setNombre(nombre);
             user.setEmail(email);
