@@ -52,7 +52,7 @@ public class SeguridadWeb {
                     form.loginProcessingUrl("/logincheck"); // Url del action del formulario
                     form.usernameParameter("email"); // Nombre del input del formulario")
                     form.passwordParameter("password"); // Nombre del input del formulario")
-                    form.defaultSuccessUrl("/inicio", true); // Url de inicio correcto
+                    form.defaultSuccessUrl("/usuario/perfil", true); // Url de inicio correcto
                     form.permitAll();
                 })
                 .logout(logout -> {
