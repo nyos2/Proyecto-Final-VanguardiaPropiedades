@@ -37,34 +37,6 @@
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
           <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
           <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
-
-          <!-- Opciones con login 
-                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
-                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    -->
-          <!-- Opciones con login 
-                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
-                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    -->
-
         </div>
       </li>
 
@@ -86,7 +58,6 @@
           </th:block>
         </div>
 
-
       <li class="nav-item dropdown">
         <th:block th:if="${session.usuariosession != null}">
           <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
@@ -99,16 +70,6 @@
           </div>
         </th:block>
       </li>
-      <!-- Opciones con login
-                    <th:block th:if="${session.usuariosession == null}>
-                        <a class="dropdown-item" href="/perfil">Crear Cuenta</a>
-                        <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>
-                    </th:block>
-                    <th:block th:if="${session.usuariosession != null}>
-                        <a class="dropdown-item" href="/perfil">Perfil</a>
-                        <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-                    </th:block>
-                -->
       </li>
     </ul>
   </div>

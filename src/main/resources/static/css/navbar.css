@@ -28,7 +28,6 @@ body {
   border-radius: 5px; /* Bordes redondeados */
   color: #ffffff !important; /* Cambié el color del texto a blanco */
   font-weight: bold;
-  margin-right: 10px; /* Ajusta el margen a la derecha de los botones */
   margin-left: 10px; /* Ajusta el margen a la izquierda de los botones */
 }
 

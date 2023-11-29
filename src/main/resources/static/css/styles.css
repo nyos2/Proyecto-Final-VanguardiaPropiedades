@@ -10,7 +10,6 @@
   margin: 0;
 }
 
-/* Estilos de los controles del carrusel */
 .carousel-control-prev,
 .carousel-control-next {
   width: 45px;
@@ -32,7 +31,6 @@
   align-items: center;
 }
 
-/* Estilos de la imagen en la sección principal */
 .principal img {
   max-width: none;
   max-height: 300px;
@@ -40,7 +38,6 @@
   margin-right: 20px;
 }
 
-/* Estilos del texto en la sección principal */
 .principal p,
 .principal h6 {
   color: #ffffff;
@@ -48,14 +45,12 @@
   font-size: 17px;
 }
 
-/* Estilos del contenedor de texto en la sección principal */
 .banner-info {
   flex: 1;
   padding: 0 20px;
   margin: 0 auto;
 }
 
-/* Estilos del botón en la sección principal */
 .banner-info button {
   margin-top: 10px;
   display: block;
@@ -90,35 +85,7 @@
 
 .card-title {
   color: white;
-}
-
-.card-text a {
-  color: #F2F2F2;
-}
-
-/* Estilos de los íconos de redes sociales */
-.social-icon {
-  font-size: 24px;
-  margin-right: 10px;
   text-decoration: none;
-}
-
-/* Estilos específicos para cada red social */
-.social-icon.facebook {
-  color: #F2F2F2;
-}
-
-.social-icon.twitter {
-  color: #F2F2F2;
-}
-
-.social-icon.instagram {
-  color: #F2F2F2;
-}
-
-.social-icon.youtube {
-  color: #ff0000; /* Color de YouTube */
-  color: #F2F2F2;
 }
 
 /* Estilos para LISTAS DE USUARIO las tarjetas de usuario */
