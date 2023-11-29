@@ -53,7 +53,6 @@ public class UsuarioControlador {
 
     }
 
-
     // UPDATE
     @GetMapping("/editar/{id}")
     public String editarUsuario(@PathVariable String id, ModelMap modelo) {
