@@ -39,7 +39,6 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio imagenServicio;
 
-    // TODO: Agregar DNI
     // CREATE
     @Transactional
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
@@ -65,7 +64,7 @@ public class UsuarioServicio implements UserDetailsService {
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
-    // TODO: Agregar DNI y actualizar los campos correspondientes
+    
     // UPDATE
     public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
