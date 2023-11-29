@@ -3,6 +3,14 @@
   <!-- Logo y enlace a la página principal -->
   <a class="navbar-brand" href="/"><img th:src="@{/images/logo.png}"></a>
   
+
+  <!-- Logo y enlace a la página principal -->
+  <div class="navbar-brand mr-auto">
+    <a href="/">
+      <img th:src="@{/images/logo.png}" class="logo" alt="Logo" style="max-height: 80px;">
+    </a>
+  </div>
+
   <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +21,6 @@
   <!-- Contenido de la barra de navegación -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
-     
       <!-- Menú desplegable "Propiedades" -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
@@ -21,10 +28,9 @@
           Propiedades
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
-          <!-- Opciones del menú desplegable "Propiedades" -->
-          <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/listar">Listar Propiedades</a>
-          <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
+          <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
         </div>
       </li>
 
@@ -46,6 +52,21 @@
           </th:block>
         </div>
       </li>
+
+      <!-- Menú desplegable "Admin" -->
+      <li class="nav-item dropdown">
+        <th:block th:if="${session.usuariosession != null}">
+          <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
+            <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
+          </div>
+        </th:block>
+      </li>
+
     </ul>
   </div>
 </nav>
