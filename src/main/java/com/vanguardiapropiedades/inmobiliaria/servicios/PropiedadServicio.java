@@ -21,7 +21,7 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class PropiedadServicio {
-    
+
     @Autowired
     private PropiedadRepositorio propiedadRepositorio;
 
@@ -30,8 +30,9 @@ public class PropiedadServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    // TODO AGREGAR DESC y Direccion
     @Transactional
-    public void crearPropiedad(Integer precio,String tipo,String usuario,String estado) throws Exception{
+    public void crearPropiedad(Integer precio, String tipo, String usuario, String estado) throws Exception {
         PropiedadEntidad propiedad = new PropiedadEntidad();
         UsuarioEntidad usu = usuarioRepositorio.findById(usuario).orElse(null);
         propiedad.setPrecio(precio);
@@ -43,12 +44,14 @@ public class PropiedadServicio {
         propiedadRepositorio.save(propiedad);
     }
 
-    public void editarPropiedad(String id,int precio,Tipo tipo,List<MultipartFile> imagen,Boolean estado) throws Exception{
+    // TODO AGREGAR DESC y Direccion
+    public void editarPropiedad(String id, int precio, Tipo tipo, List<MultipartFile> imagen, Boolean estado)
+            throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);
         if (respuesta.isPresent()) {
             PropiedadEntidad propiedad = respuesta.get();
             List<ImagenEntidad> propiedades = propiedad.getImagenes();
-            if (imagen!=null) {
+            if (imagen != null) {
                 for (MultipartFile file : imagen) {
                     ImagenEntidad img = imagenServicio.crearImagen(file);
                     propiedades.add(img);
@@ -64,7 +67,7 @@ public class PropiedadServicio {
         }
     }
 
-    public void eliminarPropiedad(String id) throws MiException{
+    public void eliminarPropiedad(String id) throws MiException {
         propiedadRepositorio.deleteById(id);
     }
 

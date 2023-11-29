@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Tipo;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -27,6 +28,9 @@ public class PropiedadEntidad {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private int precio;
+    @Column(length = 1000)
+    private String descripcion;
+    private String direccion;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
     @ManyToOne
