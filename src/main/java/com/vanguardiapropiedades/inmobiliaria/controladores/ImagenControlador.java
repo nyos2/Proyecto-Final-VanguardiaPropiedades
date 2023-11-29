@@ -18,44 +18,23 @@ import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 @Controller
 @RequestMapping("/imagen")
 public class ImagenControlador {
-
     @Autowired
-    UsuarioServicio usuarioServicio;
+    private UsuarioServicio usuarioServicio;
 
-    // @GetMapping("/perfil/{id}")
-    // public ResponseEntity<byte[]> imagenUsuario(@PathVariable String id) {
-        
-    //     Optional<UsuarioEntidad> respuesta = usuarioServicio.buscarPorId(id);
-    //     if(respuesta.isPresent()) {
-    //         UsuarioEntidad  usuario = respuesta.get();
-
-    //          byte[] imagen = usuario.getImagen().getContenido();
-
-    //         HttpHeaders headers = new HttpHeaders(); // estamos devolviendo una imagen
-
-    //         headers.setContentType(MediaType.IMAGE_JPEG);
-    //         return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
-    //     }
-        
-    //      return new ResponseEntity<>(ResponseEntity);
-        
-    // }
     @GetMapping("/perfil/{id}")
-public ResponseEntity<byte[]> imagenUsuario(@PathVariable String id) {
-    
-    Optional<UsuarioEntidad> respuesta = usuarioServicio.buscarPorId(id);
-    
-    if (respuesta.isPresent()) {
-        UsuarioEntidad usuario = respuesta.get();
-        byte[] imagen = usuario.getImagen().getContenido();
+    public ResponseEntity<byte[]> imagenUsuario(@PathVariable String id) {
+        Optional<UsuarioEntidad> respuesta = usuarioServicio.buscarPorId(id);
+        if (respuesta.isPresent()) {
+            UsuarioEntidad usuario = respuesta.get();
+            byte[] imagen = usuario.getImagen().getContenido();
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
+            HttpHeaders headers = new HttpHeaders();
 
-        return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
-    } else {
-        // Usuario no encontrado, devolver ResponseEntity vacío con código de estado 404 (Not Found)
+            headers.setContentType(MediaType.IMAGE_JPEG);
+
+            return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-}
 }
