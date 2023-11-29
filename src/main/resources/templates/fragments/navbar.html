@@ -1,17 +1,22 @@
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11111F;" th:fragment="navbar">
+
   <!-- Botones izquierdos -->
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
       <a class="nav-link" href="/">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/nosotros">Servicios</a>
+      <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
     </li>
   </ul>
 
   <!-- Logo y enlace a la página principal, centrado -->
-  <a class="navbar-brand mx-auto" href="/"><img th:src="@{/images/logo.png}"></a>
+  <div class="navbar-brand">
+    <a href="/">
+      <img th:src="@{/images/logo.png}" class="logo" alt="Logo" style="max-height: 80px;">
+    </a>
+  </div>
 
   <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"

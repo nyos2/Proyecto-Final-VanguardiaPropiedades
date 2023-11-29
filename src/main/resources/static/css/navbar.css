@@ -11,9 +11,10 @@ body {
 
 /* Estilos para el logotipo en la barra de navegación */
 .navbar-brand {
-  padding: 0px;
-  color: #ffffff;
-  font-weight: bold;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: flex-end; /* Centra horizontalmente a la derecha */
+  margin-left: auto; /* Mueve el logotipo hacia la derecha */
 }
 
 /* Estilos para el botón de alternancia en la barra de navegación */
@@ -28,6 +29,7 @@ body {
   color: #ffffff !important; /* Cambié el color del texto a blanco */
   font-weight: bold;
   margin-right: 10px; /* Ajusta el margen a la derecha de los botones */
+  margin-left: 10px; /* Ajusta el margen a la izquierda de los botones */
 }
 
 /* Estilos para el menú desplegable */
@@ -48,9 +50,3 @@ body {
   color: #D9D9D9;
 }
 
-/* Estilos para la imagen dentro del logotipo en la barra de navegación */
-.navbar-brand img {
-  padding: 0px;
-  border: 0px;
-  max-height: 80px;
-}

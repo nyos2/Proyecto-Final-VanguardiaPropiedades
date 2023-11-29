@@ -1,9 +1,28 @@
-/* Estilo del fonde de la página completa */
-body {
-  background-color: #97999B ;
-} 
+/* Estilos del carrusel */
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-/* Estilo del contenedor principal */
+.carousel-caption h4,
+.carousel-caption h1 {
+  margin: 0;
+}
+
+/* Estilos de los controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 45px;
+  height: 45px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  margin-bottom: -2px;
+}
+
+/* Estilos de la sección principal */
 .principal {
   background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
   height: 80vh !important;
@@ -13,7 +32,7 @@ body {
   align-items: center;
 }
 
-/* Estilo de la imagen */
+/* Estilos de la imagen en la sección principal */
 .principal img {
   max-width: none;
   max-height: 300px;
@@ -21,53 +40,82 @@ body {
   margin-right: 20px;
 }
 
-/* Estilo del texto en la sección principal */
+/* Estilos del texto en la sección principal */
 .principal p,
 .principal h6 {
-  color: white;
-  text-align: center; /* Alinea el texto al centro */
+  color: #ffffff;
+  text-align: center;
   font-size: 17px;
 }
 
-/* Estilo del contenedor de texto */
+/* Estilos del contenedor de texto en la sección principal */
 .banner-info {
   flex: 1;
   padding: 0 20px;
-  margin: 0 auto; /* Centra el contenedor de texto horizontalmente */
+  margin: 0 auto;
 }
 
-/* Estilo del botón */
+/* Estilos del botón en la sección principal */
 .banner-info button {
-  margin-top: 10px; /* Ajusta el margen superior del botón según tu preferencia */
-  display: block; /* Hace que el botón ocupe el ancho completo del contenedor */
-  margin: 0 auto; /* Centra el botón dentro del contenedor de texto */
+  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
+/* Estilos del botón personalizado en la sección principal */
+.custom-btn {
+  background-color: #11111F;
+  color: #ffffff;
+  border: 2px solid #97999B;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
 
-/* Estilo para los íconos de redes sociales */
+/* Estilos al pasar el mouse sobre el botón en la sección principal */
+.custom-btn:hover {
+  background-color: #555;
+  color: #D9D9D9;
+  border-color: #D9D9D9;
+}
+
+/* Estilos de la información de contacto y redes sociales */
+.card {
+  background-color: #11111F;
+  color: white;
+}
+
+.card-title {
+  color: white;
+}
+
+.card-text a {
+  color: #F2F2F2;
+}
+
+/* Estilos de los íconos de redes sociales */
 .social-icon {
-  font-size: 24px; /* Tamaño de fuente de 24px para los íconos de redes sociales */
-  margin-right: 10px; /* Margen derecho de 10px entre los íconos de redes sociales */
-  text-decoration: none; /* Sin decoración de texto para los íconos de redes sociales */
+  font-size: 24px;
+  margin-right: 10px;
+  text-decoration: none;
 }
 
-/* Estilo específico para Facebook */
+/* Estilos específicos para cada red social */
 .social-icon.facebook {
-  color: #F2F2F2; /* Color de Facebook */
+  color: #F2F2F2;
 }
 
-/* Estilo específico para Twitter */
 .social-icon.twitter {
-  color: #F2F2F2; /* Color de Twitter */
+  color: #F2F2F2;
 }
 
-/* Estilo específico para Instagram */
 .social-icon.instagram {
-  color: #F2F2F2; /* Color de Instagram */
+  color: #F2F2F2;
 }
 
-/* Estilo específico para YouTube */
 .social-icon.youtube {
-  color: #F2F2F2; /* Color de YouTube */
+  color: #F2F2F2;
 }
-
