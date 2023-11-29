@@ -14,7 +14,7 @@
                             <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
                             <p class="card-text" th:text="'DNI: ' + ${usuario.dni}"></p>
                             <p class="card-text" th:text="'Email: ' + ${usuario.email}"></p>
-                             <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
+                             <img id="miImagen" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}"
                             alt="Sin Imagen del Usuario"> 
 
                             <div class="d-flex justify-content-between align-items-center">
@@ -68,8 +68,15 @@
                 </p>
             </div>
         </div>
+        <script>
+            // Función para cambiar el tamaño de la página
+            function changePageSize(size) {
+                // Redirige a la primera página cuando cambias el tamaño
+                window.location.href = "/usuario/listar?page=0&size=" + size;
+            }
+        </script>
+        <!--  -->
     </div>
-
     <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 

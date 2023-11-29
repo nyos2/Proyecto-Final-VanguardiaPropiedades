@@ -53,7 +53,6 @@ public class UsuarioControlador {
 
     }
 
-    // TODO agregar list
 
     // UPDATE
     @GetMapping("/editar/{id}")
