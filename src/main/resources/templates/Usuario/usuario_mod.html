@@ -9,7 +9,7 @@
             <h2>Modificar Usuario</h2>
 
             <!-- <form th:action="@{/usuarios/modificar}" th:object="${userEntity}" method="post"> -->
-            <form th:action="@{/usuario/editar-usuario/__${usuario.id}__}" method="post">
+            <form th:action="@{/usuario/editar-usuario/__${usuario.id}__}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input hidden th:value="${id}" name="id" />
                     <!-- <label for="nombre">Nombre:</label> -->
@@ -33,13 +33,13 @@
 
                 <div class="form-group">
                     <label for="password2">Repetir contraseña:</label>
-                    <input type="password2" name="password2" class="form-control" />
+                    <input type="password" name="password2" class="form-control" />
                 </div>
 
                 <!-- Puedes agregar lógica para modificar las propiedades y la imagen -->
                 <div class="form-group">
                     <label for="imagen">Imagen:</label>
-                    <input type="file" id="imagen" name="imagen" accept="image/*" />
+                    <input type="file" id="imagen" name="foto" accept="image/*" />
                     <small class="form-text text-muted">Selecciona una imagen para el usuario.</small>
                 </div>
 

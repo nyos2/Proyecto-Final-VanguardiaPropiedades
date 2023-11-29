@@ -3,6 +3,7 @@ package com.vanguardiapropiedades.inmobiliaria.entidades;
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class ImagenEntidad {
     @JoinColumn(name = "user_id")
     private UsuarioEntidad user;
     @Lob
+    @Column(columnDefinition = "BLOB")
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
 }
