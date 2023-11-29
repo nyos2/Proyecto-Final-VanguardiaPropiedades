@@ -7,7 +7,7 @@
 
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div class="container">
+    <div class="container card">
         <div class="container col-md-4 text-center">
             <h2>Formulario de Registro de Propiedad</h2>
             <form th:action="@{/propiedad/registro}" method="post">
@@ -56,8 +56,6 @@
                         <p th:text="${exito}"></p>
                     </div>
                 </div>
-
-                <!-- Mensajes Condicionales -->
 
                 <button type="submit" class="btn btn-primary">Registrar Propiedad ✔</button>
             </form>
