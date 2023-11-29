@@ -4,6 +4,9 @@
     <body>
         <div th:replace="~{fragments/navbar :: navbar}"></div>
         <div class="container">
+            <br>
+            <h3> Lista de Usuarios </h3>
+            <hr>
             <div class="row">
                 <div th:each="usuario : ${page.content}" class="col-md-5">
                     <div class="card mb-4 box-shadow">
@@ -11,8 +14,8 @@
                             <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
                             <p class="card-text" th:text="'DNI: ' + ${usuario.dni}"></p>
                             <p class="card-text" th:text="'Email: ' + ${usuario.email}"></p>
-                            <!-- <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
-                            alt="Sin Imagen del Usuario"> -->
+                             <img id="miImagen" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}"
+                            alt="Sin Imagen del Usuario"> 
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
@@ -41,7 +44,7 @@
                     <!-- justify-content-center/end/start -->
                     <ul class="pagination justify-content-center">
                         <li class="page-item" th:if="${currentPage > 0}">
-                            <a class="page-link" th:href="@{/usuario/listar(page=${currentPage - 1}, size=${page.Size})}" aria-label="Previous">
+                            <a class="page-link" th:href="@{usuario/listar(page=${currentPage - 1}, size=${page.Size})}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -51,7 +54,7 @@
                         </li>
 
                         <li class="page-item" th:if="${currentPage < totalPages - 1}">
-                            <a class="page-link" th:href="@{/usuario/listar(page=${currentPage + 1}, size=${page.Size})}" aria-label="Next">
+                            <a class="page-link" th:href="@{usuario/listar(page=${currentPage + 1}, size=${page.Size})}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -59,7 +62,10 @@
                 </nav>
             </div>
             <div class="text-center">
-                <p>Total de páginas <span th:text="${page.totalPages}"></span>, total de resultados <span th:text="${page.totalElements}"></span></p>
+                <p class="text-muted">
+                    Total de páginas: <span th:text="${page.totalPages}"></span>,
+                    Total de resultados: <span th:text="${page.totalElements}"></span>
+                </p>
             </div>
         </div>
         <script>
@@ -69,7 +75,9 @@
                 window.location.href = "/usuario/listar?page=0&size=" + size;
             }
         </script>
-        <div th:replace="~{fragments/footer :: footer}"></div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
+        <!--  -->
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
 </html>

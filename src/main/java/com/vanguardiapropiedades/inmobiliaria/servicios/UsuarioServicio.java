@@ -39,7 +39,6 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio imagenServicio;
 
-    // TODO: Agregar DNI
     // CREATE
     @Transactional
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
@@ -65,7 +64,7 @@ public class UsuarioServicio implements UserDetailsService {
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
-    // TODO: Agregar DNI y actualizar los campos correspondientes
+    
     // UPDATE
     public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
@@ -74,11 +73,17 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             validar(nombre, email, password, password2);
-            if (foto != null) {
-                ImagenEntidad img = imagenServicio.crearImagen(foto);
-                user.setImagen(img);
-            } else {
-                foto = null;
+            // ? Verificar si el usuario tiene foto
+            if (user.getImagen() == null) {
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.crearImagen(foto);
+                    user.setImagen(img);
+                } 
+            }else{
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.editarImagen(foto, user.getImagen().getId());
+                    user.setImagen(img);
+                }
             }
             user.setNombre(nombre);
             user.setEmail(email);
