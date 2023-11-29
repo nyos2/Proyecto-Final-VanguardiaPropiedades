@@ -10,7 +10,7 @@
     <div class="container">
         <div class="container col-md-4 text-center">
             <h2>Formulario de Registro de Propiedad</h2>
-            <form th:action="@{/property/registro}" method="post">
+            <form th:action="@{/propiedad/registro}" method="post">
 
                 <div class="form-group mb-2">
                     <label for="precio">Precio:</label>
@@ -19,21 +19,23 @@
 
                 <div class="form-group mb-2">
                     <label for="tipo">Tipo:</label>
-                    <select class="form-control" id="tipo" name="tipo" th:field="${tipo}" required>
-                        <option value="APARTMENT">Apartamento</option>
-                        <option value="HOUSE">Casa</option>
+                    <select class="form-control" id="tipo" name="tipo"  required>
+                        <option value="DEPARTAMENTO">Departamento</option>
+                        <option value="CASA">Casa</option>
+                        <option value="OFICINA">Oficina</option>
                         <!-- Agrega más opciones según tus necesidades -->
                     </select>
                 </div>
 
                 <div class="form-group mb-2">
                     <label for="usuario">Usuario:</label>
-                    <input type="text" class="form-control" id="usuario" name="usuario" th:value="${usuario}" required />
+                    <input type="text" class="form-control" th:if="${session.usuariosession != null}" th:value="${session.usuariosession.nombre}" readonly />
+                    <input hidden type="text" class="form-control" id="usuario" name="usuario" th:if="${session.usuariosession != null}" th:value="${session.usuariosession.id}" readonly />
                 </div>
 
                 <div class="form-group mb-2">
                     <label for="estado">Estado:</label>
-                    <select class="form-control" id="estado" name="estado" th:field="${estado}" required>
+                    <select class="form-control" id="estado" name="estado"  required>
                         <option value="true">Activo</option>
                         <option value="false">Inactivo</option>
                     </select>
@@ -55,15 +57,12 @@
                     </div>
                 </div>
 
-                <!-- Mensajes Condicionales -->
-
                 <button type="submit" class="btn btn-primary">Registrar Propiedad ✔</button>
             </form>
         </div>
 
         <div th:replace="~{fragments/footer :: footer}"></div>
-        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     </div>
 </body>
 </html>

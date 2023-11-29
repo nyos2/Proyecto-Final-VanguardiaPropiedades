@@ -6,6 +6,8 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -32,10 +34,10 @@ import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
 public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepositorio UsuarioRepositorio;
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
-    private ImagenServicio ImagenServicio;
+    private ImagenServicio imagenServicio;
 
     // TODO: Agregar DNI
     // CREATE
@@ -53,7 +55,7 @@ public class UsuarioServicio implements UserDetailsService {
         // Image img = imageService.guardarImagen(imagen);
         // user.setImagen(img);
 
-        UsuarioRepositorio.save(user);
+        usuarioRepositorio.save(user);
 
     }
 
@@ -65,24 +67,24 @@ public class UsuarioServicio implements UserDetailsService {
      */
     // TODO: Agregar DNI y actualizar los campos correspondientes
     // UPDATE
-    public void editarUsuario(String id,String dni, String nombre, String email, String password, String password2,
+    public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
-        Optional<UsuarioEntidad> respuesta = UsuarioRepositorio.findById(id);
+        Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             validar(nombre, email, password, password2);
             if (foto != null) {
-                ImagenEntidad img = ImagenServicio.crearImagen(foto);
+                ImagenEntidad img = imagenServicio.crearImagen(foto);
                 user.setImagen(img);
-            }else{
+            } else {
                 foto = null;
             }
             user.setNombre(nombre);
             user.setEmail(email);
             user.setDni(dni);
             user.setPassword(new BCryptPasswordEncoder().encode(password));
-            UsuarioRepositorio.save(user);
+            usuarioRepositorio.save(user);
         }
     }
 
@@ -90,11 +92,9 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
 
-        UsuarioRepositorio.deleteById(id);
+        usuarioRepositorio.deleteById(id);
 
     }
-
-    
 
     // TODO: Agregar DNI
     private void validar(String nombre, String email, String password, String password2) throws MiException {
@@ -125,7 +125,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UsuarioEntidad usuario = UsuarioRepositorio.findByEmail(email);
+        UsuarioEntidad usuario = usuarioRepositorio.findByEmail(email);
         if (usuario != null) {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
@@ -152,7 +152,11 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     public Optional<UsuarioEntidad> buscarPorId(String id) {
-        UsuarioEntidad user = UsuarioRepositorio.findById(id).orElse(null);
+        UsuarioEntidad user = usuarioRepositorio.findById(id).orElse(null);
         return Optional.ofNullable(user);
+    }
+
+    public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
+        return usuarioRepositorio.findAll(pageable);
     }
 }

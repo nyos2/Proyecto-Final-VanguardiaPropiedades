@@ -14,6 +14,7 @@ import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
 @Service
 public class ImagenServicio {
+
     @Autowired
     private ImagenRepositorio ImagenRepositorio;
 
@@ -32,7 +33,7 @@ public class ImagenServicio {
         }
         return null;
     }
-
+    
     // UPDATE
     public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {
@@ -55,7 +56,6 @@ public class ImagenServicio {
             }
         }
         return null;
-
     }
 
     // DELETE
@@ -65,4 +65,5 @@ public class ImagenServicio {
         ImagenRepositorio.deleteById(id);
 
     }
+
 }
