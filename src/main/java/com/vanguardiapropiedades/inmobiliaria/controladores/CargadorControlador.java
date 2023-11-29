@@ -19,12 +19,12 @@ public class CargadorControlador {
     UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping("/cargar/usuarios")
-    public String usuarios(){
+    public String usuarios() {
         for (int i = 0; i < 20; i++) {
             Random random = new Random();
             UsuarioEntidad u = new UsuarioEntidad();
-            u.setNombre("Persona "+(i+1));
-            u.setEmail("persona"+(i+1)+"@gmail.com");
+            u.setNombre("Persona " + (i + 1));
+            u.setEmail("persona" + (i + 1) + "@gmail.com");
             u.setPassword(new BCryptPasswordEncoder().encode("123456"));
             u.setRol(Rol.CLIENT);
             String dni = String.valueOf(random.nextInt(99999999));

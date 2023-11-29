@@ -33,7 +33,7 @@ public class ImagenServicio {
         }
         return null;
     }
-    
+
     // UPDATE
     public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {
