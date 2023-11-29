@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-//import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
@@ -51,9 +50,6 @@ public class UsuarioServicio implements UserDetailsService {
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setRol(Rol.CLIENT);
 
-        // Image img = imageService.guardarImagen(imagen);
-        // user.setImagen(img);
-
         usuarioRepositorio.save(user);
 
     }
@@ -64,7 +60,7 @@ public class UsuarioServicio implements UserDetailsService {
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
-    
+
     // UPDATE
     public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
@@ -78,8 +74,8 @@ public class UsuarioServicio implements UserDetailsService {
                 if (foto.getSize() > 0) {
                     ImagenEntidad img = imagenServicio.crearImagen(foto);
                     user.setImagen(img);
-                } 
-            }else{
+                }
+            } else {
                 if (foto.getSize() > 0) {
                     ImagenEntidad img = imagenServicio.editarImagen(foto, user.getImagen().getId());
                     user.setImagen(img);
@@ -96,9 +92,7 @@ public class UsuarioServicio implements UserDetailsService {
     // DELETE
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
-
         usuarioRepositorio.deleteById(id);
-
     }
 
     // TODO: Agregar DNI
@@ -143,9 +137,6 @@ public class UsuarioServicio implements UserDetailsService {
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
             HttpSession session = attr.getRequest().getSession(true);
-
-            // Tiempo de inactividad en segundos para cerrar la sesión
-            // session.setMaxInactiveInterval(60);
 
             // La session contiene los datos del usuario recuperado de la base de datos
             session.setAttribute("usuariosession", usuario);
