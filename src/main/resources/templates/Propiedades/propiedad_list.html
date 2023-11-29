@@ -39,7 +39,7 @@
                     <option value="5" th:selected="${pageSize == 5}">5</option>
                     <option value="10" th:selected="${pageSize == 10}">10</option>
                     <option value="20" th:selected="${pageSize == 20}">20</option>
-                    <!-- Agrega más opciones según sea necesario -->
+                 
                 </select>
 
                 <!-- Paginación -->
@@ -69,16 +69,12 @@
             </div>
         </div>
         <script>
-            // Función para cambiar el tamaño de la página
             function changePageSize(size) {
-                // Redirige a la primera página cuando cambias el tamaño
                 window.location.href = "/propiedad/listar?page=0&size=" + size;
             }
         </script>
-        <!--  -->
+
         <div th:replace="~{fragments/footer :: footer}"></div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
     </body>
 </html>
