@@ -10,32 +10,31 @@ body {
   border-radius: 15px;
 }
 
-/* Estilos para el logotipo en la barra de navegación */
 .navbar-brand {
-  padding: 0px;
-  color: #ffffff;
-  font-weight: bold;
+  display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  margin-left: auto; 
 }
 
-/* Estilos para el botón de alternancia en la barra de navegación */
 .navbar-toggler-icon {
   background-color: #11111F;
 }
 
-/* Estilos para los botones en la barra de navegación */
 .navbar-nav .nav-link {
-  padding: 10px;
-  border: 2px solid #97999B;
+  border: 2px solid #97999B; 
   border-radius: 5px; 
   color: #ffffff !important; 
   font-weight: bold;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
   background-color: #2D2E2F; 
   border-radius: 5px; 
+  right: 0; 
+  left: auto; 
 }
 
 /* Estilos para los elementos del menú desplegable */
@@ -49,8 +48,16 @@ body {
   color: #D9D9D9;
 }
 
-.navbar-brand img {
-  padding: 0px;
-  border: 0px;
-  max-height: 80px;
+/* Agrega estilos personalizados al botón de la barra de navegación */
+.navbar-toggler {
+  background-color: #97999B; 
+  border: 1px solid #D9D9D9; 
+  color: #ffffff; 
+  padding: 8px 15px; 
+  border-radius: 4px; 
+}
+
+/* Cambia el color del icono del botón */
+.navbar-toggler-icon {
+  background-color: #ffffff;
 }
