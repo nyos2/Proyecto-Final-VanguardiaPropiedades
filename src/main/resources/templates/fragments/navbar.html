@@ -80,7 +80,6 @@
 
 
       <li class="nav-item dropdown">
-        <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
           <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Admin
@@ -89,7 +88,6 @@
             <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
           </div>
-        </th:block>
       </li>
       <!-- Opciones con login
                     <th:block th:if="${session.usuariosession == null}>
