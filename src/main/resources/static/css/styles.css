@@ -1,8 +1,14 @@
+/* Estilo del fonde de la página completa */
+body {
+  background-color: #97999B ;
+} 
+
 /* Estilos del carrusel */
 .carousel-caption {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(0%);
+  text-align: center;
 }
 
 .carousel-caption h4,
@@ -13,12 +19,17 @@
 .carousel-control-prev,
 .carousel-control-next {
   width: 45px;
-  height: 45px;
+  height: -50px;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   margin-bottom: -2px;
+}
+
+.carousel-caption h4.text-highlight,
+.carousel-caption h1.text-highlight {
+  text-shadow: 4px 4px 3px #000000cc;
 }
 
 /* Estilos de la sección principal */
@@ -57,7 +68,6 @@
   margin: 0 auto;
 }
 
-/* Estilos del botón personalizado en la sección principal */
 .custom-btn {
   background-color: #11111F;
   color: #ffffff;
@@ -70,20 +80,21 @@
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-/* Estilos al pasar el mouse sobre el botón en la sección principal */
 .custom-btn:hover {
   background-color: #555;
   color: #D9D9D9;
   border-color: #D9D9D9;
 }
 
-/* Estilos de la información de contacto y redes sociales */
-.card {
+/* Estilos para la card personalizada */
+.custom-card {
   background-color: #11111F;
   color: white;
 }
 
-.card-title {
+/* Estilos para los íconos de redes sociales */
+.social-icon {
+  margin-right: 5px;
   color: white;
   text-decoration: none;
 }
@@ -92,7 +103,6 @@
 .card {
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sutil sombra */
   transition: box-shadow 0.3s;
 }
 
