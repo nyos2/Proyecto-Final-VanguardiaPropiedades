@@ -32,12 +32,14 @@ public class PropiedadServicio {
 
     // TODO AGREGAR DESC y Direccion
     @Transactional
-    public void crearPropiedad(Integer precio, String tipo, String usuario, String estado) throws Exception {
+    public void crearPropiedad(Integer precio, String tipo, String usuario, String estado,String descripcion,String direccion) throws Exception {
         PropiedadEntidad propiedad = new PropiedadEntidad();
         UsuarioEntidad usu = usuarioRepositorio.findById(usuario).orElse(null);
         propiedad.setPrecio(precio);
         propiedad.setTipo(Tipo.valueOf(tipo));
         propiedad.setEstado(Boolean.valueOf(estado));
+        propiedad.setDescripcion(descripcion);
+        propiedad.setDireccion(direccion);
         // propiedad.setPrecio(precio);
         propiedad.setUsuario(usu);
         // propiedad.setEstado(estado);
@@ -45,7 +47,7 @@ public class PropiedadServicio {
     }
 
     // TODO AGREGAR DESC y Direccion
-    public void editarPropiedad(String id, int precio, Tipo tipo, List<MultipartFile> imagen, Boolean estado)
+    public void editarPropiedad(String id, int precio, Tipo tipo, List<MultipartFile> imagen, Boolean estado,String descripcion,String direccion)
             throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -63,6 +65,8 @@ public class PropiedadServicio {
             propiedad.setPrecio(precio);
             propiedad.setTipo(tipo);
             propiedad.setEstado(estado);
+            propiedad.setDescripcion(descripcion);
+            propiedad.setDireccion(direccion);
             propiedadRepositorio.save(propiedad);
         }
     }

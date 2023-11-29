@@ -33,9 +33,9 @@ public class PropiedadControlador {
     }
 
     @PostMapping("/registro")
-    public String registroPropiedad(@RequestParam Integer precio,@RequestParam String tipo,@RequestParam String usuario,@RequestParam String estado, ModelMap modelo) throws MiException {
+    public String registroPropiedad(@RequestParam Integer precio,@RequestParam String tipo,@RequestParam String usuario,@RequestParam String estado,@RequestParam String descripcion,@RequestParam String direccion, ModelMap modelo) throws MiException {
         try {
-            propiedadServicio.crearPropiedad(precio, tipo, usuario, estado);
+            propiedadServicio.crearPropiedad(precio, tipo, usuario, estado,descripcion,direccion);
             modelo.put("exito", "Propiedad registrada correctamente");
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
