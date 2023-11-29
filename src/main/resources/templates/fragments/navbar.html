@@ -1,15 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11111F;" th:fragment="navbar">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/"> Inicio </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/nosotros"> Servicios </a>
-    </li>
-  </ul>
 
-  <!-- Logo -->
-  <a class="navbar-brand mx-auto" href="/"><img th:src="@{/images/logo.png}"></a>
+  <!-- Logo y enlace a la página principal -->
+  <div class="navbar-brand mr-auto">
+    <a href="/">
+      <img th:src="@{/images/logo.png}" class="logo" alt="Logo" style="max-height: 80px;">
+    </a>
+  </div>
 
   <!-- Botón para colapsar -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -20,6 +16,13 @@
   <!-- Contenido de la barra de navegación -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -29,34 +32,6 @@
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
           <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
           <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
-
-          <!-- Opciones con login 
-                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
-                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    -->
-          <!-- Opciones con login 
-                    <th:block th:if="${request.isUserInRole('ROLE_USER')}">
-                        <a class="dropdown-item" href="/propiedades/lista">Lista de Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ENTE')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    <th:block th:if="${request.isUserInRole('ROLE_ADMIN')}">
-                        <a class="dropdown-item" href="/propiedades/Agregar">Agregar Propiedades</a>
-                        <a class="dropdown-item" href="/propiedades/modificar">Modificar Propiedades</a>
-                    </th:block>
-                    -->
-
         </div>
       </li>
 
@@ -77,8 +52,9 @@
             <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
           </th:block>
         </div>
+      </li>
 
-
+      <!-- Menú desplegable "Admin" -->
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -89,17 +65,7 @@
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
           </div>
       </li>
-      <!-- Opciones con login
-                    <th:block th:if="${session.usuariosession == null}>
-                        <a class="dropdown-item" href="/perfil">Crear Cuenta</a>
-                        <a class="dropdown-item" href="/perfil">Iniciar Sesión</a>
-                    </th:block>
-                    <th:block th:if="${session.usuariosession != null}>
-                        <a class="dropdown-item" href="/perfil">Perfil</a>
-                        <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
-                    </th:block>
-                -->
-      </li>
+
     </ul>
   </div>
 </nav>
