@@ -112,8 +112,10 @@ public class UsuarioServicio implements UserDetailsService {
         if (dni.isEmpty()) {
             throw new MiException("El dni no puede estar vacio");
         }
-        // Verifica si dni es numérico con expresion regular que va de 0 a 9
-        if (!dni.matches("[0-9]+")) {
+        // Verifica si dni es numérico parseando el String dni a Integer
+        try {
+            Integer.parseInt(dni);
+        } catch (NumberFormatException e) {
             throw new MiException("El dni debe contener solo numéros");
         }
         // Verifica si email está vacío
