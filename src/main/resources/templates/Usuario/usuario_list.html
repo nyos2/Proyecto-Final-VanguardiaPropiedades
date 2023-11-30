@@ -18,6 +18,7 @@
                         <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
                         <p class="card-text" th:text="'DNI: ' + ${usuario.dni}"></p>
                         <p class="card-text" th:text="'Email: ' + ${usuario.email}"></p>
+                        <p class="card-text" th:text="'Rol: ' + ${usuario.rol}"></p>
                         <img id="miImagen" class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}"
                             alt="Sin Imagen del Usuario">
 
