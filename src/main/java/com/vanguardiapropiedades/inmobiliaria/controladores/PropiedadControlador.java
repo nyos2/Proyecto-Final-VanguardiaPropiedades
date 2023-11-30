@@ -26,16 +26,17 @@ public class PropiedadControlador {
     @Autowired
     private PropiedadServicio propiedadServicio;
 
-
     @GetMapping("/registrar")
-    public String registrarPropiedad(){
+    public String registrarPropiedad() {
         return "Propiedades/propiedad_form.html";
     }
 
     @PostMapping("/registro")
-    public String registroPropiedad(@RequestParam Integer precio,@RequestParam String tipo,@RequestParam String usuario,@RequestParam String estado,@RequestParam String descripcion,@RequestParam String direccion, ModelMap modelo) throws MiException {
+    public String registroPropiedad(@RequestParam Integer precio, @RequestParam String tipo,
+            @RequestParam String usuario, @RequestParam String estado, @RequestParam String descripcion,
+            @RequestParam String direccion, ModelMap modelo) throws MiException {
         try {
-            propiedadServicio.crearPropiedad(precio, tipo, usuario, estado,descripcion,direccion);
+            propiedadServicio.crearPropiedad(precio, tipo, usuario, estado, descripcion, direccion);
             modelo.put("exito", "Propiedad registrada correctamente");
         } catch (Exception e) {
             modelo.put("error", e.getMessage());
@@ -44,12 +45,12 @@ public class PropiedadControlador {
     }
 
     @GetMapping("/listar")
-    public String paginarPropiedades(@PageableDefault(page = 0, size = 5) Pageable pageable, Model model){
+    public String paginarPropiedades(@PageableDefault(page = 0, size = 5) Pageable pageable, Model model) {
         Page<PropiedadEntidad> page = propiedadServicio.listarPropiedades(pageable);
         model.addAttribute("page", page);
         model.addAttribute("currentPage", page.getNumber());
         model.addAttribute("totalItems", page.getTotalElements());
-        model.addAttribute("totalPages", page.getTotalPages()); 
+        model.addAttribute("totalPages", page.getTotalPages());
         return "Propiedades/propiedad_list.html";
     }
 

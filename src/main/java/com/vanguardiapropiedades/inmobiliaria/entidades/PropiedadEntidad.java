@@ -28,11 +28,11 @@ public class PropiedadEntidad {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private int precio;
+    @Enumerated(EnumType.STRING)
+    private Tipo tipo;
     @Column(length = 1000)
     private String descripcion;
     private String direccion;
-    @Enumerated(EnumType.STRING)
-    private Tipo tipo;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private UsuarioEntidad usuario;

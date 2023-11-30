@@ -8,7 +8,6 @@
         <div class="container">
             <h2>Modificar Usuario</h2>
 
-            <!-- <form th:action="@{/usuarios/modificar}" th:object="${userEntity}" method="post"> -->
             <form th:action="@{/usuario/editar-usuario/__${usuario.id}__}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input hidden th:value="${id}" name="id" />
