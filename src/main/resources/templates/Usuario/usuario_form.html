@@ -33,6 +33,7 @@
                     <input type="password" class="form-control" id="password2" name="password2" th:value="${password2}"
                         required />
                 </div>
+                <br>
                 <!-- Mensajes Condicionales -->
                 <div th:if="${error != null}">
                     <div class="alert text-center alert-danger fade show" role="alert">
@@ -49,12 +50,11 @@
                 <!-- Mensajes Condicionales -->
                 <button type="submit" class="btn btn-primary">Registrarme ✔</button>
             </form>
+           
         </div>
-        <br>
     </div>
+    <br>
     <div th:replace="~{fragments/footer :: footer}"></div>
-
-    
 </body>
 
 </html>

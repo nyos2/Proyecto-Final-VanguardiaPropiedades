@@ -1,6 +1,10 @@
 body {
-  background-color: #97999B;
-}
+  background-image: url('../images/fondo.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -154,4 +158,10 @@ body {
 .page-item.active .page-link {
   background-color: #007bff;
   border-color: #007bff;
+}
+
+ footer{
+  bottom:0px;
+  position:relative;
+  width: 100%; 
 }

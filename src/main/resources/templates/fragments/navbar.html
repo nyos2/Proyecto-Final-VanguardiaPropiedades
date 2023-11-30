@@ -1,8 +1,5 @@
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11111F;" th:fragment="navbar">
-  <!-- Logo y enlace a la página principal -->
-  <a class="navbar-brand" href="/"><img th:src="@{/images/logo.png}"></a>
-  
 
   <!-- Logo y enlace a la página principal -->
   <div class="navbar-brand mr-auto">
@@ -16,12 +13,17 @@
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
 
   <!-- Contenido de la barra de navegación -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
-      <!-- Menú desplegable "Propiedades" -->
+      <li class="nav-item">
+        <a class="nav-link" href="/">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
