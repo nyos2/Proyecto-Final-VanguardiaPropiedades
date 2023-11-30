@@ -156,3 +156,11 @@ body {
   background-color: #007bff;
   border-color: #007bff;
 }
+
+
+/* Formulario de OFERTA */
+
+.form-oferta {
+  padding: 10px;
+  border: 1px solid black;
+}
