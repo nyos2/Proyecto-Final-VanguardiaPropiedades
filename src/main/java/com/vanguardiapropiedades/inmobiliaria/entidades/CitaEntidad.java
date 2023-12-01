@@ -23,6 +23,7 @@ public class CitaEntidad {
 
     private Boolean acepto;
 
+    // Agregar lo relativo al calendario de la cita
     // private Date citainicio;
 
     // private Date citafin;
