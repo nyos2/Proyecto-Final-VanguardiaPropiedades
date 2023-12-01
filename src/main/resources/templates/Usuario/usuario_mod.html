@@ -8,7 +8,6 @@
         <div class="container">
             <h2>Modificar Usuario</h2>
 
-            <!-- <form th:action="@{/usuarios/modificar}" th:object="${userEntity}" method="post"> -->
             <form th:action="@{/usuario/editar-usuario/__${usuario.id}__}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input hidden th:value="${id}" name="id" />
@@ -24,6 +23,11 @@
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" th:value="${usuario.email}" name="email" class="form-control" />
+                </div>
+
+                <div class="form-group" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <label for="rol">Rol:</label>
+                    <input type="text" th:value="${usuario.rol}" name="rol" class="form-control" />
                 </div>
 
                 <div class="form-group">
@@ -50,13 +54,13 @@
                 <div th:if="${error != null}">
                     <div class="alert text-center alert-danger fade show" role="alert">
                         <strong>ERROR</strong>
-                        <p th:text="error"></p>
+                        <p th:text="${error}"></p>
                     </div>
                 </div>
                 <div th:if="${exito != null}">
                     <div class="alert text-center alert-success fade show" role="alert">
                         <strong>EXITO</strong>
-                        <p th:text="exito"></p>
+                        <p th:text="${exito}"></p>
                     </div>
                 </div>
                 <!-- Mensajes Condicionales -->
