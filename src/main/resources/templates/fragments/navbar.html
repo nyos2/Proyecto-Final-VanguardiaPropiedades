@@ -30,8 +30,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
-          <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
-          <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
+          <div sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ADMIN')">
+            <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
+          </div>
         </div>
       </li>
 
@@ -56,17 +57,17 @@
 
       <!-- Menú desplegable "Admin" -->
       <div sec:authorize="hasRole('ROLE_ADMIN')">
-      <li class="nav-item dropdown" >
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false" >
+            aria-haspopup="true" aria-expanded="false">
             Admin
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
           </div>
-      </li>
-    </div>
+        </li>
+      </div>
     </ul>
   </div>
 </nav>

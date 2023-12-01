@@ -8,7 +8,7 @@
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
-        <div class="container col-md-8 text-center">
+        <div class="container card col-md-8 text-center">
             <h2>Formulario de Registro</h2>
             <form th:action="@{/usuario/registro}" method="post">
                 <div class="form-group mb-2">
@@ -34,6 +34,14 @@
                     <input type="password" class="form-control" id="password2" name="password2" th:value="${password2}"
                         required />
                 </div>
+
+                <!-- Puedes agregar lógica para modificar las propiedades y la imagen -->
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="foto" accept="image/*" />
+                    <small class="form-text text-muted">Selecciona una imagen para el usuario.</small>
+                </div>
+                
                 <!-- Mensajes Condicionales -->
                 <div th:if="${error != null}">
                     <div class="alert text-center alert-danger fade show" role="alert">
@@ -48,15 +56,13 @@
                     </div>
                 </div>
                 <!-- Mensajes Condicionales -->
-                <button type="submit" class="btn btn-primary">Registrarme ✔</button>
+                <button type="submit" class="btn btn-primary">Registrarme ✔</button>      
             </form>
+            
         </div>
         <br>
     </div>
     <div th:replace="~{fragments/footer :: footer}"></div>
-
-    
 </body>
-
 </html>
 

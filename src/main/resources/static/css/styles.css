@@ -104,6 +104,8 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .card:hover {
@@ -150,13 +152,6 @@ body {
 .page-link {
   cursor: pointer;
 }
-
-/* Estilo para la página activa */
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
 
 /* Formulario de OFERTA */
 
