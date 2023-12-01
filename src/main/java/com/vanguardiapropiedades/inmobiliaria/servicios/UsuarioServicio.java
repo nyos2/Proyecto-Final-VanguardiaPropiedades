@@ -131,7 +131,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (!password.equals(password2)) {
             throw new MiException("La contraseñas no coinciden");
         }
-        // TODO: condiciones de contraseña (cantidad de caracteres, etc)
+        
     }
 
     @Override
