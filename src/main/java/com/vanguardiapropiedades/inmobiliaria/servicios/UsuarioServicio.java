@@ -91,13 +91,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     // DELETE
     @Transactional
-    public Boolean eliminarUsuario(String id) throws MiException {
+    public void eliminarUsuario(String id) throws MiException {
         UsuarioEntidad usuario = buscarPorId(id).get();
         if(usuario.getPropiedades().isEmpty()){
-            return false;
+            usuarioRepositorio.deleteById(id);
         }
-        usuarioRepositorio.deleteById(id);
-        return true;
     }
 
     private void validar(String nombre, String dni, String email, String password, String password2)
