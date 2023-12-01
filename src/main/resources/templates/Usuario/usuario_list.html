@@ -13,6 +13,22 @@
         <hr>
         <div class="row">
             <div th:each="usuario : ${page.content}" class="col-md-5">
+                        <div class="container my-1">
+                            <!-- Mensajes Condicionales -->
+                            <div th:if="${error != null}">
+                                <div class="alert text-center alert-danger fade show" role="alert">
+                                    <strong>ERROR</strong>
+                                    <p th:text="${error}"></p>
+                                </div>
+                            </div>
+                            <div th:if="${exito != null}">
+                                <div class="alert text-center alert-success fade show" role="alert">
+                                    <strong>EXITO</strong>
+                                    <p th:text="${exito}"></p>
+                                </div>
+                            </div>
+                            <!-- Mensajes Condicionales -->
+                        </div>
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
                         <h5 class="card-title" th:text="'Nombre: ' + ${usuario.nombre}"></h5>
