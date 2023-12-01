@@ -1,40 +1,94 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<div th:replace="~{fragments/head :: head}"></div>
+  <!-- Incluye el fragmento de la cabeza -->
+  <div th:replace="~{fragments/head :: head}"></div>
 
-<body>
+  <body>
+    
+    <!-- Incluye el fragmento de la barra de navegación -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-  <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <main>
 
-  <main>
-
-    <div class="principal">
-      <div class="banner-info text-center">
-        <p>
-          <b style="font-size:19px">¿Quienes somos?</b><br>
-          Nos conocimos en la universidad, diez jóvenes estudiantes con una pasión compartida por el mundo
-          inmobiliario.<br>
-          Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
-          Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, con poco dinero, <br>
-          pero mucha energía y entusiasmo. Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
-          Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
-          <br><br>
-          <a th:href="@{/login}">
-            <button class="btn" type="button" style="background-color: #0D2E2F; color:#fff">Servicios</button>
+      <!-- Carousel Start -->
+      <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="w-100" th:src="@{/images/banner1.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                  <h1 class="display-6 text-white mb-md-4 text-highlight">Encuentre nuestra oficina en la <br>zona principal de negocios en Honolulu.</h1>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="w-100" th:src="@{/images/banner2.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                  <h1 class="display-6 text-white mb-md-4 text-highlight">Conozca a nuestro equipo <br>visitando nuestras cómodas instalaciones.</h1>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="w-100" th:src="@{/images/banner3.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 900px;">
+                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                  <h1 class="display-6 text-white mb-md-4 text-highlight">Organice una reunión con nuestros expertos <br>para solicitar el servicio que necesite.</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+            <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+              <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
           </a>
-        </p>
+          <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+            <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+              <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
-    <br>
-    <div>
-      <div class="card bg-dark text-white mb-3">
+      <!-- Carousel End -->
+
+      <br>
+
+      <!-- Contenido de la sección principal -->
+      <div class="principal" id="sobre-nosotros">
+        <div class="banner-info col-6 text-center">
+          <p>
+            <b style="font-size:19px">¿Quiénes somos?</b><br>
+            Nos conocimos en la universidad, diez jóvenes estudiantes<br>
+            con una pasión compartida por el mundo inmobiliario.<br>
+            Cada uno tenía sus propias fortalezas y habilidades, complementándonos a la perfección. <br>
+            Después de graduarnos, decidimos fundar nuestra propia inmobiliaria, <br>
+            con poco dinero, pero mucha energía y entusiasmo. <br>
+            Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
+            Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
+            <br><br>
+            <a th:href="@{/login}">
+              <button class="btn custom-btn">Sobre Nosotros</button>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <br>
+
+      <!-- Sección de información de contacto y redes sociales -->
+      <div class="card custom-card">
         <div class="row g-0">
           <div class="col-md-6">
             <img th:src="@{/images/cartel.jpg}" class="img-fluid rounded-start" alt="Cartel">
           </div>
-          <div class="col-md-6">
-            <div class="card-body">
+          <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="card-body text-center">
               <h5 class="card-title">PROPIEDADES VANGUARDISTAS</h5>
               <p class="card-text">
                 Localización: Calle Falsa 123, 18th Floor
@@ -42,8 +96,8 @@
                 (666) 666-9666 <br>
                 Teléfono: 666-666-9666 <br>
                 Horarios: Lunes - Viernes | 7:53am - 18:13pm <br>
-                Correo Electronico: propiedadesVanguardistas@mail.com <br>
-                Redes Sociales: 
+                Correo Electrónico: propiedadesVanguardistas@mail.com <br>
+                Redes Sociales: <br>
                 <a href="#" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
                 <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
@@ -54,12 +108,12 @@
           </div>
         </div>
       </div>
-    </div>
-    <br>
-    <br>
 
-    <div th:replace="~{fragments/footer :: footer}"></div>
+      <!-- Incluye el fragmento del pie de página -->
+      <div th:replace="~{fragments/footer :: footer}"></div>
 
-</body>
+    </main>
+
+  </body>
 
 </html>

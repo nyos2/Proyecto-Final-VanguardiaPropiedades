@@ -1,47 +1,63 @@
+/* Estilos generales para la barra de navegación */
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
-  padding: 0px;
-  border-radius: 10px;
+  margin: 10px; 
+  padding: 10px; 
+  border-radius: 15px;
 }
 
 .navbar-brand {
-  padding: 0px;
-  color: white;
-  font-weight: bold;
-  margin: 0px;
+  display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  margin-left: auto; 
 }
 
 .navbar-toggler-icon {
-  background-color: white;
+  background-color: #11111F;
 }
 
-.nav-link {
-  color: white;
+.navbar-nav .nav-link {
+  border: 2px solid #97999B; 
+  border-radius: 5px; 
+  color: #ffffff !important; 
   font-weight: bold;
+  margin-left: 10px;
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
-  background-color: #333;
-  border-radius: 10px;
+  background-color: #2D2E2F; 
+  border-radius: 5px; 
+  right: 0; 
+  left: auto; 
 }
 
+/* Estilos para los elementos del menú desplegable */
 .dropdown-item {
-  color: white;
-  /* Color del texto de los elementos del menú desplegable */
+  color: #97999B; 
   transition: background-color 0.3s, color 0.3s;
-  /* Transición para cambio de color y fondo de los elementos */
 }
 
 .dropdown-item:hover {
   background-color: #555;
-  /* Cambia el color de fondo al pasar el mouse */
-  color: #ffd700;
-  /* Cambia el color del texto al pasar el mouse */
+  color: #D9D9D9;
 }
 
-.navbar-brand img {
-  padding: 0px;
-  border: 0px;
-  max-height: 80px;
-  border-radius: 0 0 0 300px;
+/* Agrega estilos personalizados al botón de la barra de navegación */
+.navbar-toggler {
+  background-color: #97999B; 
+  border: 1px solid #D9D9D9; 
+  color: #ffffff; 
+  padding: 8px 15px; 
+  border-radius: 4px; 
+}
+
+/* Cambia el color del icono del botón */
+.navbar-toggler-icon {
+  background-color: #ffffff;
 }
