@@ -10,20 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class PortalControlador {
 
-    @GetMapping("/")
+    @GetMapping({ "/", "/index" }) // Me permite usar dos url sin duplicar el codigo
     public String home() {
         return "index.html";
     }
-
-    @GetMapping("/index")
-    public String index() {
-        return "index.html";
-    }
-
-    // @GetMapping("/registrar")
-    // public String registrar(){
-    // return "registrar.html";
-    // }
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {

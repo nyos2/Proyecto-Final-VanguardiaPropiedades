@@ -1,49 +1,170 @@
-/* Selector universal (*): */
-* {
-padding: 0;
-margin: 0;
-box-sizing: border-box !important
-}
-
-/* Estilo de la barra de navegación */
-.navbar {
-    background-color: #2D2E2F !important;
-}
-
-.navbar img {
-    width: 200px !important;
-}
-
-.navbar h5 {
-    color: #fff;
-}
-
-/* Estilo del texto en la sección principal */
-.principal {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/ba1.jpg) !important;
-    height: 100vh !important;
+body {
+  background-image: url('../images/fondo.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    }
+
+/* Estilos del carrusel */
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(0%);
+  text-align: center;
 }
 
-/* Estilo del texto en la sección principal */
-.principal p, h6{
-    position: absolute;
-    color: white;
-    text-align: right;
-    right: 10%;
-    top: 50% !important;
-    bottom: 50% !important;
-    font-size: 17px
+.carousel-caption h4,
+.carousel-caption h1 {
+  margin: 0;
 }
 
-/* Selector universal (*): */
-.nav {
-    background-color:#11111F !important;
+.carousel-control-prev,
+.carousel-control-next {
+  width: 45px;
+  height: -50px;
 }
 
-/* Estilo de los enlaces de navegación */
-.nav a{
-    color: #fff !important;
-    font-style: none !important;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  margin-bottom: -2px;
+}
+
+.carousel-caption h4.text-highlight,
+.carousel-caption h1.text-highlight {
+  text-shadow: 4px 4px 3px #000000cc;
+}
+
+/* Estilos de la sección principal */
+.principal {
+  background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
+  height: 80vh !important;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.principal img {
+  max-width: none;
+  max-height: 300px;
+  width: auto;
+  margin-right: 20px;
+}
+
+.principal p,
+.principal h6 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 17px;
+}
+
+.banner-info {
+  flex: 1;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.banner-info button {
+  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.custom-btn {
+  background-color: #11111F;
+  color: #ffffff;
+  border: 2px solid #97999B;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.custom-btn:hover {
+  background-color: #555;
+  color: #D9D9D9;
+  border-color: #D9D9D9;
+}
+
+/* Estilos para la card personalizada */
+.custom-card {
+  background-color: #11111F;
+  color: white;
+}
+
+/* Estilos para los íconos de redes sociales */
+.social-icon {
+  margin-right: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+/* Estilos para LISTAS DE USUARIO las tarjetas de usuario */
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  margin-bottom: 10px;
+}
+
+.logo {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 30px;
+}
+
+/* Estilos para los botones en la tarjeta */
+.btn-group {
+  margin-top: 15px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+/* Estilos para la paginación */
+.pagination {
+  margin-top: 20px;
+}
+
+/* Estilos para los botones de paginación */
+.page-link {
+  cursor: pointer;
+}
+
+/* Formulario de OFERTA */
+
+.form-oferta {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+ footer{
+  bottom:0px;
+  position:relative;
+  width: 100%; 
 }

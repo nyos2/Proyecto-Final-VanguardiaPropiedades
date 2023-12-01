@@ -11,3 +11,9 @@ public class InmobiliariaApplication {
 	}
 
 }
+
+/*
+ * Participantes del proyecto : Jonarhan Acuña, Eduardo Moreno, Florencia
+ * Martignoni, Agusto Laguna, Luis Nieva, Karina Rabino,Eduardo Gonzalez, Yasar
+ * Chavez, Nicolas Santos, Gimena Ampuero
+ */

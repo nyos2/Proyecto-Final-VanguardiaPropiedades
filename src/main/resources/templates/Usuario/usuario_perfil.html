@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Perfil de <span th:text="${session.usuariosession.nombre}"></span></h1>
+        <hr>
+
+        <div class="row justify-content-center">
+            <!-- Información del Usuario -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Información del Usuario </h5>
+                        <p><strong>Nombre:</strong> <span th:text="${session.usuariosession.nombre}"></span></p>
+                        <p><strong>DNI:</strong> <span th:text="${session.usuariosession.dni}"></span></p>
+                        <p><strong>Email:</strong> <span th:text="${session.usuariosession.email}"></span></p>
+                        <p><strong>Rol:</strong> <span th:text="${session.usuariosession.rol}"></span></p>
+                    </div>
+                    <!-- Imagen del Usuario -->
+                    <div class="card-body">
+                        <h5 class="card-title">Imagen del Usuario</h5>
+                        <!-- TODO IMPLEMENTAR LOGICA IMAGEN -->
+                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
+                            alt="Sin Imagen del Usuario">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inmuebles Adquiridos -->
+            <!-- <div class="col-md-6">
+                <h3>Inmuebles Adquiridos</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Datos</h3> -->
+                        <!-- Verificar si hay propiedades -->
+                        <!-- <th:block th:if="${not #lists.isEmpty(session.usuariosession.propiedad)}"> -->
+                            <!-- <div th:each="propiedad : ${page.propiedades}">
+                                <h4 th:text="${page.propiedad.titulo}"></h4>
+                            </div> -->
+                        <!-- </th:block> -->
+                        <!-- Mostrar mensaje si no hay propiedades -->
+                        <!-- <th:block th:if="${#lists.isEmpty(session.usuariosession.propiedad)}">
+                            <p>No tiene propiedades aún.</p>
+                        </th:block> -->
+                    <!-- </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <a th:href="@{/usuario/editar-perfil/__${session.usuariosession.id}__}" class="btn btn-info">Editar
+                    Perfil</a>
+                <a href="/" class="btn btn-primary">Volver a Inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>
