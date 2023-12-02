@@ -4,9 +4,7 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
@@ -19,12 +17,12 @@ public class CargadorControlador {
     UsuarioRepositorio usuarioRepositorio;
 
     @GetMapping("/cargar/usuarios")
-    public String usuarios(){
+    public String usuarios() {
         for (int i = 0; i < 20; i++) {
             Random random = new Random();
             UsuarioEntidad u = new UsuarioEntidad();
-            u.setNombre("Persona "+(i+1));
-            u.setEmail("persona"+(i+1)+"@gmail.com");
+            u.setNombre("Persona " + (i + 1));
+            u.setEmail("persona" + (i + 1) + "@gmail.com");
             u.setPassword(new BCryptPasswordEncoder().encode("123456"));
             u.setRol(Rol.CLIENT);
             String dni = String.valueOf(random.nextInt(99999999));

@@ -14,6 +14,7 @@ import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 
 @Service
 public class ImagenServicio {
+
     @Autowired
     private ImagenRepositorio imagenRepositorio;
 
@@ -55,7 +56,6 @@ public class ImagenServicio {
             }
         }
         return null;
-
     }
 
     // DELETE
@@ -65,4 +65,5 @@ public class ImagenServicio {
         imagenRepositorio.deleteById(id);
 
     }
+
 }
