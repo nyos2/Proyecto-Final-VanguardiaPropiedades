@@ -3,7 +3,11 @@ package com.vanguardiapropiedades.inmobiliaria.controladores;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +26,8 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
-    // CREATE
     @GetMapping("/registrar")
-    public String registrarUsuario() {
+    public String registrar() {
         return "Usuario/usuario_form.html";
     }
 
@@ -68,7 +71,7 @@ public class UsuarioControlador {
             @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto);
             Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");
@@ -87,18 +90,26 @@ public class UsuarioControlador {
     // DELETE
     @RequestMapping("/eliminar-usuario/{id}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PageableDefault(page = 0, size = 5) Pageable pageable,@PathVariable String id, ModelMap model) throws MiException {
-                Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
-        model.addAttribute("page", page);
-        model.addAttribute("currentPage", page.getNumber());
-        model.addAttribute("totalItems", page.getTotalElements());
-        model.addAttribute("totalPages", page.getTotalPages());
-        if ( usuarioServicio.eliminarUsuario(id)) {
-            model.put("exito", "Usuario eliminado con éxito");
-        }else{
+    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable, 
+            ModelMap model) throws MiException {
+        try {
+            usuarioServicio.eliminarUsuario(id);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.put("exito", "Usuario eliminado.");
+            return "Usuario/usuario_list.html";
+        } catch (Exception e) {
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
             model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
+            return "Usuario/usuario_list.html";
         }
-        return "Usuario/usuario_list.html";
     }
 
     @GetMapping("/perfil")
@@ -113,7 +124,7 @@ public class UsuarioControlador {
         return "Usuario/usuario_mod.html";
     }
 
-   /** @GetMapping("/listar")
+    @GetMapping("/listar")
     public String paginarUsuarios(@PageableDefault(page = 0, size = 5) Pageable pageable, Model model) {
         Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
         model.addAttribute("page", page);
@@ -121,10 +132,5 @@ public class UsuarioControlador {
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("totalPages", page.getTotalPages());
         return "Usuario/usuario_list.html";
-<<<<<<< HEAD
-    }*/
-}
-=======
     }
 }
->>>>>>> f2ffb903352584adf20f97a4682a3ffb4989b621

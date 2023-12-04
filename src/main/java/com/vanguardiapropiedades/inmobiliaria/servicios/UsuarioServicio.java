@@ -6,20 +6,23 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
+import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.repositorios.UsuarioRepositorio;
@@ -36,7 +39,7 @@ public class UsuarioServicio implements UserDetailsService {
     private ImagenServicio imagenServicio;
 
     // CREATE
-/**    @Transactional
+    @Transactional
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
@@ -47,10 +50,7 @@ public class UsuarioServicio implements UserDetailsService {
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setRol(Rol.CLIENT);
 
-        // Image img = imageService.guardarImagen(imagen);
-        // user.setImagen(img);
-
-        UsuarioRepositorio.save(user);
+        usuarioRepositorio.save(user);
 
     }
 
@@ -62,7 +62,7 @@ public class UsuarioServicio implements UserDetailsService {
      */
 
     // UPDATE
-   /** public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
+    public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
             MultipartFile foto)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
@@ -87,17 +87,15 @@ public class UsuarioServicio implements UserDetailsService {
             user.setPassword(new BCryptPasswordEncoder().encode(password));
             usuarioRepositorio.save(user);
         }
-    }*/
+    }
 
     // DELETE
     @Transactional
-    public Boolean eliminarUsuario(String id) throws MiException {
+    public void eliminarUsuario(String id) throws MiException {
         UsuarioEntidad usuario = buscarPorId(id).get();
         if(usuario.getPropiedades().isEmpty()){
-            return false;
+            usuarioRepositorio.deleteById(id);
         }
-        usuarioRepositorio.deleteById(id);
-        return true;
     }
 
     private void validar(String nombre, String dni, String email, String password, String password2)
@@ -168,12 +166,5 @@ public class UsuarioServicio implements UserDetailsService {
 
     public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
         return usuarioRepositorio.findAll(pageable);
-    }
-
-	public void crearUsuario(String nombre, String dni, String email, String password, String password2) {
-	}
-
-    public void editarUsuario(String id, String nombre, String email, String password, String password2,
-            MultipartFile foto) {
     }
 }
