@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity
@@ -15,17 +16,21 @@ public class CitaEntidad {
     @GenericGenerator(name = "uuid", strategy = "uuid2") // Estrategia alternativa
     private String id;
 
-    private UsuarioEntidad cliente;
+    @ManyToOne
+    private UsuarioEntidad cliente; // cliente logueado pidiendo una reunion
 
-    private UsuarioEntidad ente;
+    @ManyToOne
+    private UsuarioEntidad ente; // ente o dueño de la propiedad
 
-    private String detalle;
+    private String nota; // para un texto o nota agregado en el pedido de reunion
 
-    private Boolean acepto;
+    private String fecha; // ver que es mejor como alternativa para fecha y hora
+    private String hora;
+    // private Boolean acepto; // el que acepta cambia este estado a true
 
-    // Agregar lo relativo al calendario de la cita
-    // private Date citainicio;
+    // Agregar lo relativo al calendario de la cita =>  fecha y hora. Ver que conviene hacer
+    // private Date fechacita;
 
-    // private Date citafin;
+    // private Time  horacita;
 
 }
