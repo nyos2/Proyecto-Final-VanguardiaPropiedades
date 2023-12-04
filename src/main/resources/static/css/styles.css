@@ -1,7 +1,10 @@
-/* Estilo del fonde de la página completa */
 body {
-  background-color: #ffffff ;
-} 
+  background-image: url('../images/fondo.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -158,4 +161,10 @@ body {
 .form-oferta {
   padding: 10px;
   border: 1px solid black;
+}
+
+ footer{
+  bottom:0px;
+  position:relative;
+  width: 100%; 
 }
