@@ -90,7 +90,7 @@ public class UsuarioControlador {
     // DELETE
     @RequestMapping("/eliminar-usuario/{id}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable, 
+    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable,
             ModelMap model) throws MiException {
         try {
             usuarioServicio.eliminarUsuario(id);

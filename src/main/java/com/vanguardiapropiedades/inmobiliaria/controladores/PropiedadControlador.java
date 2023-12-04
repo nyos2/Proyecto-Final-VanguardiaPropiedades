@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
-import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.PropiedadServicio;
 
@@ -88,8 +87,8 @@ public class PropiedadControlador {
     }
 
     @RequestMapping("/eliminar-propiedad/{id}")
-    public String eliminarPropiedad(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable, 
-    ModelMap model){
+    public String eliminarPropiedad(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable,
+            ModelMap model) {
         try {
             propiedadServicio.eliminarPropiedad(id);
             Page<PropiedadEntidad> page = propiedadServicio.listarPropiedades(pageable);

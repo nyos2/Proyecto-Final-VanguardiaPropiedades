@@ -62,7 +62,8 @@ public class ImagenServicio {
     @Transactional
     public void eliminarImagen(String id) throws MiException {
         try {
-            ImagenEntidad imagen = new ImagenEntidad();;
+            ImagenEntidad imagen = new ImagenEntidad();
+            ;
             if (id != null) {
                 Optional<ImagenEntidad> respuesta = ImagenRepositorio.findById(id);
                 if (respuesta.isPresent()) {

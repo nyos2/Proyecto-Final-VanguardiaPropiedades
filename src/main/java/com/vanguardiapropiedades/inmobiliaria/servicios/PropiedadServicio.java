@@ -43,6 +43,7 @@ public class PropiedadServicio {
         propiedad.setUsuario(usu);
         propiedadRepositorio.save(propiedad);
     }
+
     @Transactional
     public void editarPropiedad(String id, int precio, String tipo, List<MultipartFile> imagen, String estado,
             String descripcion, String direccion)
