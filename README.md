@@ -1,6 +1,6 @@
 # Proyecto "PROPIEDADES VANGUARDISTAS"
 
-![PROPIEDADES VANGUARDISTAS Logo](src\main\resources\static\images\logo.png)
+![PROPIEDADES VANGUARDISTAS Logo](https://github.com/nyos2/Proyecto-Final-VanguardiaPropiedades/blob/95ba42070f7954d4ac5b77eb0c5bebba8ad8bed0/src/main/resources/static/images/logo.png)
 
 ## Descripción del Proyecto
 
