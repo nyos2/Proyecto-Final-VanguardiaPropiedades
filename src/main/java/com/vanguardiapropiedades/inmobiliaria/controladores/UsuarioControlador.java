@@ -26,8 +26,9 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    // CREATE
     @GetMapping("/registrar")
-    public String registrar() {
+    public String registrarUsuario() {
         return "Usuario/usuario_form.html";
     }
 

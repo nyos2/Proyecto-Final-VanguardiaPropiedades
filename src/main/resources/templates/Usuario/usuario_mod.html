@@ -29,6 +29,7 @@
                     <label for="rol">Rol:</label>
                     <input type="text" th:value="${usuario.rol}" name="rol" class="form-control" />
                 </div>
+                
 
                 <div class="form-group">
                     <label for="password">Contraseña:</label>
@@ -54,13 +55,13 @@
                 <div th:if="${error != null}">
                     <div class="alert text-center alert-danger fade show" role="alert">
                         <strong>ERROR</strong>
-                        <p th:text="${error}"></p>
+                        <p th:text="error"></p>
                     </div>
                 </div>
                 <div th:if="${exito != null}">
                     <div class="alert text-center alert-success fade show" role="alert">
                         <strong>EXITO</strong>
-                        <p th:text="${exito}"></p>
+                        <p th:text="exito"></p>
                     </div>
                 </div>
                 <!-- Mensajes Condicionales -->
