@@ -22,11 +22,14 @@ public class CitaEntidad {
     @ManyToOne
     private UsuarioEntidad ente; // ente o dueño de la propiedad
 
+    @ManyToOne
+    private PropiedadEntidad propiedad; // Sera necesario ???
+
     private String nota; // para un texto o nota agregado en el pedido de reunion
 
-    // private String fecha; // ver que es mejor como alternativa para fecha y hora
-    // private String hora;
-    // private Boolean acepto; // el que acepta cambia este estado a true
+    private String fechahora; // ver que es mejor como alternativa para fecha y hora
+    
+    private Boolean acepto; // el que acepta cambia este estado a true
 
     // Agregar lo relativo al calendario de la cita =>  fecha y hora. Ver que conviene hacer
     // private Date fechacita;

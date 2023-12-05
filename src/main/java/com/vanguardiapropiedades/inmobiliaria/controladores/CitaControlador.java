@@ -18,23 +18,23 @@ public class CitaControlador {
 
     @GetMapping("/registrar")
     public String registrarCita() {
-        return "Cita/cita_form.html";
+        return "cita_form.html";
     }
 
     @PostMapping("/registro") 
 
-        public String registroCita(@RequestParam String idEnte, @RequestParam String idCliente, @RequestParam String nota, @RequestParam String fecha, @RequestParam String email,
-            @RequestParam String hora, ModelMap modelo) throws MiException {
+        public String registroCita(@RequestParam String idEnte, @RequestParam String idCliente, @RequestParam String idPropiedad, 
+        @RequestParam String fechaHora, @RequestParam String nota, ModelMap modelo) throws MiException {
                 // no me queda claro si tomar propiedad tambien, puede ser necesario
                 try {
                     
-                    citaServicio.crearCita(idEnte, idCliente, fecha, hora, nota);
-                    modelo.put("exito", "la cita fue cargada correctamente");
+                    citaServicio.crearCita(idEnte, idCliente, idPropiedad, fechaHora, nota);
+                    modelo.addAttribute("exito", "la cita se creo correctamente");
                 } catch (Exception e) {
-                    
+                    modelo.addAttribute("error", "la cita no se pudo crear !!");
                     return "cita_form.html";
         }
-                return "cita_form.html"; // ver que devolver
+                return "cita_form.html"; // ver que devolver o /redirect:/nose"??
     }
     
 }
