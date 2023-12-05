@@ -79,6 +79,7 @@ La aplicación está dirigida a empresas inmobiliarias, dueños, futuros comprad
 
 Visita nuestra [lista de reproducción en YouTube](https://youtube.com/playlist?list=PLai9ahHHcVe5FUWyCIJOZdvWymhlfAQkD&si=g29rZBVw8s47jw_1) para ver las grabaciones de las clases del proyecto "MrHouse".
 
+<!-- Comentario Eduardo --> 
 
 ## Licencia
 
