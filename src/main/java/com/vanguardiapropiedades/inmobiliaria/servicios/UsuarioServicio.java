@@ -93,7 +93,7 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
         UsuarioEntidad usuario = buscarPorId(id).get();
-        if(usuario.getPropiedades().isEmpty()){
+        if (usuario.getPropiedades().isEmpty()) {
             usuarioRepositorio.deleteById(id);
         }
     }
