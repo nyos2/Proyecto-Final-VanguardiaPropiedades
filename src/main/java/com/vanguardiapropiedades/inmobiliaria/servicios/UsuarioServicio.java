@@ -116,7 +116,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (email.isEmpty()) {
             throw new MiException("El email no puede estar vacio");
         }
-        // Verfica email formato correo
+        // Verifica email formato correo
         String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
         Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
         if (!pattern.matcher(email).matches()) {
@@ -126,11 +126,14 @@ public class UsuarioServicio implements UserDetailsService {
         if (password.isEmpty()) {
             throw new MiException("La contraseña no puede estar vacia");
         }
-        // Verfica si las contraseñas coinciden
+        // Verifica si la contraseña tiene mas de 6 caracteres
+        if (password.length() < 6) {
+            throw new MiException("La contraseña debe tener mas de 6 caracteres");
+        }
+        // Verifica si las contraseñas coinciden
         if (!password.equals(password2)) {
             throw new MiException("La contraseñas no coinciden");
         }
-        // TODO: condiciones de contraseña (cantidad de caracteres, etc)
     }
 
     @Override
