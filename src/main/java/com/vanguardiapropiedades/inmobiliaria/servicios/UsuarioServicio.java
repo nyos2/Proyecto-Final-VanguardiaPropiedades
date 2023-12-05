@@ -92,11 +92,14 @@ public class UsuarioServicio implements UserDetailsService {
     // DELETE
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
-        usuarioRepositorio.deleteById(id);
+        UsuarioEntidad usuario = buscarPorId(id).get();
+        if (usuario.getPropiedades().isEmpty()) {
+            usuarioRepositorio.deleteById(id);
+        }
     }
 
-    // TODO: Agregar DNI
-    private void validar(String nombre, String email, String password, String password2) throws MiException {
+    private void validar(String nombre, String dni, String email, String password, String password2)
+            throws MiException {
 
         // verificar que el email sea valido
         String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
