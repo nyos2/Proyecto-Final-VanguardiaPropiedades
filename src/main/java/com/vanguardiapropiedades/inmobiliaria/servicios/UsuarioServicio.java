@@ -68,7 +68,7 @@ public class UsuarioServicio implements UserDetailsService {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
-            validar(nombre, email, password, password2);
+            validar(nombre,dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
