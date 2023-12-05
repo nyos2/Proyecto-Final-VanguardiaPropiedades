@@ -9,7 +9,7 @@
     <div class="container">
         <h2>Modificar Propiedad</h2>
     
-        <!-- <form th:action="@{/propiedades/modificar}" th:object="${property}" method="post">
+         <form th:action="@{/propiedades/modificar}" th:object="${property}" method="post">
             <div class="form-group">
                 <label for="precio">Precio:</label>
                 <input type="text" th:field="*{precio}" class="form-control" />
@@ -20,11 +20,12 @@
                 <select th:field="*{tipo}" class="form-control">
                     <option value="APARTAMENTO">Apartamento</option>
                     <option value="CASA">Casa</option>
+                    <option value="OFICINA">Oficina</option>
                 </select>
-            </div> -->
+            </div> 
     
             <!-- Nuevos campos para modificar imágenes -->
-            <!-- <div class="form-group">
+             <div class="form-group">
                 <label for="imagenes">Imágenes:</label>
                 <input type="file" name="imagen" multiple="multiple" accept="image/*" />
             </div>
@@ -35,7 +36,7 @@
             </div>
     
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </form> -->
+        </form> 
     
     </div>
 
