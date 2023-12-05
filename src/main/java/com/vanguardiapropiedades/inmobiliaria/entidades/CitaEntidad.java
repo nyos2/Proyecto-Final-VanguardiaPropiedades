@@ -13,7 +13,7 @@ import lombok.Data;
 public class CitaEntidad {
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2") // Estrategia alternativa
+    @GenericGenerator(name = "uuid", strategy = "uuid2") 
     private String id;
 
     @ManyToOne
@@ -24,8 +24,8 @@ public class CitaEntidad {
 
     private String nota; // para un texto o nota agregado en el pedido de reunion
 
-    private String fecha; // ver que es mejor como alternativa para fecha y hora
-    private String hora;
+    // private String fecha; // ver que es mejor como alternativa para fecha y hora
+    // private String hora;
     // private Boolean acepto; // el que acepta cambia este estado a true
 
     // Agregar lo relativo al calendario de la cita =>  fecha y hora. Ver que conviene hacer
