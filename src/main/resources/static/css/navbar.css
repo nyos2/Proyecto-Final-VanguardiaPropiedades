@@ -5,52 +5,59 @@ body {
 }
 
 .navbar {
-  margin: 10px; /* Ajusta el margen alrededor de la barra de navegación */
-  padding: 10px; /* Ajusta el espacio interno de la barra de navegación */
+  margin: 10px; 
+  padding: 10px; 
+  border-radius: 15px;
 }
 
-/* Estilos para el logotipo en la barra de navegación */
 .navbar-brand {
-  padding: 0px;
-  color: #ffffff;
-  font-weight: bold;
+  display: flex;
+  align-items: center; 
+  justify-content: flex-end; 
+  margin-left: auto; 
 }
 
-/* Estilos para el botón de alternancia en la barra de navegación */
 .navbar-toggler-icon {
   background-color: #11111F;
 }
 
-/* Estilos para los botones en la barra de navegación */
 .navbar-nav .nav-link {
-  border: 2px solid #97999B; /* Borde de 2px en color #97999B */
-  border-radius: 5px; /* Bordes redondeados */
-  color: #ffffff !important; /* Cambié el color del texto a blanco */
+  border: 2px solid #97999B; 
+  border-radius: 5px; 
+  color: #ffffff !important; 
   font-weight: bold;
-  margin-right: 10px; /* Ajusta el margen a la derecha de los botones */
+  margin-left: 10px;
 }
 
 /* Estilos para el menú desplegable */
 .dropdown-menu {
-  background-color: #2D2E2F; /* Cambia el color de fondo del menú desplegable */
-  border-radius: 5px; /* Bordes redondeados */
+  background-color: #2D2E2F; 
+  border-radius: 5px; 
+  right: 0; 
+  left: auto; 
 }
 
 /* Estilos para los elementos del menú desplegable */
 .dropdown-item {
-  color: #97999B; /* Color del texto igual al color de los bordes */
+  color: #97999B; 
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Estilos al pasar el mouse sobre los elementos del menú desplegable */
 .dropdown-item:hover {
   background-color: #555;
   color: #D9D9D9;
 }
 
-/* Estilos para la imagen dentro del logotipo en la barra de navegación */
-.navbar-brand img {
-  padding: 0px;
-  border: 0px;
-  max-height: 80px;
+/* Agrega estilos personalizados al botón de la barra de navegación */
+.navbar-toggler {
+  background-color: #97999B; 
+  border: 1px solid #D9D9D9; 
+  color: #ffffff; 
+  padding: 8px 15px; 
+  border-radius: 4px; 
+}
+
+/* Cambia el color del icono del botón */
+.navbar-toggler-icon {
+  background-color: #ffffff;
 }

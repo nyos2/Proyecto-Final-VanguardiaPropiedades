@@ -1,9 +1,38 @@
 /* Estilo del fonde de la página completa */
 body {
-  background-color: #97999B ;
+  background-color: #ffffff ;
 } 
 
-/* Estilo del contenedor principal */
+/* Estilos del carrusel */
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(0%);
+  text-align: center;
+}
+
+.carousel-caption h4,
+.carousel-caption h1 {
+  margin: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 45px;
+  height: -50px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  margin-bottom: -2px;
+}
+
+.carousel-caption h4.text-highlight,
+.carousel-caption h1.text-highlight {
+  text-shadow: 4px 4px 3px #000000cc;
+}
+
+/* Estilos de la sección principal */
 .principal {
   background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
   height: 80vh !important;
@@ -13,7 +42,6 @@ body {
   align-items: center;
 }
 
-/* Estilo de la imagen */
 .principal img {
   max-width: none;
   max-height: 300px;
@@ -21,65 +49,63 @@ body {
   margin-right: 20px;
 }
 
-/* Estilo del texto en la sección principal */
 .principal p,
 .principal h6 {
-
-  padding-top: 50px;
-
-  color: white;
-  text-align: center; /* Alinea el texto al centro */
+  color: #ffffff;
+  text-align: center;
   font-size: 17px;
 }
 
-/* Estilo del contenedor de texto */
 .banner-info {
   flex: 1;
   padding: 0 20px;
-  margin: 0 auto; /* Centra el contenedor de texto horizontalmente */
+  margin: 0 auto;
 }
 
-/* Estilo del botón */
 .banner-info button {
-  margin-top: 10px; /* Ajusta el margen superior del botón según tu preferencia */
-  display: block; /* Hace que el botón ocupe el ancho completo del contenedor */
-  margin: 0 auto; /* Centra el botón dentro del contenedor de texto */
+  margin-top: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
+.custom-btn {
+  background-color: #11111F;
+  color: #ffffff;
+  border: 2px solid #97999B;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
 
-/* Estilo para los íconos de redes sociales */
+.custom-btn:hover {
+  background-color: #555;
+  color: #D9D9D9;
+  border-color: #D9D9D9;
+}
+
+/* Estilos para la card personalizada */
+.custom-card {
+  background-color: #11111F;
+  color: white;
+}
+
+/* Estilos para los íconos de redes sociales */
 .social-icon {
-  font-size: 24px; /* Tamaño de fuente de 24px para los íconos de redes sociales */
-  margin-right: 10px; /* Margen derecho de 10px entre los íconos de redes sociales */
-  text-decoration: none; /* Sin decoración de texto para los íconos de redes sociales */
-}
-
-/* Estilo específico para Facebook */
-.social-icon.facebook {
-  color: #F2F2F2; /* Color de Facebook */
-}
-
-/* Estilo específico para Twitter */
-.social-icon.twitter {
-  color: #F2F2F2; /* Color de Twitter */
-}
-
-/* Estilo específico para Instagram */
-.social-icon.instagram {
-  color: #F2F2F2; /* Color de Instagram */
-}
-
-/* Estilo específico para YouTube */
-.social-icon.youtube {
-  color: #F2F2F2; /* Color de YouTube */
+  margin-right: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 /* Estilos para LISTAS DE USUARIO las tarjetas de usuario */
 .card {
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sutil sombra */
   transition: box-shadow 0.3s;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .card:hover {
@@ -127,9 +153,9 @@ body {
   cursor: pointer;
 }
 
-/* Estilo para la página activa */
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
-}
+/* Formulario de OFERTA */
 
+.form-oferta {
+  padding: 10px;
+  border: 1px solid black;
+}

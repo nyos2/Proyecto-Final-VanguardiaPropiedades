@@ -44,7 +44,8 @@ public class PropiedadServicio {
         propiedadRepositorio.save(propiedad);
     }
 
-    public void editarPropiedad(String id, int precio, Tipo tipo, List<MultipartFile> imagen, Boolean estado,
+    @Transactional
+    public void editarPropiedad(String id, int precio, String tipo, List<MultipartFile> imagen, String estado,
             String descripcion, String direccion)
             throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);
@@ -61,8 +62,8 @@ public class PropiedadServicio {
                 imagen = null;
             }
             propiedad.setPrecio(precio);
-            propiedad.setTipo(tipo);
-            propiedad.setEstado(estado);
+            propiedad.setTipo(Tipo.valueOf(tipo));
+            propiedad.setEstado(Boolean.valueOf(estado));
             propiedad.setDescripcion(descripcion);
             propiedad.setDireccion(direccion);
             propiedadRepositorio.save(propiedad);

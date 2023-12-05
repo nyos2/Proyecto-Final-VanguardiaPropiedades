@@ -91,10 +91,26 @@ public class UsuarioControlador {
     // DELETE
     @RequestMapping("/eliminar-usuario/{id}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) throws MiException {
-        usuarioServicio.eliminarUsuario(id);
-
-        return "Usuario/usuario_list.html";
+    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable,
+            ModelMap model) throws MiException {
+        try {
+            usuarioServicio.eliminarUsuario(id);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.put("exito", "Usuario eliminado.");
+            return "Usuario/usuario_list.html";
+        } catch (Exception e) {
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
+            return "Usuario/usuario_list.html";
+        }
     }
 
     @GetMapping("/perfil")
