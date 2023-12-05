@@ -2,10 +2,9 @@ package com.vanguardiapropiedades.inmobiliaria.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.OfertaServicio;
@@ -18,21 +17,18 @@ public class OfertaControlador {
     private OfertaServicio ofertaServicio;
 
     @PostMapping("/crear")
-    public String crearOferta(Integer valorOferta, String propiedadId, String usuarioId, Model modelo)
+    public String crearOferta(Integer valorOferta, String propiedadId, String usuarioId,
+            RedirectAttributes redirectAttributes)
             throws MiException {
         try {
             ofertaServicio.crearOferta(valorOferta, propiedadId, usuarioId);
-            modelo.addAttribute("exito", "Oferta creada con éxito");
-            return "Propiedades/propiedad_list";
+            redirectAttributes.addFlashAttribute("exito", "La oferta se generó con éxito");
+            return "redirect:/propiedad/listar";
         } catch (Exception e) {
-            modelo.addAttribute("valorOferta", valorOferta);
-            modelo.addAttribute("propiedad", propiedadId);
-            modelo.addAttribute("usuario", usuarioId);
-            modelo.addAttribute("error", "Oferta no creada");
+            redirectAttributes.addFlashAttribute("error", "La oferta no se generó");
         }
-        // finally {
         return "redirect:/propiedad/listar";
-        // }
+
     }
 
 }
