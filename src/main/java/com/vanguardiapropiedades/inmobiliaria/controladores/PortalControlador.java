@@ -23,7 +23,7 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/nosotros") // Me permite usar dos url sin duplicar el codigo
+    @GetMapping("/nosotros")
     public String nosotros() {
         return "sobre_nosotros.html";
     }
