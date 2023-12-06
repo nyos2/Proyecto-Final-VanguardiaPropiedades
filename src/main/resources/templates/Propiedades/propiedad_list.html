@@ -10,41 +10,6 @@
         <h2>Lista de Propiedades</h2>
         <hr>
         <div class="row">
-<<<<<<< HEAD
-            <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_CLIENT')">
-                <div th:each="page, iterStat : ${page.content}" class="col-md-5">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                            <!-- <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image"> -->
-                            <h5 class="card-title" th:text="${page.tipo}"></h5>
-                            <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
-                            <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
-                            <p class="card-text" th:text="'Descripcion: ' + ${page.descripcion}"></p>
-                            <p class="card-text" th:text="'Direccion: ' + ${page.direccion}"></p>
-                        </div>
-
-                        <!-- Formulario para ofertar -->
-                        <form class="form-oferta" action="/ofertar" method="post">
-                            <input type="hidden" name="propertyId" th:value="${page.id}" />
-                            <div sec:authorize="hasRole('ROLE_CLIENT')">
-                                <label for="monto">Tu oferta:</label>
-                                <br>
-                                <input type="text" name="monto" required />
-                                <button type="submit" class="btn btn-primary">Ofertar</button>
-
-                            </div>
-                        </form>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group" sec:authorize="hasRole('ROLE_ENTE')">
-                                <a class="btn btn-sm btn-outline-secondary">Modificar</a>
-                                <a class="btn btn-sm btn-outline-secondary"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
-                            </div>
-                        </div>
-
-                    </div>
-=======
 
             <div class="container my-1">
                 <!-- Mensajes Condicionales -->
@@ -86,7 +51,6 @@
                         <button type="submit" class="btn btn-primary">Ofertar</button>
                     </form>
 
->>>>>>> 479f8206ed3a16e9cfeed95106ec7d9a89786f7a
                 </div>
             </div>
 
