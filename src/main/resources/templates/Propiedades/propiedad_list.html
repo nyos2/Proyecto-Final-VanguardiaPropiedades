@@ -10,6 +10,7 @@
         <h2>Lista de Propiedades</h2>
         <hr>
         <div class="row">
+<<<<<<< HEAD
             <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_CLIENT')">
                 <div th:each="page, iterStat : ${page.content}" class="col-md-5">
                     <div class="card mb-4 box-shadow">
@@ -43,6 +44,49 @@
                         </div>
 
                     </div>
+=======
+
+            <div class="container my-1">
+                <!-- Mensajes Condicionales -->
+                <div th:if="${error != null}">
+                    <div class="alert text-center alert-danger fade show" role="alert">
+                        <strong>ERROR</strong>
+                        <p th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}">
+                    <div class="alert text-center alert-success fade show" role="alert">
+                        <strong>EXITO</strong>
+                        <p th:text="${exito}"></p>
+                    </div>
+                </div>
+                <!-- Mensajes Condicionales -->
+            </div>
+
+            <div th:each="page, iterStat : ${page.content}" class="col-md-5">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <!-- <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image"> -->
+                        <h5 class="card-title" th:text="${page.tipo}"></h5>
+                        <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
+                        <p class="card-text" th:text="'Usuario: ' + ${page.usuario.nombre}"></p>
+                        <!-- <p class="card-text" th:text="${page.usuario.descripcion}"></p> -->
+                        <!-- <p class="card-text" th:text="${page.usuario.direccion}"></p> -->
+                    </div>
+
+                            
+
+                    <!-- Formulario para ofertar -->
+                    <form class="form-oferta" action="/oferta/crear" method="post">
+                        <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}" />
+                        <input type="hidden" name="propiedadId" th:value="${page.id}" />
+                        <label for="monto">Tu oferta:</label>
+                        <br>
+                        <input type="number" name="valorOferta" required />
+                        <button type="submit" class="btn btn-primary">Ofertar</button>
+                    </form>
+
+>>>>>>> 479f8206ed3a16e9cfeed95106ec7d9a89786f7a
                 </div>
             </div>
 
@@ -100,7 +144,7 @@
                         </li>
 
                         <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
-                            th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                            th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''" >
                             <a class="page-link" th:href="@{/propiedad/listar(page=${i}, size=${page.Size})}"
                                 th:text="${i + 1}"></a>
                         </li>
