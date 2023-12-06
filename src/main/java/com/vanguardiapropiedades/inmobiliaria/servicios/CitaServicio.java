@@ -32,7 +32,7 @@ public class CitaServicio {
             Optional<UsuarioEntidad> enteRepuesta = usuarioRepositorio.findById(idEnte);
             Optional<UsuarioEntidad> clienteRepuesta = usuarioRepositorio.findById(idCliente);
             Optional<PropiedadEntidad> propiedadRepuesta = propiedadRepositorio.findById(idPropiedad);
-            // Aqui deberia analizar/ validar el horario  dentro de un rango, ver como ?? 
+            // Aqui deberia analizar si realmente es necesario el rollo anterior o solo guardar id / validar el horario  dentro de un rango, ver como ?? 
 
             if (enteRepuesta.isPresent() && clienteRepuesta.isPresent() && propiedadRepuesta.isPresent()) {
                 // en el if verificar si esta cargado tambien el horario (fecha/hora)
