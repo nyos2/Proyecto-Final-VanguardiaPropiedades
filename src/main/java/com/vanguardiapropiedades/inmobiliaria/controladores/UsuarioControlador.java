@@ -132,6 +132,6 @@ public class UsuarioControlador {
         model.addAttribute("currentPage", page.getNumber());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("totalPages", page.getTotalPages());
-        return "Usuario/usuario_list.html";
+        return "Admin/usuario_list_admin.html";
     }
 }

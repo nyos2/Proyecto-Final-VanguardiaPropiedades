@@ -6,42 +6,6 @@
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <br>
-            <h2>Lista de Propiedades ADMIN</h2>
-            <hr>
-            <table class="table table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Precio</th>
-                        <th>Propietario</th>
-                        <th>Descripcion</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="page, iterStat : ${page.content}">
-                        <td th:text="${page.tipo}"></td>
-                        <td th:text="${page.precio}"></td>
-                        <td th:text="${page.usuario.nombre}"></td>
-                        <td th:text="${page.direccion}"></td>
-                        <td th:text="${page.usuario.rol}"></td>
-                        <td>
-                            <div class="btn-group">
-                                <a th:href="@{'/propiedad/editar/' + ${page.id}}"
-                                    class="btn btn-sm btn-outline-secondary">Modificar</a>
-                                <a th:href="@{'/propiedad/eliminar-propiedad/' + ${page.id}}"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         <br>
         <h2>Lista de Propiedades</h2>
         <hr>
@@ -49,7 +13,16 @@
             <div th:each="page, iterStat : ${page.content}" class="col-md-5">
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
-                        <!-- <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image"> -->
+                        <!-- Mostrar imágenes existentes -->
+                        <div class="form-group">
+                            <label for="imagenes">Imágenes:</label>
+                            <div th:each="imagen : ${propiedad?.imagenes}">
+                                <img th:src="@{'http://localhost:8080/imagen/' + ${imagen.id}}"
+                                    alt="Imagen de propiedad" class="img-thumbnail" />
+                            </div>
+                            <small class="form-text text-muted">Imágenes actuales de la propiedad.</small>
+                        </div>
+
                         <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
                         <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
@@ -58,9 +31,9 @@
                     </div>
 
                     <!-- Formulario para ofertar -->
-                    <form class="form-oferta" action="/ofertar" method="post">
+                    <form class="form-oferta" action="/ofertar" method="post" sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
                         <input type="hidden" name="propertyId" th:value="${page.id}" />
-                        <div sec:authorize="hasRole('ROLE_CLIENT')">
+                        <div>
                             <label for="monto">Tu oferta:</label>
                             <br>
                             <input type="text" name="monto" required />
