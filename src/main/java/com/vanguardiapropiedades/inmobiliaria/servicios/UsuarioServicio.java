@@ -63,7 +63,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     // UPDATE
     public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
-            MultipartFile foto,String rol)
+            MultipartFile foto, String rol)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -98,6 +98,7 @@ public class UsuarioServicio implements UserDetailsService {
             usuarioRepositorio.deleteById(id);
         }
     }
+
     // TODO: HACER FUNCIONAR
     private void validar(String nombre, String dni, String email, String password, String password2)
             throws MiException {
