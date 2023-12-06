@@ -26,8 +26,9 @@ public class UsuarioControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
 
+    // CREATE
     @GetMapping("/registrar")
-    public String registrar() {
+    public String registrarUsuario() {
         return "Usuario/usuario_form.html";
     }
 
@@ -90,7 +91,7 @@ public class UsuarioControlador {
     // DELETE
     @RequestMapping("/eliminar-usuario/{id}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable, 
+    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable,
             ModelMap model) throws MiException {
         try {
             usuarioServicio.eliminarUsuario(id);

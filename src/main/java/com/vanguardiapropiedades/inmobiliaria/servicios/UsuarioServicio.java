@@ -43,7 +43,7 @@ public class UsuarioServicio implements UserDetailsService {
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
-        validar(nombre, dni, email, password, password2);
+        // validar(nombre, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -93,7 +93,7 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
         UsuarioEntidad usuario = buscarPorId(id).get();
-        if(usuario.getPropiedades().isEmpty()){
+        if (usuario.getPropiedades().isEmpty()) {
             usuarioRepositorio.deleteById(id);
         }
     }
@@ -101,37 +101,28 @@ public class UsuarioServicio implements UserDetailsService {
     private void validar(String nombre, String dni, String email, String password, String password2)
             throws MiException {
 
-        // Verifica si nombre está vacío
+        // verificar que el email sea valido
+        String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
+        Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
+
         if (nombre.isEmpty() || nombre.isBlank()) {
             throw new MiException("El nombre no puede estar vacio");
         }
-        // Verifica si dni está vacío y sea numérico
-        if (dni.isEmpty()) {
-            throw new MiException("El dni no puede estar vacio");
-        }
-        // Verifica si dni es numérico con expresion regular que va de 0 a 9
-        if (!dni.matches("[0-9]+")) {
-            throw new MiException("El dni debe contener solo numéros");
-        }
-        // Verifica si email está vacío
         if (email.isEmpty()) {
             throw new MiException("El email no puede estar vacio");
         }
-        // Verfica email formato correo
-        String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
-        Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
+
         if (!pattern.matcher(email).matches()) {
             throw new MiException("El email no es valido");
         }
-        // Verifica si password está vacío
+
         if (password.isEmpty()) {
             throw new MiException("La contraseña no puede estar vacia");
         }
-        // Verfica si las contraseñas coinciden
         if (!password.equals(password2)) {
             throw new MiException("La contraseñas no coinciden");
         }
-        // TODO: condiciones de contraseña (cantidad de caracteres, etc)
+
     }
 
     @Override
