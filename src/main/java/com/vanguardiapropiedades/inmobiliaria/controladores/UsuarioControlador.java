@@ -54,16 +54,6 @@ public class UsuarioControlador {
     }
 
     // UPDATE
-    // @GetMapping("/editar/{id}")
-    // public String editarUsuario(@PathVariable String id, ModelMap modelo) {
-    //     Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
-    //     if (usuario.isPresent()) {
-    //         modelo.put("usuario", usuario.get());
-    //     } else {
-    //         modelo.put("usuario", null);
-    //     }
-    //     return "Usuario/usuario_mod.html";
-    // }
     @GetMapping("/editar-perfil/{id}")
     public String editarPerfil(@PathVariable String id, ModelMap modelo) {
         UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
@@ -75,10 +65,10 @@ public class UsuarioControlador {
     public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String dni,
             @RequestParam String email,
             @RequestParam String password,
-            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
+            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto,@RequestParam String rol, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto,rol);
             Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");
@@ -132,6 +122,6 @@ public class UsuarioControlador {
         model.addAttribute("currentPage", page.getNumber());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("totalPages", page.getTotalPages());
-        return "Usuario/usuario_list.html";
+        return "Admin/usuario_list_admin.html";
     }
 }
