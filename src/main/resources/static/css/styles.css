@@ -1,10 +1,7 @@
+/* Estilos del fondo */
 body {
-  background-image: url('../images/fondo.jpg');
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    }
+  background-color: #e3e2e2
+}
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -119,9 +116,16 @@ body {
   padding: 10px;
 }
 
+@font-face {
+  font-family: 'Aero Matics Stencil Regular';
+  src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
+}
+
 .card-title {
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
+  color: #ffffff
 }
 
 .card-text {
@@ -161,6 +165,10 @@ body {
 .form-oferta {
   padding: 10px;
   border: 1px solid black;
+}
+
+p.card-text {
+  color: #8e8a8a; /* Cambia '#fff' al color blanco que desees */
 }
 
  footer{
