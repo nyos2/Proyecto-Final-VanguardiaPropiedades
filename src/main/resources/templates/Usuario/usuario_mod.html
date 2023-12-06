@@ -21,6 +21,11 @@
                     <input type="text" th:value="${usuario.dni}" name="dni" class="form-control" />
                 </div>
 
+                <div class="form-group" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <label for="dni">Rol:</label>
+                    <input type="text" th:value="${usuario.rol}" name="dni" class="form-control" />
+                </div>
+
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" th:value="${usuario.email}" name="email" class="form-control" />
