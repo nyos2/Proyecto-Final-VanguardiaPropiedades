@@ -54,14 +54,20 @@ public class UsuarioControlador {
     }
 
     // UPDATE
-    @GetMapping("/editar/{id}")
-    public String editarUsuario(@PathVariable String id, ModelMap modelo) {
-        Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
-        if (usuario.isPresent()) {
-            modelo.put("usuario", usuario.get());
-        } else {
-            modelo.put("usuario", null);
-        }
+    // @GetMapping("/editar/{id}")
+    // public String editarUsuario(@PathVariable String id, ModelMap modelo) {
+    //     Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
+    //     if (usuario.isPresent()) {
+    //         modelo.put("usuario", usuario.get());
+    //     } else {
+    //         modelo.put("usuario", null);
+    //     }
+    //     return "Usuario/usuario_mod.html";
+    // }
+    @GetMapping("/editar-perfil/{id}")
+    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
+        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
+        modelo.put("usuario", usuario);
         return "Usuario/usuario_mod.html";
     }
 
@@ -118,12 +124,6 @@ public class UsuarioControlador {
         return "Usuario/usuario_perfil.html";
     }
 
-    @GetMapping("/editar-perfil/{id}")
-    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
-        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
-        modelo.put("usuario", usuario);
-        return "Usuario/usuario_mod.html";
-    }
 
     @GetMapping("/listar")
     public String paginarUsuarios(@PageableDefault(page = 0, size = 5) Pageable pageable, Model model) {
