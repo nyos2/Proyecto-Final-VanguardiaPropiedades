@@ -29,9 +29,14 @@ public class CitaControlador {
                 try {
                     
                     citaServicio.crearCita(idEnte, idCliente, idPropiedad, fechaHora, nota);
-                    modelo.addAttribute("exito", "la cita se creo correctamente");
+                    // modelo.addAttribute("exito", "La cita se creo correctamente");
+                    modelo.put("exito", "La cita se creo correctamente");
                 } catch (Exception e) {
-                    modelo.addAttribute("error", "la cita no se pudo crear !!");
+                    // modelo.addAttribute("error", "la cita no se pudo crear !!");
+                    modelo.put("fechaHora", fechaHora);
+                    modelo.put("nota", nota);
+
+                    modelo.put("error", "la cita no se pudo crear !!");
                     return "cita_form.html";
         }
                 return "cita_form.html"; // ver que devolver o /redirect:/nose"??

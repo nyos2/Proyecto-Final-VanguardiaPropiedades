@@ -29,7 +29,7 @@ public class CitaEntidad {
 
     private String fechahora; // ver que es mejor como alternativa para fecha y hora
     
-    private Boolean acepto; // el que acepta cambia este estado a true
+    private Boolean acepto; // el que recibe la cita cambia este estado a true (aceptado)
 
     // Agregar lo relativo al calendario de la cita =>  fecha y hora. Ver que conviene hacer
     // private Date fechacita;
