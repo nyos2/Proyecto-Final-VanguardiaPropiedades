@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <div th:replace="~{fragments/head :: head}"></div>
 
-<div th:replace="~{fragments/head :: head}"></div>
-
-<body>
-
+  <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
@@ -60,9 +58,8 @@
             </form>
             
         </div>
+        <br>
     </div>
-    <br>
     <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
-
