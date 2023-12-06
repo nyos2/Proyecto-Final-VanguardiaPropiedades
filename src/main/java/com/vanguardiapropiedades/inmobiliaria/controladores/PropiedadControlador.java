@@ -114,7 +114,7 @@ public class PropiedadControlador {
             model.addAttribute("currentPage", page.getNumber());
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
-            model.put("error", "No se pudo eliminar.");
+            model.put("error", "No se pudo eliminar, compruebe si la propiedad tiene una oferta.");
             return "Propiedades/propiedad_list.html";
         }
     }
