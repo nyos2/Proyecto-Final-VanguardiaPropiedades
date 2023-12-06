@@ -6,41 +6,9 @@
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <br>
-            <h2>Lista de Propiedades ADMIN</h2>
-            <hr>
-            <table class="table table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Precio</th>
-                        <th>Propietario</th>
-                        <th>Descripcion</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="page, iterStat : ${page.content}">
-                        <td th:text="${page.tipo}"></td>
-                        <td th:text="${page.precio}"></td>
-                        <td th:text="${page.usuario.nombre}"></td>
-                        <td th:text="${page.direccion}"></td>
-                        <td th:text="${page.usuario.rol}"></td>
-                        <td>
-                            <div class="btn-group">
-                                <a th:href="@{'/propiedad/editar/' + ${page.id}}"
-                                    class="btn btn-sm btn-outline-secondary">Modificar</a>
-                                <a th:href="@{'/propiedad/eliminar-propiedad/' + ${page.id}}"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <br>
+        <h2>Lista de Propiedades</h2>
+        <hr>
                 <div class="container my-1">
                     <!-- Mensajes Condicionales -->
                     <div th:if="${error != null}">
@@ -57,20 +25,32 @@
                     </div>
                     <!-- Mensajes Condicionales -->
                 </div>
-        <br>
-        <h2>Lista de Propiedades</h2>
-        <hr>
         <div class="row">
             <div th:each="page, iterStat : ${page.content}" class="col-md-5">
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
-                        <!-- <img th:src="${property.imagenes[0].url}" class="card-img-top" alt="Property Image"> -->
+                        <!-- Mostrar imágenes existentes -->
+                        <div class="form-group">
+                            <label for="imagenes">Imágenes:</label>
+                            <div th:each="imagen : ${propiedad?.imagenes}">
+                                <img th:src="@{'http://localhost:8080/imagen/' + ${imagen.id}}"
+                                    alt="Imagen de propiedad" class="img-thumbnail" />
+                            </div>
+                            <small class="form-text text-muted">Imágenes actuales de la propiedad.</small>
+                        </div>
+                     <!-- Iterar sobre todas las imágenes -->
+                     <!-- ESTE FUNCIONA -->
+                    <!-- <div th:each="imagen : ${page.imagenes}">
+                        <img th:src="@{/imagen/__${imagen.id}__}" alt="" />
+                    </div> -->
+
                         <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
                         <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
                         <p class="card-text" th:text="'Descripcion: ' + ${page.descripcion}"></p>
                         <p class="card-text" th:text="'Direccion: ' + ${page.direccion}"></p>
                     </div>
+
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group" sec:authorize="hasRole('ROLE_ENTE')">
@@ -79,8 +59,9 @@
                                 onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
                         </div>
                     </div>
-                                        <!-- Formulario para ofertar -->
-                    <form class="form-oferta" action="/oferta/crear" method="post">
+                    <!-- Formulario para ofertar -->
+                    <!-- TODO No mostrar al dueño -->
+                    <form class="form-oferta" action="/oferta/crear" method="post" sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
                         <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}" />
                         <input type="hidden" name="propiedadId" th:value="${page.id}" />
                         <label for="monto">Tu oferta:</label>

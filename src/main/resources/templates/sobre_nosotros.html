@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-!-- Incluye el fragmento de la cabeza -->
+
 <div th:replace="~{fragments/head :: head}"></div>
 
 <body>
@@ -8,25 +8,27 @@
     <!-- Incluye el fragmento de la barra de navegación -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
+    <div class="container">
+        <section>
+            <h2>Nuestra Historia</h2>
+            <p>Somos una empresa comprometida con la excelencia desde [año de inicio]. Desde nuestros humildes
+                comienzos,
+                hemos crecido y evolucionado para convertirnos en [breve descripción de la empresa].</p>
+        </section>
 
-    <section>
-        <h2>Nuestra Historia</h2>
-        <p>Somos una empresa comprometida con la excelencia desde [año de inicio]. Desde nuestros humildes comienzos,
-            hemos crecido y evolucionado para convertirnos en [breve descripción de la empresa].</p>
-    </section>
+        <section>
+            <h2>Equipo</h2>
+            <p>Contamos con un equipo dedicado y apasionado que trabaja arduamente para lograr nuestros objetivos. Cada
+                miembro aporta habilidades únicas y experiencias que enriquecen nuestro entorno de trabajo.</p>
+        </section>
 
-    <section>
-        <h2>qefjonweiofnw</h2>
-        <p>Contamos con un equipo dedicado y apasionado que trabaja arduamente para lograr nuestros objetivos. Cada
-            miembro aporta habilidades únicas y experiencias que enriquecen nuestro entorno de trabajo.</p>
-    </section>
-
-    <section>
-        <h2>Misión y Visión</h2>
-        <p>Nuestra misión es [descripción de la misión]. Queremos [objetivo principal]. Nos esforzamos por ser líderes
-            en [industria o campo] y proporcionar [beneficios o soluciones] a nuestros clientes.</p>
-    </section>
-
+        <section>
+            <h2>Misión y Visión</h2>
+            <p>Nuestra misión es [descripción de la misión]. Queremos [objetivo principal]. Nos esforzamos por ser
+                líderes
+                en [industria o campo] y proporcionar [beneficios o soluciones] a nuestros clientes.</p>
+        </section>
+    </div>
     <!-- Incluye el fragmento del pie de página -->
     <div th:replace="~{fragments/footer :: footer}"></div>
 
