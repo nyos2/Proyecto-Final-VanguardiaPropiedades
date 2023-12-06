@@ -68,9 +68,9 @@ public class PropiedadControlador {
     }
 
     @PostMapping("/editar/{id}")
-    public String editarPropiedad(@PathVariable String id, @PathVariable int precio, @PathVariable String tipo,
-            @PathVariable List<MultipartFile> imagen, @PathVariable String estado,
-            @PathVariable String descripcion, @PathVariable String direccion, ModelMap modelo) {
+    public String editarPropiedad(@PathVariable String id, @RequestParam Integer precio, @RequestParam String tipo,
+            @RequestParam(name = "imagen", required = false) List<MultipartFile> imagen, @RequestParam String estado,
+            @RequestParam String descripcion, @RequestParam String direccion, ModelMap modelo) {
         try {
             propiedadServicio.editarPropiedad(id, precio, tipo, imagen, estado, descripcion, direccion);
             Optional<PropiedadEntidad> propiedad = propiedadServicio.buscarPorId(id);
@@ -104,7 +104,7 @@ public class PropiedadControlador {
             model.addAttribute("currentPage", page.getNumber());
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
-            model.put("error", "No se pudo eliminar.");
+            model.put("error", "No se pudo eliminar, compruebe si la propiedad tiene una oferta.");
             return "Propiedades/propiedad_list.html";
         }
     }

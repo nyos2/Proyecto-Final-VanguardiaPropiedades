@@ -23,8 +23,8 @@ public class PortalControlador {
         return "login.html";
     }
 
-    @GetMapping("/nosotros")
-    public String nosotros() {
+    @GetMapping("/sobrenosotros")
+    public String sobreNosotros() {
         return "sobre_nosotros.html";
     }
 }
