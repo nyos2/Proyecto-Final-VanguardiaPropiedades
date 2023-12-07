@@ -98,7 +98,7 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("exito", "Usuario eliminado.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         } catch (Exception e) {
             Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
             model.addAttribute("page", page);
@@ -106,7 +106,7 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         }
     }
 

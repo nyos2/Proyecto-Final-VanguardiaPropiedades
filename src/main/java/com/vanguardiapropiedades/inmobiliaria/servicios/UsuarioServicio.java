@@ -22,6 +22,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -37,6 +38,9 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private ImagenServicio imagenServicio;
+
+    @Autowired
+    private PropiedadServicio propiedadServicio;
 
     // CREATE
     @Transactional
@@ -172,5 +176,10 @@ public class UsuarioServicio implements UserDetailsService {
 
     public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
         return usuarioRepositorio.findAll(pageable);
+    }
+
+    public List<PropiedadEntidad> propiedadesUsuario(String id) {
+        UsuarioEntidad user = buscarPorId(id).get();
+        return user.getPropiedades();
     }
 }
