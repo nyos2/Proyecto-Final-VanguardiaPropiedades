@@ -45,7 +45,7 @@ public class PropiedadServicio {
     }
 
     @Transactional
-    public void editarPropiedad(String id, int precio, String tipo, List<MultipartFile> imagen, String estado,
+    public void editarPropiedad(String id, Integer precio, String tipo, List<MultipartFile> imagen, String estado,
             String descripcion, String direccion)
             throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);

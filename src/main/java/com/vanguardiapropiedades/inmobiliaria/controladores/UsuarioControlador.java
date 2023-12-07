@@ -54,14 +54,10 @@ public class UsuarioControlador {
     }
 
     // UPDATE
-    @GetMapping("/editar/{id}")
-    public String editarUsuario(@PathVariable String id, ModelMap modelo) {
-        Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
-        if (usuario.isPresent()) {
-            modelo.put("usuario", usuario.get());
-        } else {
-            modelo.put("usuario", null);
-        }
+    @GetMapping("/editar-perfil/{id}")
+    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
+        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
+        modelo.put("usuario", usuario);
         return "Usuario/usuario_mod.html";
     }
 
@@ -69,10 +65,11 @@ public class UsuarioControlador {
     public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String dni,
             @RequestParam String email,
             @RequestParam String password,
-            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
+            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto,
+            @RequestParam String rol, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto, rol);
             Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");
@@ -101,7 +98,7 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("exito", "Usuario eliminado.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         } catch (Exception e) {
             Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
             model.addAttribute("page", page);
@@ -109,20 +106,13 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         }
     }
 
     @GetMapping("/perfil")
     public String perfilUsuario() {
         return "Usuario/usuario_perfil.html";
-    }
-
-    @GetMapping("/editar-perfil/{id}")
-    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
-        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
-        modelo.put("usuario", usuario);
-        return "Usuario/usuario_mod.html";
     }
 
     @GetMapping("/listar")
