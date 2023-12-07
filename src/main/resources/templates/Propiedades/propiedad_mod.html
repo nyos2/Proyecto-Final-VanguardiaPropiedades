@@ -10,38 +10,46 @@
         <br>
         <h2>Modificar Propiedad</h2>
         <hr>
-        <form th:action="@{/propiedad/editar-propiedad/__${propiedad.id}__}" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <input hidden th:value="${propiedad.id}" name="id" />
+        <form th:action="@{/propiedad/editar/__${propiedad.id}__}" method="post" enctype="multipart/form-data">
+            <div class="form-group mb-2">
+                <label for="precio">Precio:</label>
+                <input type="number" class="form-control" id="precio" name="precio" th:value="${propiedad.precio}" required />
+            </div>
+
+            <div class="form-group mb-2" >
+                <label for="descripcion">Descripcion:</label>
+                <!-- <textarea type="text" class="form-control" id="descripcion" name="descripcion" th:value="${propiedad.descripcion}" required ></textarea>     -->
+                <input type="text" class="form-control" id="descripcion" name="descripcion" th:value="${propiedad.descripcion}" required >
+            </div>
+
+            <div class="form-group mb-2" >
+                <label for="Direccion">Direccion:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" th:value="${propiedad.direccion}" required /> 
+            </div>
+
+            <div class="form-group mb-2">
                 <label for="tipo">Tipo:</label>
-                <select th:field="*{propiedad.tipo}" class="form-control">
-                    <option value="APARTAMENTO" th:selected="${propiedad.tipo == 'APARTAMENTO'}">Apartamento</option>
-                    <option value="CASA" th:selected="${propiedad.tipo == 'CASA'}">Casa</option>
+                <select class="form-control" id="tipo" name="tipo" required>
+                    <option value="DEPARTAMENTO">Departamento</option>
+                    <option value="CASA">Casa</option>
+                    <option value="OFICINA">Oficina</option>
+                    <!-- Agrega más opciones según tus necesidades -->
                 </select>
             </div>
 
-            <input hidden type="text" th:value="${propiedad.usuario.id}" name="id" class="form-control" />
-    
-            <div class="form-group">
-                <label for="precio">Precio:</label>
-                <input type="text" th:field="*{propiedad.precio}" class="form-control" />
-            </div>
-    
-            <div class="form-group">
-                <label for="descripcion">Descripcion:</label>
-                <textarea th:field="*{propiedad.descripcion}" class="form-control"></textarea>
-            </div>
-    
-            <div class="form-group">
-                <label for="direccion">Direccion:</label>
-                <input type="text" th:field="*{propiedad.direccion}" class="form-control" />
+            <div class="form-group mb-2">
+                <label for="usuario">Usuario:</label>
+                <input type="text" class="form-control" 
+                    th:value="${propiedad.usuario.nombre}" readonly />
+                <input hidden type="text" class="form-control" id="usuario" name="usuario"
+                    th:if="${session.usuariosession != null}" th:value="${session.usuariosession.id}" readonly />
             </div>
 
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label for="estado">Estado:</label>
-                <select th:field="*{propiedad.estado}" class="form-control">
-                    <option value="true" th:selected="${propiedad.estado}">Disponible</option>
-                    <option value="false" th:selected="${!propiedad.estado}">No disponible</option>
+                <select class="form-control" id="estado" name="estado" required>
+                    <option value="true">Activo</option>
+                    <option value="false">Inactivo</option>
                 </select>
             </div>
     
@@ -60,15 +68,17 @@
             <div th:if="${error != null}">
                 <div class="alert text-center alert-danger fade show" role="alert">
                     <strong>ERROR</strong>
-                    <p th:text="error"></p>
+                    <p th:text="${error}"></p>
                 </div>
             </div>
             <div th:if="${exito != null}">
                 <div class="alert text-center alert-success fade show" role="alert">
                     <strong>EXITO</strong>
-                    <p th:text="exito"></p>
+                    <p th:text="${exito}"></p>
                 </div>
             </div>
+            <!-- Mensajes Condicionales -->
+        </div>
         </div>
     </div>
 
