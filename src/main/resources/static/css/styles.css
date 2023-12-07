@@ -1,7 +1,11 @@
-/* Estilos del fondo */
+/* Estilo del fonde de la página completa */
 body {
-  background-color: #e3e2e2
-}
+  background-image: url('../images/fondo.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -167,16 +171,8 @@ body {
   border: 1px solid black;
 }
 
-p.card-text {
-  color: #8e8a8a; /* Cambia '#fff' al color blanco que desees */
-}
-
  footer{
   bottom:0px;
   position:relative;
   width: 100%; 
 }
-
-
-
-
