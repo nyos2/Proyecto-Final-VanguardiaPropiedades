@@ -1,14 +1,11 @@
-<<<<<<< HEAD
-/* Estilos del fondo */
-body {
-  background-color: #e3e2e2
-}
-=======
 /* Estilo del fonde de la página completa */
 body {
-  background-color: #ffffff ;
-} 
->>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
+  background-image: url('../images/fondo.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -172,17 +169,10 @@ body {
 .form-oferta {
   padding: 10px;
   border: 1px solid black;
-<<<<<<< HEAD
-}
-
-p.card-text {
-  color: #8e8a8a; /* Cambia '#fff' al color blanco que desees */
 }
 
  footer{
   bottom:0px;
   position:relative;
   width: 100%; 
-=======
->>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
 }
