@@ -1,4 +1,4 @@
-package com.vanguardiapropiedades.inmobiliaria.enums;
+package com.vanguardiapropiedades.inmobiliaria.Enums;
 
 public enum Rol {
     CLIENT,
