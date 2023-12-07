@@ -16,7 +16,7 @@ import com.vanguardiapropiedades.inmobiliaria.repositorios.ImagenRepositorio;
 public class ImagenServicio {
 
     @Autowired
-    private ImagenRepositorio imagenRepositorio;
+    private ImagenRepositorio ImagenRepositorio;
 
     // CREATE
     public ImagenEntidad crearImagen(MultipartFile archivo) throws MiException {
@@ -26,7 +26,7 @@ public class ImagenServicio {
                 imagen.setMime(archivo.getContentType());
                 imagen.setNombre(UUID.randomUUID().toString());
                 imagen.setContenido(archivo.getBytes());
-                return imagenRepositorio.save(imagen);
+                return ImagenRepositorio.save(imagen);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -41,7 +41,7 @@ public class ImagenServicio {
                 ImagenEntidad imagen = new ImagenEntidad();
 
                 if (idImagen != null) {
-                    Optional<ImagenEntidad> respuesta = imagenRepositorio.findById(idImagen);
+                    Optional<ImagenEntidad> respuesta = ImagenRepositorio.findById(idImagen);
                     if (respuesta.isPresent()) {
                         imagen = respuesta.get();
                     }
@@ -50,7 +50,7 @@ public class ImagenServicio {
                 imagen.setMime(archivo.getContentType());
                 imagen.setNombre(UUID.randomUUID().toString());
                 imagen.setContenido(archivo.getBytes());
-                return imagenRepositorio.save(imagen);
+                return ImagenRepositorio.save(imagen);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
