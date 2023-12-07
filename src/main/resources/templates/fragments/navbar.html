@@ -20,17 +20,17 @@
         <a class="nav-link" href="/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+        <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Propiedades
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
-          <div sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ADMIN')">
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
             <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
           </div>
         </div>
@@ -63,8 +63,9 @@
             Admin
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
+            <a class="dropdown-item" href="/propiedad/listar/admin">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
+            <a class="dropdown-item" href="/cargar/usuarios">Cargar Usuarios </a>
           </div>
         </li>
       </div>

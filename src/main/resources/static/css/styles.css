@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 /* Estilos del fondo */
 body {
   background-color: #e3e2e2
 }
+=======
+/* Estilo del fonde de la página completa */
+body {
+  background-color: #ffffff ;
+} 
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -165,6 +172,7 @@ body {
 .form-oferta {
   padding: 10px;
   border: 1px solid black;
+<<<<<<< HEAD
 }
 
 p.card-text {
@@ -175,4 +183,6 @@ p.card-text {
   bottom:0px;
   position:relative;
   width: 100%; 
+=======
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
 }

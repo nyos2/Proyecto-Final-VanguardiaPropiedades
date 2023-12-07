@@ -7,15 +7,32 @@
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
+        <br>
         <h2>Modificar Propiedad</h2>
+        <hr>
+        <form th:action="@{/propiedad/editar-propiedad/__${propiedad.id}__}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input hidden th:value="${propiedad.id}" name="id" />
+                <label for="tipo">Tipo:</label>
+                <select th:field="*{propiedad.tipo}" class="form-control">
+                    <option value="APARTAMENTO" th:selected="${propiedad.tipo == 'APARTAMENTO'}">Apartamento</option>
+                    <option value="CASA" th:selected="${propiedad.tipo == 'CASA'}">Casa</option>
+                </select>
+            </div>
+
+            <input hidden type="text" th:value="${propiedad.usuario.id}" name="id" class="form-control" />
     
+<<<<<<< HEAD
          <form th:action="@{/propiedades/modificar}" th:object="${property}" method="post">
+=======
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="text" th:field="*{precio}" class="form-control" />
+                <input type="text" th:field="*{propiedad.precio}" class="form-control" />
             </div>
     
             <div class="form-group">
+<<<<<<< HEAD
                 <label for="tipo">Tipo:</label>
                 <select th:field="*{tipo}" class="form-control">
                     <option value="APARTAMENTO">Apartamento</option>
@@ -28,16 +45,54 @@
              <div class="form-group">
                 <label for="imagenes">Imágenes:</label>
                 <input type="file" name="imagen" multiple="multiple" accept="image/*" />
+=======
+                <label for="descripcion">Descripcion:</label>
+                <textarea th:field="*{propiedad.descripcion}" class="form-control"></textarea>
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
             </div>
     
             <div class="form-group">
+                <label for="direccion">Direccion:</label>
+                <input type="text" th:field="*{propiedad.direccion}" class="form-control" />
+            </div>
+
+            <div class="form-group">
                 <label for="estado">Estado:</label>
-                <input type="checkbox" th:field="*{estado}" /> Activo
+                <select th:field="*{propiedad.estado}" class="form-control">
+                    <option value="true" th:selected="${propiedad.estado}">Disponible</option>
+                    <option value="false" th:selected="${!propiedad.estado}">No disponible</option>
+                </select>
+            </div>
+    
+            <!-- Puedes agregar lógica para modificar las imágenes -->
+            <div class="form-group">
+                <label for="imagenes">Imágenes:</label>
+                <input type="file" name="imagen" multiple="multiple" accept="image/*" class="form-control-file" />
+                <small class="form-text text-muted">Selecciona imágenes para la propiedad.</small>
             </div>
     
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+<<<<<<< HEAD
         </form> 
+=======
+        </form>
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
     
+        <div class="container my-1">
+            <!-- Mensajes Condicionales -->
+            <div th:if="${error != null}">
+                <div class="alert text-center alert-danger fade show" role="alert">
+                    <strong>ERROR</strong>
+                    <p th:text="error"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}">
+                <div class="alert text-center alert-success fade show" role="alert">
+                    <strong>EXITO</strong>
+                    <p th:text="exito"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div th:replace="~{fragments/footer :: footer}"></div>
