@@ -40,9 +40,9 @@
                         </div>
                      <!-- Iterar sobre todas las imágenes -->
                      <!-- ESTE FUNCIONA -->
-                    <!-- <div th:each="imagen : ${page.imagenes}">
-                        <img th:src="@{/imagen/__${imagen.id}__}" alt="" />
-                    </div> -->
+                    <div th:each="imagen : ${page.imagenes}">
+                        <img class="logo" th:src="@{/imagen/__${imagen.id}__}" alt="" />
+                    </div>
 
                         <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
