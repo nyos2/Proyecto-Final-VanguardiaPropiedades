@@ -10,16 +10,22 @@
         <h2>Listado de Ofertas</h2>
         <hr>
 
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light custom-navbar">
             <form class="form-inline" th:action="@{/oferta/ofertas}" th:method="get">
                 <label class="mr-2">Ordenar por:</label>
                 <select class="form-control mr-2" name="orderBy">
                     <option value="usuario.nombre">Usuario</option>
                     <option value="propiedad.estado">Estado</option>
-                    <option value="valorOferta">Valor Maximo</option>
-                    <option value="valorOferta">Valor Minimo</option>
                 </select>
-                <button class="btn btn-outline-secondary" type="submit">Ordenar</button>
+                <div class="form-group mr-2">
+                    <label for="fechaInicio">Fecha Inicio:</label>
+                    <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" />
+                </div>
+                <div class="form-group mr-2">
+                    <label for="fechaFin">Fecha Fin:</label>
+                    <input type="date" class="form-control" id="fechaFin" name="fechaFin" />
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
             </form>
         </nav>
 
