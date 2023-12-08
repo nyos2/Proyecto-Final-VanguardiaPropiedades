@@ -1,20 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<div th:replace="~{fragments/head :: head}"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/sobreNos.css}" />
+  <title>SobreNosotros</title>
+
+  <!-- Incluye el fragmento de la cabeza -->
+  <div th:replace="~{fragments/head :: head}"></div>
+
+</head>
 
 <body>
+ 
+  <!-- Incluye el fragmento de la barra de navegación -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <!-- Incluye el fragmento de la barra de navegación -->
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
+  <div class="page-heading about-heading header-text">
     <div class="container">
-        <section>
-            <h2>Nuestra Historia</h2>
-            <p>Somos una empresa comprometida con la excelencia desde [año de inicio]. Desde nuestros humildes
-                comienzos,
-                hemos crecido y evolucionado para convertirnos en [breve descripción de la empresa].</p>
-        </section>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-content">
+                    <h2>Sobre Nosotros</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img th:src="@{/images/sobreNos.jpg}" alt="Sobre Nosotros">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="best-features about-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Nuestra Empresa</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-image">
+            <img th:src="@{/images/inmobi.jpg}" alt="Inmobiliaria">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="left-content">
+            <h4>Historia</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed voluptate nihil eum consectetur similique? Consectetur, quod, incidunt, harum nisi dolores delectus reprehenderit voluptatem perferendis dicta dolorem non blanditiis ex fugiat. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti eum ratione ex ea praesentium quibusdam? Aut, in eum facere corrupti necessitatibus perspiciatis quis.</p>
+            <br>
+            <ul class="social-icons">
+                <a href="https://www.facebook.com/EggCooperation" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/egglive_" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Egg-Live" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!-- Start Section -->
+      <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Nuestros Servicios</h1>
+                <p>Puede solicitar nuestros tres servicios disponibles</p>
+            </div>
+        </div>
+        <div class="row">
+    
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/comprar.png" alt="Comprar">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/vender.png" alt="Vender">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/alquilar.png" alt="Alquilar">
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+    <!-- End Section -->
+
+<!-- Agrega las siguientes líneas al final del cuerpo del documento HTML -->
+
+<!-- Start Section -->
+<section class="container py-5">
+    <div class="row text-center pt-5 pb-3">
+        <div class="col-lg-6 m-auto">
+            <h1 class="h1">Nuestro Equipo</h1>
+            <p>Conoce a nuestro increíble equipo a través de estas imágenes</p>
+        </div>
+    </div>
+    <div class="row">
+
+        <!-- Utiliza Thymeleaf para generar las cards en un bucle -->
+        <div th:each="i : ${#numbers.sequence(1, 10)}" class="col-md-6 col-lg-3 pb-5 mx-auto">
+            <div class="card">
+                <img th:src="@{/images/team__${i}__.png}" class="card-img-top" alt="Team Member" />
+                <div class="card-body">
+                    <p class="card-text" th:text="'Descripción del miembro del equipo ' + ${i}">Descripción del miembro del equipo</p>
+                    <!-- Nueva oración agregada debajo de la primera -->
+                    <p class="card-text">Otra oración sobre el miembro del equipo</p>
+                    <ul class="social-icons">
+                        <a th:href="'https://www.facebook.com/ejemplo' + ${i}" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a th:href="'https://www.instagram.com/ejemplo' + ${i}" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a th:href="'https://www.twitter.com/ejemplo' + ${i}" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Section -->
+
 
 
     <!-- Incluye el fragmento del pie de página -->
