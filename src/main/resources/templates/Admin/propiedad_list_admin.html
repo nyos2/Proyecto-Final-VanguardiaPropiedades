@@ -3,7 +3,7 @@
 <div th:replace="~{fragments/head :: head}"></div>
 
 <body>
-    
+
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
     <div class="container">
@@ -11,6 +11,25 @@
             <br>
             <h2>Lista de Propiedades ADMIN</h2>
             <hr>
+
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline" th:action="@{/propiedad/listar}" th:method="get">
+                    <label class="mr-2">Ordenar por:</label>
+                    <select class="form-control mr-2" name="orderBy">
+                        <option value="">Seleccionar</option>
+                        <option th:each="propiedad : ${page.content}" th:value="${'tipo'}" th:text="${propiedad.tipo}">
+                        </option>
+                    </select>
+            
+                    <!-- Campo de búsqueda por nombre -->
+                    <input type="text" class="form-control mr-2" name="nombre" placeholder="Por nombre Propietario">
+            
+                    <!-- Botón de búsqueda -->
+                    <button class="btn btn-outline-secondary" type="submit">Ordenar</button>
+                </form>
+            </nav>
+
+
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>

@@ -33,6 +33,9 @@
           <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
             <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
           </div>
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
+            <a class="dropdown-item" href="/oferta/ofertas">Ofertas de Propiedades</a>
+          </div>
         </div>
       </li>
 
