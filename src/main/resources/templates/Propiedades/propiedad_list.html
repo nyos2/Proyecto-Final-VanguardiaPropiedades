@@ -31,8 +31,8 @@
                 <label class="mr-2">Ordenar por:</label>
                 <select class="form-control mr-2" name="orderBy">
                     <option value="">Seleccionar</option>
-                    <option th:each="propiedad : ${page.content}" th:value="${'tipo'}"
-                        th:text="${propiedad.tipo}"></option>
+                    <option th:each="propiedad : ${page.content}" th:value="${'tipo'}" th:text="${propiedad.tipo}">
+                    </option>
                 </select>
 
                 <!-- Barra de rango para el precio -->
@@ -47,9 +47,15 @@
         </nav>
 
         <div class="row">
+
             <div th:each="page, iterStat : ${page.content}" class="col-md-5">
+
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
+
+                        <h5 class="card-title" th:text="${page.tipo}"></h5>
+                        <hr>
+
                         <!-- Mostrar imágenes existentes -->
                         <div class="form-group">
                             <div th:each="imagen : ${propiedad?.imagenes}">
@@ -57,20 +63,18 @@
                                     alt="Imagen de propiedad" class="img-thumbnail" />
                             </div>
                             <small class="form-text text-muted">Imágenes actuales de la propiedad.</small>
-                        </div>
-                        <!-- Carrusel -->
-                        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <!-- Itera sobre las imágenes -->
-                                <div th:each="imagen, iterStat : ${page.imagenes}" class="carousel-item"
-                                    th:classappend="${iterStat.first} ? 'active'">
-                                    <img class="d-block w-100 logopropiedad" th:src="@{/imagen/__${imagen.id}__}"
-                                        alt="Slide">
+                            <!-- Carrusel -->
+                            <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!-- Itera sobre las imágenes -->
+                                    <div th:each="imagen, iterStat : ${page.imagenes}" class="carousel-item"
+                                        th:classappend="${iterStat.first} ? 'active'">
+                                        <img class="d-block w-100 logopropiedad" th:src="@{/imagen/__${imagen.id}__}"
+                                            alt="Slide">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
                         <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
                         <p class="card-text" th:text="'Descripcion: ' + ${page.descripcion}"></p>
