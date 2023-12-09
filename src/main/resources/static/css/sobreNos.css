@@ -1,5 +1,4 @@
-/* Estilos "Sobre Nosotros" */
-
+/* --- BLOQUE "Sobre Nosotros" --- */
 /* Estilo para el texto */
 @font-face {
   font-family: 'Aero Matics Stencil Regular';
@@ -9,61 +8,65 @@
 }
 
 .page-heading {
-  color: #cdcdcd; /* Color del texto */
-  text-align: center; /* Alinea el texto al centro */
-  padding: 100px 0; /* Relleno superior e inferior */
+  color: #cdcdcd; 
+  text-align: center; 
+  padding: 100px 0; 
 
 /* Estilo para la imagen */
   img {
-     width: 100%; /* Hace que la imagen ocupe el 100% del ancho del contenedor padre */
-     max-width: 100vw; /* Limita el ancho de la imagen al ancho de la ventana del navegador si es más pequeño */
-     height: auto; /* Mantiene la proporción original de la imagen */
-     display: block; /* Elimina cualquier espacio adicional alrededor de la imagen */
-     margin: 10px auto 0; /* Ajusta la posición vertical de la imagen */
-     border: 5px solid #11111F; /* Borde de color */
-     border-radius: 15px; /* Bordes redondeados */
+     width: 100%; 
+     max-width: 100vw; 
+     height: auto; 
+     display: block; 
+     margin: 10px auto 0; 
+     border: 5px solid #11111F; 
+     border-radius: 15px; 
   }
 
   .text-content {
-    color: #cdcdcd; /* Color del texto */
-    text-align: center; /* Alinea el texto al centro */
-    padding: 20px 0; /* Relleno superior e inferior */
-    background-color: #11111F; /* Fondo de color para el encabezado */
-    border-radius: 5px; /* Bordes redondeados */
-    font-family: 'Aero Matics Stencil Regular', sans-serif; /* Aplica la fuente personalizada */
+    color: #cdcdcd; 
+    text-align: center; 
+    padding: 20px 0; 
+    background-color: #11111F; 
+    border-radius: 5px; 
+    font-family: 'Aero Matics Stencil Regular', sans-serif; 
   }
 }
 
-/* Estilos "Nuestra Empresa" */
-
+/* --- BLOQUE "Nuestra Empresa" --- */
 .best-features {
-  padding-top: 20px; /* Ajusta el relleno superior */
-  margin-bottom: 50px; /* Agrega un margen inferior para separar de otras secciones */
+  padding-top: 20px; 
+  margin-bottom: 50px; 
 }
 
 .best-features h2 {
-  color: #cdcdcd; /* Color del texto */
-  text-align: center; /* Alinea el texto al centro */
-  padding: 20px 0; /* Relleno superior e inferior */
-  background-color: #11111F; /* Fondo de color para el encabezado */
-  border-radius: 5px; /* Bordes redondeados */
-  font-family: 'Aero Matics Stencil Regular', sans-serif; /* Aplica la fuente personalizada */
+  color: #cdcdcd; 
+  text-align: center; 
+  padding: 20px 0; 
+  background-color: #11111F; 
+  border-radius: 5px; 
+  font-family: 'Aero Matics Stencil Regular', sans-serif; 
 }
 
 .right-image img {
   width: 100%;
   border: 5px solid #11111F;
   border-radius: 15px;
+  margin-top: 70px;
 }
 
 .left-content {
   padding: 0 20px;
 }
 
-/* Estilos para los íconos de redes sociales */
+.centered-text {
+  text-align: justify;
+}
+
+/* Estilos redes sociales */
 .social-icons {
   list-style: none;
-  padding: 0;
+  padding: 20px 0 0; 
   text-align: center;
 }
 
@@ -71,8 +74,8 @@
   display: inline-block;
   margin-right: 10px;
   background-color: #11111F;
-  padding: 10px; /* Espaciado interno alrededor del icono */
-  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; 
+  border-radius: 5px;
 }
 
 .social-icons i {
@@ -80,16 +83,80 @@
   text-decoration: none;
 }
 
-/* Estilos "Nuestra Empresa" */
+/* --- BLOQUE "Nuestros Servicios" --- */
+.our-services {
+  margin-top: 20px;
+}
+
+.our-services h1 {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+  width: 100%; 
+}
+
+.our-services p {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.services-icon-wap {
+  border: 5px solid #11111F;
+  border-radius: 15px; 
+  overflow: hidden; 
+}
+
 .image-container {
   text-align: center;
 }
 
 .image-container img {
-  max-width: 90%; /* Ajusta el porcentaje según tu preferencia */
-  height: auto; /* Mantiene la proporción original de la imagen */
-  display: block; /* Elimina cualquier espacio adicional alrededor de la imagen */
-  margin: 0 auto; /* Centra la imagen horizontalmente dentro del contenedor */
+  max-width: 90%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
 }
 
-/* -------------------------------- */
+/* --- BLOQUE "Nuestro Equipo" --- */
+.container.py-5 {
+  padding-top: 20px;
+  margin-bottom: 0px;
+}
+
+.container.py-5 h1 {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.container.py-5 p {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.card {
+  border: 8px solid #1e1055 !important;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
