@@ -67,12 +67,14 @@ public class OfertaServicio {
     public String aceptarOferta(String id) {
         OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
         oferta.setEstado(Oferta.ACEPTADA);
+        ofertaRepositorio.save(oferta);
         return null;
     }
 
     public String rechazarOferta(String id) {
         OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
         oferta.setEstado(Oferta.RECHAZADA);
+        ofertaRepositorio.save(oferta);
         return null;
     }
 
