@@ -64,4 +64,18 @@ public class OfertaServicio {
         return ofertaRepositorio.findAll();
     }
 
+    public String aceptarOferta(String id) {
+        OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
+        oferta.setEstado(Oferta.ACEPTADA);
+        return null;
+    }
+
+    public String rechazarOferta(String id) {
+        OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
+        oferta.setEstado(Oferta.RECHAZADA);
+        return null;
+    }
+
+
+
 }
