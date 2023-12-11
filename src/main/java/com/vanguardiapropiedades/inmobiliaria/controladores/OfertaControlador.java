@@ -30,6 +30,8 @@ public class OfertaControlador {
         return "Propiedades/propiedad_ofertas.html";
     }
 
+    // TODO Verificar que para crear oferta no sea el mismo usuario.
+
     @PostMapping("/crear")
     public String crearOferta(Integer valorOferta, String propiedadId, String usuarioId,
             RedirectAttributes redirectAttributes)

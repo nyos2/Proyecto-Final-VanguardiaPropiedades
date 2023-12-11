@@ -39,6 +39,7 @@
             </div>
             <!-- Mensajes Condicionales -->
         </div>
+
         <div class="row mb-12">
             <div sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="container">
@@ -49,6 +50,7 @@
                                 <th>DNI</th>
                                 <th>Email</th>
                                 <th>Rol</th>
+                                <th>Solicitud</th>
                                 <th>Imagen</th>
                                 <th>Acciones</th>
                             </tr>
@@ -58,7 +60,16 @@
                                 <td th:text="${usuario.nombre}"></td>
                                 <td th:text="${usuario.dni}"></td>
                                 <td th:text="${usuario.email}"></td>
-                                <td th:text="${usuario.rol}"></td>
+                                <td th:text="${usuario.rol}">
+
+                                </td>
+                                <!-- TODO Solicitud de cambio de ROL -->
+                                <td> 
+                                    Sin Solicitud
+                                </td>
+                                <!-- <td th:class="${solicitud ? 'solicitado' : 'sin-solicitud'}">
+                                    <span th:text="${solicitud ? 'Solicitado' : 'Sin solicitud'}"></span>
+                                </td> -->
                                 <td>
                                     <img class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}"
                                         alt="Sin Imagen del Usuario" />
