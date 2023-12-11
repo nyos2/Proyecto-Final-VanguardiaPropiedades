@@ -27,4 +27,6 @@ public class AdminController {
         model.addAttribute("totalPages", page.getTotalPages());
         return "Admin/propiedad_list_admin.html";
     }
+
+    // TODO controller para lista usuarios admin
 }
