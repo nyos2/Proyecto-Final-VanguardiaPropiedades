@@ -9,6 +9,7 @@
     <main class="container">
         <div class="text-center my-5">
             <h1>Inmobiliaria Digital</h1>
+            <img src="./">
             <h2 th:text="'Error' + ${codigo}+' Sorry T.T '"></h2>
             <h4 th:text="${mensaje}"></h4>
         </div>
@@ -16,9 +17,5 @@
 
     <div th:replace="~{fragments/footer :: footer}"></div>
 
-
-
-    
-    
 </body>
 </html>
