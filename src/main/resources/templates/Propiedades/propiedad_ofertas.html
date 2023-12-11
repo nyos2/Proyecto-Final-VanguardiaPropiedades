@@ -51,13 +51,11 @@
                     <td>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <!-- Botones para aceptar o denegar la oferta -->
-                                <button class="btn btn-sm btn-success">
-                                    Aceptar
-                                </button>
-                                <button class="btn btn-sm btn-danger">
-                                    Denegar
-                                </button>
+                                <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
+                                    class="btn btn-sm btn-outline-secondary">Aceptar</a>
+                                <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
+                                    class="btn btn-sm btn-outline-secondary"
+                                    onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
                             </div>
                         </div>
                     </td>
@@ -69,7 +67,11 @@
 
     <div th:replace="~{fragments/footer :: footer}"></div>
     <script>
-
+        // Función para cambiar el tamaño de la página
+        function changePageSize(size) {
+            // Redirige a la primera página cuando cambias el tamaño
+            window.location.href = "/usuario/listar?page=0&size=" + size;
+        }
     </script>
 
 
