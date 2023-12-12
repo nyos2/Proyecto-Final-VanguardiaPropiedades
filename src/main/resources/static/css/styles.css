@@ -1,7 +1,7 @@
 /* Estilo del fonde de la página completa */
 body {
-  background-color: #ffffff ;
-} 
+  background-color: #ffffff;
+}
 
 /* Estilos del carrusel */
 .carousel-caption {
@@ -34,7 +34,8 @@ body {
 
 /* Estilos de la sección principal */
 .principal {
-  background-image: linear-gradient(#00000066, #00000066), url(../images/ba1.jpg) !important;
+  background-image: linear-gradient(#00000066, #00000066),
+    url(../images/ba1.jpg) !important;
   height: 80vh !important;
   background-size: cover;
   position: relative;
@@ -69,9 +70,9 @@ body {
 }
 
 .custom-btn {
-  background-color: #11111F;
+  background-color: #11111f;
   color: #ffffff;
-  border: 2px solid #97999B;
+  border: 2px solid #97999b;
   border-radius: 5px;
   margin-right: 10px;
   padding: 8px 16px;
@@ -82,13 +83,13 @@ body {
 
 .custom-btn:hover {
   background-color: #555;
-  color: #D9D9D9;
-  border-color: #D9D9D9;
+  color: #d9d9d9;
+  border-color: #d9d9d9;
 }
 
 /* Estilos para la card personalizada */
 .custom-card {
-  background-color: #11111F;
+  background-color: #11111f;
   color: white;
 }
 
@@ -134,6 +135,29 @@ body {
   border-radius: 30px;
 }
 
+.logopropiedad {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.logopropiedad:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  filter: brightness(1.2); 
+}
+
+.logopropiedad:focus {
+  outline: none;
+}
+
 /* Estilos para los botones en la tarjeta */
 .btn-group {
   margin-top: 15px;
@@ -158,4 +182,43 @@ body {
 .form-oferta {
   padding: 10px;
   border: 1px solid black;
+}
+
+
+:root {
+  --color-green: #00a878;
+  --color-red: #fe5e41;
+  --color-button: #fdffff;
+  --color-black: #000;
+}
+.switch-button {
+  display: inline-block;
+}
+.switch-button .switch-button__checkbox {
+  display: none;
+}
+.switch-button .switch-button__label {
+  background-color: var(--color-red);
+  width: 5rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: inline-block;
+  position: relative;
+}
+.switch-button .switch-button__label:before {
+  transition: .2s;
+  display: block;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-button);
+  content: '';
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px 1px var(--color-black);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label {
+  background-color: var(--color-green);
+}
+.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+  transform: translateX(2rem);
 }
