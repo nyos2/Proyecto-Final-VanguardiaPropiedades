@@ -18,7 +18,7 @@ public class CitaControlador {
 
     @GetMapping("/registrar")
     public String registrarCita() {
-        return "cita_form.html";
+        return "cita1_form.html";
     }
 
     @PostMapping("/registro") 
@@ -37,9 +37,9 @@ public class CitaControlador {
                     modelo.put("nota", nota);
 
                     modelo.put("error", "la cita no se pudo crear !!");
-                    return "cita_form.html";
+                    return "cita1_form.html";
         }
-                return "cita_form.html"; // ver que devolver o /redirect:/nose"??
+                return "cita1_form.html"; // ver que devolver o /redirect:/nose"??
     }
     
 }
