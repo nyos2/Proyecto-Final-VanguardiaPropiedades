@@ -39,15 +39,12 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio imagenServicio;
 
-    @Autowired
-    private PropiedadServicio propiedadServicio;
-
     // CREATE
     @Transactional
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
-        // validar(nombre, email, password, password2);
+        validar(nombre,dni, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -72,7 +69,8 @@ public class UsuarioServicio implements UserDetailsService {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
-            // validar(nombre, dni, email, password, password2);
+            // ? Validar datos
+            validar(nombre, dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
@@ -93,6 +91,35 @@ public class UsuarioServicio implements UserDetailsService {
             usuarioRepositorio.save(user);
         }
     }
+        // UPDATE
+    public void editarUsuarioAdmin(String id, String dni, String nombre, String email, String password, String password2,
+            MultipartFile foto, String rol)
+            throws MiException {
+        Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            UsuarioEntidad user = respuesta.get();
+            // ? Validar datos
+            validar(nombre, dni, email, password, password2);
+            // ? Verificar si el usuario tiene foto
+            if (user.getImagen() == null) {
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.crearImagen(foto);
+                    user.setImagen(img);
+                }
+            } else {
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.editarImagen(foto, user.getImagen().getId());
+                    user.setImagen(img);
+                }
+            }
+            user.setNombre(nombre);
+            user.setEmail(email);
+            user.setDni(dni);
+            user.setPassword(password);
+            user.setRol(Rol.valueOf(rol));
+            usuarioRepositorio.save(user);
+        }
+    }
 
     // DELETE
     @Transactional
@@ -103,7 +130,6 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-    // TODO: HACER FUNCIONAR
     private void validar(String nombre, String dni, String email, String password, String password2)
             throws MiException {
 

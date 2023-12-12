@@ -41,8 +41,6 @@ public class AdminController {
         return "Admin/propiedad_list_admin.html";
     }
 
-    // TODO controller para lista usuarios admin
-
     // UPDATE
     @GetMapping("/editar-perfil/{id}")
     public String editarPerfil(@PathVariable String id, ModelMap modelo) {
@@ -59,7 +57,7 @@ public class AdminController {
             @RequestParam String rol, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto, rol);
+            usuarioServicio.editarUsuarioAdmin(id, dni, nombre, email, password, password2, foto, rol);
             Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");

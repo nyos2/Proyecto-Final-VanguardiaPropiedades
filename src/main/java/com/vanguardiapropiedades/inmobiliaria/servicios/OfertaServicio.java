@@ -68,6 +68,9 @@ public class OfertaServicio {
         OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
         oferta.setEstado(Oferta.ACEPTADA);
         ofertaRepositorio.save(oferta);
+        PropiedadEntidad propiedad = oferta.getPropiedad();
+        propiedad.setEstado(false);
+        propiedadRepositorio.save(propiedad);
         return null;
     }
 
