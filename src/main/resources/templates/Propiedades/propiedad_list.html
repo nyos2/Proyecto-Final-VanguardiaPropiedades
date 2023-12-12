@@ -9,42 +9,72 @@
         <br>
         <h2>Lista de Propiedades</h2>
         <hr>
-                <div class="container my-1">
-                    <!-- Mensajes Condicionales -->
-                    <div th:if="${error != null}">
-                        <div class="alert text-center alert-danger fade show" role="alert">
-                            <strong>ERROR</strong>
-                            <p th:text="${error}"></p>
-                        </div>
-                    </div>
-                    <div th:if="${exito != null}">
-                        <div class="alert text-center alert-success fade show" role="alert">
-                            <strong>EXITO</strong>
-                            <p th:text="${exito}"></p>
-                        </div>
-                    </div>
-                    <!-- Mensajes Condicionales -->
+        <div class="container my-1">
+            <!-- Mensajes Condicionales -->
+            <div th:if="${error != null}">
+                <div class="alert text-center alert-danger fade show" role="alert">
+                    <strong>ERROR</strong>
+                    <p th:text="${error}"></p>
                 </div>
+            </div>
+            <div th:if="${exito != null}">
+                <div class="alert text-center alert-success fade show" role="alert">
+                    <strong>EXITO</strong>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+            <!-- Mensajes Condicionales -->
+        </div>
+
+        <nav class="navbar navbar-light bg-light custom-navbar">
+            <form class="form-inline" th:action="@{/propiedad/listar}" th:method="get">
+                <label class="mr-2">Ordenar por:</label>
+                <select class="form-control mr-2" name="orderBy">
+                    <option value="">Seleccionar</option>
+                    <option th:each="propiedad : ${page.content}" th:value="${'tipo'}" th:text="${propiedad.tipo}">
+                    </option>
+                </select>
+
+                <!-- Barra de rango para el precio -->
+                <div class="form-group">
+                    <label for="priceRange">Precio:</label>
+                    <input type="range" class="form-control-range" id="priceRange" name="priceRange" min="0"
+                        max="1000000" step="10000">
+                    <small class="form-text text-muted">Precio actual: <span id="priceValue">0</span></small>
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">Ordenar</button>
+            </form>
+        </nav>
+
         <div class="row">
+
             <div th:each="page, iterStat : ${page.content}" class="col-md-5">
+
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
+
+                        <h5 class="card-title" th:text="${page.tipo}"></h5>
+                        <hr>
+
                         <!-- Mostrar imágenes existentes -->
                         <div class="form-group">
-                            <label for="imagenes">Imágenes:</label>
                             <div th:each="imagen : ${propiedad?.imagenes}">
                                 <img th:src="@{'http://localhost:8080/imagen/' + ${imagen.id}}"
                                     alt="Imagen de propiedad" class="img-thumbnail" />
                             </div>
                             <small class="form-text text-muted">Imágenes actuales de la propiedad.</small>
+                            <!-- Carrusel -->
+                            <div id="carouselExample" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <!-- Itera sobre las imágenes -->
+                                    <div th:each="imagen, iterStat : ${page.imagenes}" class="carousel-item"
+                                        th:classappend="${iterStat.first} ? 'active'">
+                                        <img class="d-block w-100 logopropiedad" th:src="@{/imagen/__${imagen.id}__}"
+                                            alt="Slide">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     <!-- Iterar sobre todas las imágenes -->
-                     <!-- ESTE FUNCIONA -->
-                    <!-- <div th:each="imagen : ${page.imagenes}">
-                        <img th:src="@{/imagen/__${imagen.id}__}" alt="" />
-                    </div> -->
-
-                        <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
                         <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
                         <p class="card-text" th:text="'Descripcion: ' + ${page.descripcion}"></p>
@@ -61,7 +91,8 @@
                     </div>
                     <!-- Formulario para ofertar -->
                     <!-- TODO No mostrar al dueño -->
-                    <form class="form-oferta" action="/oferta/crear" method="post" sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
+                    <form class="form-oferta" action="/oferta/crear" method="post"
+                        sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
                         <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}" />
                         <input type="hidden" name="propiedadId" th:value="${page.id}" />
                         <label for="monto">Tu oferta:</label>
@@ -70,58 +101,61 @@
                         <button type="submit" class="btn btn-primary">Ofertar</button>
                     </form>
 
+                </div>
+
             </div>
-
         </div>
-    </div>
-    <div class="container">
-        <!-- Selector de cantidad de registros a mostrar -->
-        <label for="pageSize">Mostrar:</label>
-        <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
-            <option value="0" th:selected="${pageSize == 0}">-</option>
-            <option value="5" th:selected="${pageSize == 5}">5</option>
-            <option value="10" th:selected="${pageSize == 10}">10</option>
-            <option value="20" th:selected="${pageSize == 20}">20</option>
-        </select>
+        <div class="container">
+            <!-- Selector de cantidad de registros a mostrar -->
+            <label for="pageSize">Mostrar:</label>
+            <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
+                <option value="0" th:selected="${pageSize == 0}">-</option>
+                <option value="5" th:selected="${pageSize == 5}">5</option>
+                <option value="10" th:selected="${pageSize == 10}">10</option>
+                <option value="20" th:selected="${pageSize == 20}">20</option>
+            </select>
 
-        <!-- Paginación -->
-        <nav>
-            <!-- justify-content-center/end/start -->
-            <ul class="pagination justify-content-center">
-                <li class="page-item" th:if="${currentPage > 0}">
-                    <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage - 1}, size=${page.Size})}"
-                        aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
+            <!-- Paginación -->
+            <nav>
+                <!-- justify-content-center/end/start -->
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:if="${currentPage > 0}">
+                        <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage - 1}, size=${page.Size})}"
+                            aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
 
-                <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
-                    th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
-                    <a class="page-link" th:href="@{/propiedad/listar(page=${i}, size=${page.Size})}"
-                        th:text="${i + 1}"></a>
-                </li>
+                    <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
+                        th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                        <a class="page-link" th:href="@{/propiedad/listar(page=${i}, size=${page.Size})}"
+                            th:text="${i + 1}"></a>
+                    </li>
 
-                <li class="page-item" th:if="${currentPage < totalPages - 1}">
-                    <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage + 1}, size=${page.Size})}"
-                        aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="text-center">
-        <p>Total de páginas <span th:text="${page.totalPages}"></span>, total de resultados <span
-                th:text="${page.totalElements}"></span></p>
-    </div>
+                    <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                        <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage + 1}, size=${page.Size})}"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="text-center">
+            <p>Total de páginas <span th:text="${page.totalPages}"></span>, total de resultados <span
+                    th:text="${page.totalElements}"></span></p>
+        </div>
 
-    <div th:replace="~{fragments/footer :: footer}"></div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
 
-    <script>
-        function changePageSize(size) {
-            window.location.href = "/propiedad/listar?page=0&size=" + size;
-        }
-    </script>
+        <script>
+            function changePageSize(size) {
+                window.location.href = "/propiedad/listar?page=0&size=" + size;
+            }
+            document.getElementById("priceRange").addEventListener("input", function () {
+                document.getElementById("priceValue").innerText = this.value;
+            });
+        </script>
 
 
 

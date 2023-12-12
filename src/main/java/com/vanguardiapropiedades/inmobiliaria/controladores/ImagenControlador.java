@@ -56,7 +56,6 @@ public class ImagenControlador {
             return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
 
         } catch (Exception e) {
-            // TODO: handle exception
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
