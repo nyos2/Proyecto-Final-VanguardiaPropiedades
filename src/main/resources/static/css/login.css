@@ -1,38 +1,11 @@
-/* body {
-    background-image: url('/images/fondo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
-
-@font-face {
-    font-family: 'Aero Matics Stencil Regular';
-    src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
-  }
-
-h2 {
-    font-family: 'Aero Matics Stencil Regular', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-h5.card-title {
-    color: #5b5a5a; 
-}
-
-/* Cambiar color de la letra para div.card-body */
-div.card-body {
-    color: #333; /* Cambia '#333' al color oscuro que desees */
-}
-
 .col-md-6{
-    background-color: #11111F;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    /* border-radius: 15px; */
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
 }
 
 .col-md-8{ /*formulario registro*/
-    background-color: #11111F;
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 550px;
     border-radius: 15px;
@@ -42,42 +15,14 @@ div.card-body {
     height: 90px; 
 }
 .row{/*lista propiedades*/
-    background-color: #11111F;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     width: 100%;
 }
-
 .col-md-4{/*Form propiedades */
     background-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 450px;
     border-radius: 15px;
-}
-
-.container {
-    background-color: #11111F;
-    padding: 20px; 
-    border-radius: 10px; 
-    color: white;
-}
-
-.card.mb-4.box-shadow {
-    background-color: white;
-}
-
-.card.mb-4.box-shadow .card-body {
-    color: black;
-}
-
-.btn.btn-primary.mt-3.botones {
-    background-color: #665e5e;
-    border-color: #ffffff;
-    color: #ffffff;
-}
-
-button.btn.btn-primary {
-    background-color: #424141;
-    border-color: #ffffff;
-    color: #ffffff;
 }

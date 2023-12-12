@@ -125,11 +125,11 @@ body {
   src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
 }
 
-.card-title {
+.card-title2 {
   font-family: 'Aero Matics Stencil Regular', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
-  color: #ffffff
+  color: white
 }
 
 .card-text {
