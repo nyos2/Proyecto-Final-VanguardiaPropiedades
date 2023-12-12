@@ -1,3 +1,4 @@
+/* Estilo del fonde de la página completa */
 body {
   background-image: url('../images/fondo.jpg');
     background-size: 100% 100%;
@@ -107,6 +108,8 @@ body {
   margin-bottom: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .card:hover {
@@ -117,9 +120,16 @@ body {
   padding: 10px;
 }
 
-.card-title {
+@font-face {
+  font-family: 'Aero Matics Stencil Regular';
+  src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
+}
+
+.card-title2 {
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
+  color: white
 }
 
 .card-text {
@@ -154,10 +164,11 @@ body {
   cursor: pointer;
 }
 
-/* Estilo para la página activa */
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
+/* Formulario de OFERTA */
+
+.form-oferta {
+  padding: 10px;
+  border: 1px solid black;
 }
 
  footer{

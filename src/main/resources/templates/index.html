@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
   <!-- Incluye el fragmento de la cabeza -->
   <div th:replace="~{fragments/head :: head}"></div>
 
-  <body>
-    
-    <!-- Incluye el fragmento de la barra de navegación -->
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
+</head>
 
-    <main>
+<body>
+ 
+  <!-- Incluye el fragmento de la barra de navegación -->
+  <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-      <!-- Carousel Start -->
-      <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="w-100" th:src="@{/images/banner1.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
-              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div class="p-3" style="max-width: 900px;">
-                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
-                  <h1 class="display-6 text-white mb-md-4 text-highlight">Encuentre nuestra oficina en la <br>zona principal de negocios en Honolulu.</h1>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="w-100" th:src="@{/images/banner2.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
-              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div class="p-3" style="max-width: 900px;">
-                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
-                  <h1 class="display-6 text-white mb-md-4 text-highlight">Conozca a nuestro equipo <br>visitando nuestras cómodas instalaciones.</h1>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="w-100" th:src="@{/images/banner3.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
-              <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div class="p-3" style="max-width: 900px;">
-                  <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
-                  <h1 class="display-6 text-white mb-md-4 text-highlight">Organice una reunión con nuestros expertos <br>para solicitar el servicio que necesite.</h1>
-                </div>
+  <main>
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0">
+      <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="w-100" th:src="@{/images/banner1.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+              <div class="p-3" style="max-width: 900px;">
+                <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                <h1 class="display-6 text-white mb-md-4 text-highlight">Encuentre nuestra oficina en la <br>zona principal de negocios en Honolulu.</h1>
               </div>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
-            <div class="btn btn-secondary" style="width: 45px; height: 45px;">
-              <span class="carousel-control-prev-icon mb-n2"></span>
+          <div class="carousel-item">
+            <img class="w-100" th:src="@{/images/banner2.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+              <div class="p-3" style="max-width: 900px;">
+                <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                <h1 class="display-6 text-white mb-md-4 text-highlight">Conozca a nuestro equipo <br>visitando nuestras cómodas instalaciones.</h1>
+              </div>
             </div>
-          </a>
-          <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
-            <div class="btn btn-secondary" style="width: 45px; height: 45px;">
-              <span class="carousel-control-next-icon mb-n2"></span>
+          </div>
+          <div class="carousel-item">
+            <img class="w-100" th:src="@{/images/banner3.jpg}" alt="Image" style="max-height: 600px; object-fit: cover;">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+              <div class="p-3" style="max-width: 900px;">
+                <h4 class="text-white text-uppercase mb-md-3 text-highlight">BIENVENIDOS</h4>
+                <h1 class="display-6 text-white mb-md-4 text-highlight">Organice una reunión con nuestros expertos <br>para solicitar el servicio que necesite.</h1>
+              </div>
             </div>
-          </a>
+          </div>
         </div>
+        <a class="carousel-control-prev" href="#header-carousel" role="button" data-slide="prev">
+          <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+            <span class="carousel-control-prev-icon mb-n2"></span>
+          </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" role="button" data-slide="next">
+          <div class="btn btn-secondary" style="width: 45px; height: 45px;">
+            <span class="carousel-control-next-icon mb-n2"></span>
+          </div>
+        </a>
       </div>
-      <!-- Carousel End -->
+    </div>
+    <!-- Carousel End -->
 
-      <br>
+    <br>
 
       <!-- Contenido de la sección principal -->
       <div class="principal" id="sobre-nosotros">
@@ -72,7 +79,7 @@
             Trabajamos duro todos los días y pronto comenzamos a tener éxito. <br>
             Hoy somos reconocidos por ayudar a muchas personas a encontrar la casa de sus sueños.
             <br><br>
-            <a th:href="@{/login}">
+            <a th:href="@{/sobrenosotros}">
               <button class="btn custom-btn">Sobre Nosotros</button>
             </a>
           </p>
@@ -89,7 +96,7 @@
           </div>
           <div class="col-md-6 d-flex align-items-center justify-content-center">
             <div class="card-body text-center">
-              <h5 class="card-title">PROPIEDADES VANGUARDISTAS</h5>
+              <h5 class="card-title2">PROPIEDADES VANGUARDISTAS</h5>
               <p class="card-text">
                 Localización: Calle Falsa 123, 18th Floor
                 Honolulu, HI. 96815 <br>

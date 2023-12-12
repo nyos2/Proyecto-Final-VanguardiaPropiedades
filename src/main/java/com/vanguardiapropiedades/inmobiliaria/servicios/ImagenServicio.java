@@ -33,7 +33,7 @@ public class ImagenServicio {
         }
         return null;
     }
-    
+
     // UPDATE
     public ImagenEntidad editarImagen(MultipartFile archivo, String idImagen) throws MiException {
         if (archivo != null) {
@@ -61,9 +61,23 @@ public class ImagenServicio {
     // DELETE
     @Transactional
     public void eliminarImagen(String id) throws MiException {
-
-        ImagenRepositorio.deleteById(id);
-
+        try {
+            ImagenEntidad imagen = new ImagenEntidad();
+            ;
+            if (id != null) {
+                Optional<ImagenEntidad> respuesta = ImagenRepositorio.findById(id);
+                if (respuesta.isPresent()) {
+                    imagen = respuesta.get();
+                }
+                ImagenRepositorio.delete(imagen);
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
+    @Transactional(readOnly = true)
+    public ImagenEntidad buscarPorId(String id) {
+        return ImagenRepositorio.findById(id).get();
+    }
 }

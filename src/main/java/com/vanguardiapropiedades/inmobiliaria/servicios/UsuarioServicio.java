@@ -19,10 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-//import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Rol;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -39,7 +39,9 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ImagenServicio imagenServicio;
 
-    // TODO: Agregar DNI
+    @Autowired
+    private PropiedadServicio propiedadServicio;
+
     // CREATE
     @Transactional
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
@@ -52,9 +54,6 @@ public class UsuarioServicio implements UserDetailsService {
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setRol(Rol.CLIENT);
 
-        // Image img = imageService.guardarImagen(imagen);
-        // user.setImagen(img);
-
         usuarioRepositorio.save(user);
 
     }
@@ -65,25 +64,32 @@ public class UsuarioServicio implements UserDetailsService {
      * Solo podrá ver desde su perfil los inmuebles adquiridos a través de la app o
      * gestionados por un ENTE a través de la app.
      */
-    // TODO: Agregar DNI y actualizar los campos correspondientes
+
     // UPDATE
     public void editarUsuario(String id, String dni, String nombre, String email, String password, String password2,
-            MultipartFile foto)
+            MultipartFile foto, String rol)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
-            validar(nombre, email, password, password2);
-            if (foto != null) {
-                ImagenEntidad img = imagenServicio.crearImagen(foto);
-                user.setImagen(img);
+            // validar(nombre, dni, email, password, password2);
+            // ? Verificar si el usuario tiene foto
+            if (user.getImagen() == null) {
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.crearImagen(foto);
+                    user.setImagen(img);
+                }
             } else {
-                foto = null;
+                if (foto.getSize() > 0) {
+                    ImagenEntidad img = imagenServicio.editarImagen(foto, user.getImagen().getId());
+                    user.setImagen(img);
+                }
             }
             user.setNombre(nombre);
             user.setEmail(email);
             user.setDni(dni);
             user.setPassword(new BCryptPasswordEncoder().encode(password));
+            user.setRol(Rol.valueOf(rol));
             usuarioRepositorio.save(user);
         }
     }
@@ -91,25 +97,36 @@ public class UsuarioServicio implements UserDetailsService {
     // DELETE
     @Transactional
     public void eliminarUsuario(String id) throws MiException {
-
-        usuarioRepositorio.deleteById(id);
-
+        UsuarioEntidad usuario = buscarPorId(id).get();
+        if (usuario.getPropiedades().isEmpty()) {
+            usuarioRepositorio.deleteById(id);
+        }
     }
 
-    // TODO: Agregar DNI
-    private void validar(String nombre, String email, String password, String password2) throws MiException {
-
-        // verificar que el email sea valido
-        String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
-        Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
+    // TODO: HACER FUNCIONAR
+    private void validar(String nombre, String dni, String email, String password, String password2)
+            throws MiException {
 
         if (nombre.isEmpty() || nombre.isBlank()) {
             throw new MiException("El nombre no puede estar vacio");
         }
+        // Verifica si dni está vacío y sea numérico
+        if (dni.isEmpty()) {
+            throw new MiException("El dni no puede estar vacio");
+        }
+        // Verifica si dni es numérico parseando el String dni a Integer
+        try {
+            Integer.parseInt(dni);
+        } catch (NumberFormatException e) {
+            throw new MiException("El dni debe contener solo numéros");
+        }
+        // Verifica si email está vacío
         if (email.isEmpty()) {
             throw new MiException("El email no puede estar vacio");
         }
-
+        // Verifica email formato correo
+        String regex = "([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z0-9]+)\\.([a-z0-9]+))+"; // expresion regular
+        Pattern pattern = Pattern.compile(regex); // compilar la expresion regular
         if (!pattern.matcher(email).matches()) {
             throw new MiException("El email no es valido");
         }
@@ -117,10 +134,14 @@ public class UsuarioServicio implements UserDetailsService {
         if (password.isEmpty()) {
             throw new MiException("La contraseña no puede estar vacia");
         }
+        // Verifica si la contraseña tiene mas de 6 caracteres
+        if (password.length() < 6) {
+            throw new MiException("La contraseña debe tener mas de 6 caracteres");
+        }
+        // Verifica si las contraseñas coinciden
         if (!password.equals(password2)) {
             throw new MiException("La contraseñas no coinciden");
         }
-
     }
 
     @Override
@@ -139,9 +160,6 @@ public class UsuarioServicio implements UserDetailsService {
 
             HttpSession session = attr.getRequest().getSession(true);
 
-            // Tiempo de inactividad en segundos para cerrar la sesión
-            // session.setMaxInactiveInterval(60);
-
             // La session contiene los datos del usuario recuperado de la base de datos
             session.setAttribute("usuariosession", usuario);
 
@@ -158,5 +176,10 @@ public class UsuarioServicio implements UserDetailsService {
 
     public Page<UsuarioEntidad> listarUsuarios(Pageable pageable) {
         return usuarioRepositorio.findAll(pageable);
+    }
+
+    public List<PropiedadEntidad> propiedadesUsuario(String id) {
+        UsuarioEntidad user = buscarPorId(id).get();
+        return user.getPropiedades();
     }
 }

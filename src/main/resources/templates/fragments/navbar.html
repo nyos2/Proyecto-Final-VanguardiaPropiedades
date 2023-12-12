@@ -1,4 +1,3 @@
-<!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11111F;" th:fragment="navbar">
 
   <!-- Logo y enlace a la página principal -->
@@ -8,7 +7,7 @@
     </a>
   </div>
 
-  <!-- Botón para colapsar la barra de navegación en pantallas pequeñas -->
+  <!-- Botón para colapsar -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -21,18 +20,19 @@
         <a class="nav-link" href="/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+        <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Propiedades
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
-          <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
-          <a class="dropdown-item" href="/propiedad/editar">Modificar Propiedades</a>
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
+            <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
+          </div>
         </div>
       </li>
 
@@ -56,19 +56,19 @@
       </li>
 
       <!-- Menú desplegable "Admin" -->
-      <li class="nav-item dropdown">
-        <th:block th:if="${session.usuariosession != null}">
+      <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="editorialesDropdown" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Admin
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
+            <a class="dropdown-item" href="/admin/listar-propiedades">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
+            <a class="dropdown-item" href="/cargar/usuarios">Cargar Usuarios </a>
           </div>
-        </th:block>
-      </li>
-
+        </li>
+      </div>
     </ul>
   </div>
 </nav>

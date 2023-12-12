@@ -21,7 +21,7 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class PropiedadServicio {
-    
+
     @Autowired
     private PropiedadRepositorio propiedadRepositorio;
 
@@ -31,24 +31,28 @@ public class PropiedadServicio {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
-    public void crearPropiedad(Integer precio,String tipo,String usuario,String estado) throws Exception{
+    public void crearPropiedad(Integer precio, String tipo, String usuario, String estado, String descripcion,
+            String direccion) throws Exception {
         PropiedadEntidad propiedad = new PropiedadEntidad();
         UsuarioEntidad usu = usuarioRepositorio.findById(usuario).orElse(null);
         propiedad.setPrecio(precio);
         propiedad.setTipo(Tipo.valueOf(tipo));
         propiedad.setEstado(Boolean.valueOf(estado));
-        // propiedad.setPrecio(precio);
+        propiedad.setDescripcion(descripcion);
+        propiedad.setDireccion(direccion);
         propiedad.setUsuario(usu);
-        // propiedad.setEstado(estado);
         propiedadRepositorio.save(propiedad);
     }
 
-    public void editarPropiedad(String id,int precio,Tipo tipo,List<MultipartFile> imagen,Boolean estado) throws Exception{
+    @Transactional
+    public void editarPropiedad(String id, Integer precio, String tipo, List<MultipartFile> imagen, String estado,
+            String descripcion, String direccion)
+            throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);
         if (respuesta.isPresent()) {
             PropiedadEntidad propiedad = respuesta.get();
             List<ImagenEntidad> propiedades = propiedad.getImagenes();
-            if (imagen!=null) {
+            if (imagen != null) {
                 for (MultipartFile file : imagen) {
                     ImagenEntidad img = imagenServicio.crearImagen(file);
                     propiedades.add(img);
@@ -58,13 +62,15 @@ public class PropiedadServicio {
                 imagen = null;
             }
             propiedad.setPrecio(precio);
-            propiedad.setTipo(tipo);
-            propiedad.setEstado(estado);
+            propiedad.setTipo(Tipo.valueOf(tipo));
+            propiedad.setEstado(Boolean.valueOf(estado));
+            propiedad.setDescripcion(descripcion);
+            propiedad.setDireccion(direccion);
             propiedadRepositorio.save(propiedad);
         }
     }
 
-    public void eliminarPropiedad(String id) throws MiException{
+    public void eliminarPropiedad(String id) throws MiException {
         propiedadRepositorio.deleteById(id);
     }
 
