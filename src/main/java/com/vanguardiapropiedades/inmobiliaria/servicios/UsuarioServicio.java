@@ -44,7 +44,7 @@ public class UsuarioServicio implements UserDetailsService {
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
-        validar(nombre,dni, email, password, password2);
+        validar(nombre, dni, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -91,8 +91,10 @@ public class UsuarioServicio implements UserDetailsService {
             usuarioRepositorio.save(user);
         }
     }
-        // UPDATE
-    public void editarUsuarioAdmin(String id, String dni, String nombre, String email, String password, String password2,
+
+    // UPDATE
+    public void editarUsuarioAdmin(String id, String dni, String nombre, String email, String password,
+            String password2,
             MultipartFile foto, String rol)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);

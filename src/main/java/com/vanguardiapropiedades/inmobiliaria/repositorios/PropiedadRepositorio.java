@@ -10,7 +10,7 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 @Repository
 public interface PropiedadRepositorio extends JpaRepository<PropiedadEntidad, String> {
 
-    //? Listar solo con estado en true
+    // ? Listar solo con estado en true
     public Page<PropiedadEntidad> findByEstadoTrue(Pageable pageable);
 
 }

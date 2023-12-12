@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.OfertaServicio;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -26,6 +30,17 @@ public class OfertaControlador {
     public String listaOfertas(ModelMap modelo) {
         // Obtener la lista de ofertas y agregarla al modelo
         List<OfertaEntidad> ofertas = ofertaServicio.obtenerTodasLasOfertas();
+        modelo.put("ofertas", ofertas);
+        return "Propiedades/propiedad_ofertas.html";
+    }
+
+    // TODO vincular a la vista
+    @GetMapping("/ofertas-ente")
+    public String listaOfertasEnte(HttpSession httpSession, ModelMap modelo) {
+        UsuarioEntidad logueado = (UsuarioEntidad) httpSession.getAttribute("usuariosession");
+        String idUsuario = logueado.getId();
+        // Obtener la lista de ofertas y agregarla al modelo
+        List<OfertaEntidad> ofertas = ofertaServicio.obtenerTodasLasOfertasEnte(idUsuario);
         modelo.put("ofertas", ofertas);
         return "Propiedades/propiedad_ofertas.html";
     }
@@ -70,7 +85,7 @@ public class OfertaControlador {
             modelo.put("exito", "La oferta se rechazó con éxito");
             return "Propiedades/propiedad_ofertas.html";
         } catch (Exception e) {
-            
+
         }
         return ofertaServicio.rechazarOferta(id);
     }

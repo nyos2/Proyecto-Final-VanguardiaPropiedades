@@ -64,6 +64,11 @@ public class OfertaServicio {
         return ofertaRepositorio.findAll();
     }
 
+    @Transactional
+    public List<OfertaEntidad> obtenerTodasLasOfertasEnte(String id) {
+        return ofertaRepositorio.buscarPorPropiedad(id);
+    }
+
     public String aceptarOferta(String id) {
         OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
         oferta.setEstado(Oferta.ACEPTADA);
@@ -80,7 +85,5 @@ public class OfertaServicio {
         ofertaRepositorio.save(oferta);
         return null;
     }
-
-
 
 }
