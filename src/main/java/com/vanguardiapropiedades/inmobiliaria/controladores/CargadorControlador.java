@@ -29,6 +29,38 @@ public class CargadorControlador {
             u.setDni(dni);
             usuarioRepositorio.save(u);
         }
-        return "ok";
+        return "Cargado Usuarios aleatorios";
+    }
+
+    @GetMapping("/cargar/roles")
+    public String cargarUsuarios() {
+        // Crear un usuario admin
+        UsuarioEntidad admin = new UsuarioEntidad();
+        admin.setNombre("Admin");
+        admin.setEmail("admin@gmail.com");
+        admin.setPassword(new BCryptPasswordEncoder().encode("asd"));
+        admin.setRol(Rol.ADMIN);
+        admin.setDni("00000000");
+        usuarioRepositorio.save(admin);
+
+        // Crear un usuario cliente
+        UsuarioEntidad cliente = new UsuarioEntidad();
+        cliente.setNombre("Cliente");
+        cliente.setEmail("cliente@gmail.com");
+        cliente.setPassword(new BCryptPasswordEncoder().encode("asd"));
+        cliente.setRol(Rol.CLIENT);
+        cliente.setDni("00000001");
+        usuarioRepositorio.save(cliente);
+
+        // Crear un usuario ente
+        UsuarioEntidad ente = new UsuarioEntidad();
+        ente.setNombre("Ente");
+        ente.setEmail("ente@gmail.com");
+        ente.setPassword(new BCryptPasswordEncoder().encode("asd"));
+        ente.setRol(Rol.ENTE);
+        ente.setDni("00000002");
+        usuarioRepositorio.save(ente);
+
+        return "Cargado Admin, Cliente y Ente";
     }
 }
