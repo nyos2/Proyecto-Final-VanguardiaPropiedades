@@ -51,6 +51,7 @@
                                 <th>Email</th>
                                 <th>Rol</th>
                                 <th>Solicitud</th>
+                                <th>Peticion</th>
                                 <th>Imagen</th>
                                 <th>Acciones</th>
                             </tr>
@@ -64,8 +65,11 @@
 
                                 </td>
                                 <!-- TODO Solicitud de cambio de ROL -->
-                                <td> 
+                                <td>
                                     Sin Solicitud
+                                </td>
+                                <td>
+                                    Sin Peticion
                                 </td>
                                 <!-- <td th:class="${solicitud ? 'solicitado' : 'sin-solicitud'}">
                                     <span th:text="${solicitud ? 'Solicitado' : 'Sin solicitud'}"></span>
@@ -79,7 +83,7 @@
                                         <a th:href="@{'/admin/editar-perfil/' + ${usuario.id}}"
                                             class="btn btn-sm btn-outline-secondary">Modificar</a>
                                         <a th:href="@{'/usuario/eliminar-usuario/' + ${usuario.id}}"
-                                            class="btn btn-sm btn-outline-secondary"
+                                            class="btn btn-sm btn-outline-danger"
                                             onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
                                     </div>
                                 </td>

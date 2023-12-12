@@ -49,13 +49,17 @@
                     <td th:text="${oferta.estado}"></td>
                     <td th:text="${oferta.fecha}"></td>
                     <td>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
-                                    class="btn btn-sm btn-outline-secondary">Aceptar</a>
-                                <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
+                        <div th:if="${#strings.equals(oferta.estado, 'PENDIENTE')} == true">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class=" btn-group">
+                                    <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
+                                        class="btn btn-sm btn-outline-success">Aceptar</a>
+                                    <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
+                                    <!-- <a th:href="@{'/oferta/eliminar/' + ${oferta.id}}"
+                                    class="btn btn-sm btn-outline-secondary">Eliminar</a> -->
+                                </div>
                             </div>
                         </div>
                     </td>

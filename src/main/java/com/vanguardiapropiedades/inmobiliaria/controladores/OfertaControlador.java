@@ -13,7 +13,7 @@ import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.OfertaServicio;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 @RequestMapping("/oferta")
@@ -48,7 +48,7 @@ public class OfertaControlador {
     }
 
     @GetMapping("/aceptar/{id}")
-    public String aceptarOferta(@RequestParam String id, ModelMap modelo) {
+    public String aceptarOferta(@PathVariable String id, ModelMap modelo) {
         try {
             ofertaServicio.aceptarOferta(id);
             List<OfertaEntidad> ofertas = ofertaServicio.obtenerTodasLasOfertas();
@@ -62,7 +62,7 @@ public class OfertaControlador {
     }
 
     @GetMapping("/denegar/{id}")
-    public String rechazarOferta(@RequestParam String id, ModelMap modelo) {
+    public String rechazarOferta(@PathVariable String id, ModelMap modelo) {
         try {
             ofertaServicio.rechazarOferta(id);
             List<OfertaEntidad> ofertas = ofertaServicio.obtenerTodasLasOfertas();
