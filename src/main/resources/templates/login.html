@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
 
-<div th:replace="~{fragments/head :: head}"></div>
+    <div th:replace="~{fragments/head :: head}"></div>
+
+</head>
 
 <body>
 
@@ -47,7 +53,8 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <div class="espacio-en-blanco"></div>
     <div th:replace="~{fragments/footer :: footer}"></div>
     
 </body>

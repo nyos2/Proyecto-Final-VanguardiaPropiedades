@@ -10,31 +10,26 @@
         <br>
         <h2>Modificar Propiedad</h2>
         <hr>
-        <form th:action="@{/propiedad/editar/__${propiedad.id}__}" method="post" enctype="multipart/form-data">
-            <div class="form-group mb-2">
+        <form th:action="@{/propiedad/editar-propiedad/__${propiedad.id}__}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input hidden th:value="${propiedad.id}" name="id" />
+                <label for="tipo">Tipo:</label>
+                <select th:field="*{propiedad.tipo}" class="form-control">
+                    <option value="APARTAMENTO" th:selected="${propiedad.tipo == 'APARTAMENTO'}">Apartamento</option>
+                    <option value="CASA" th:selected="${propiedad.tipo == 'CASA'}">Casa</option>
+                </select>
+            </div>
+
+            <input hidden type="text" th:value="${propiedad.usuario.id}" name="id" class="form-control" />
+    
+            <div class="form-group">
                 <label for="precio">Precio:</label>
                 <input type="number" class="form-control" id="precio" name="precio" th:value="${propiedad.precio}" required />
             </div>
-
-            <div class="form-group mb-2" >
+    
+            <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
-                <!-- <textarea type="text" class="form-control" id="descripcion" name="descripcion" th:value="${propiedad.descripcion}" required ></textarea>     -->
-                <input type="text" class="form-control" id="descripcion" name="descripcion" th:value="${propiedad.descripcion}" required >
-            </div>
-
-            <div class="form-group mb-2" >
-                <label for="Direccion">Direccion:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" th:value="${propiedad.direccion}" required /> 
-            </div>
-
-            <div class="form-group mb-2">
-                <label for="tipo">Tipo:</label>
-                <select class="form-control" id="tipo" name="tipo" required>
-                    <option value="DEPARTAMENTO">Departamento</option>
-                    <option value="CASA">Casa</option>
-                    <option value="OFICINA">Oficina</option>
-                    <!-- Agrega más opciones según tus necesidades -->
-                </select>
+                <textarea th:field="*{propiedad.descripcion}" class="form-control"></textarea>
             </div>
 
             <div class="form-group mb-2">
@@ -61,7 +56,11 @@
             </div>
     
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+<<<<<<< HEAD
+        </form> 
+=======
         </form>
+>>>>>>> 21d69563f98b9f12b7fd61ad38a79c38eadfc171
     
         <div class="container my-1">
             <!-- Mensajes Condicionales -->
