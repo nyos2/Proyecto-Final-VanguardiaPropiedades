@@ -1,9 +1,14 @@
 package com.vanguardiapropiedades.inmobiliaria.servicios;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.vanguardiapropiedades.inmobiliaria.Enums.Cita;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
@@ -20,40 +25,66 @@ public class CitaServicio {
     @Autowired
     CitaRepositorio citaRepositorio;
 
+    @Autowired
     UsuarioRepositorio usuarioRepositorio;
 
-    // @Autowired
+    @Autowired
     PropiedadRepositorio propiedadRepositorio;
     
     @Transactional
-    public void crearCita(String idEnte, String idCliente, String idPropiedad, String fechaHora, String nota) throws MiException {
+    public void crearCita(String enteid, String clienteid, String propiedadid, 
+        LocalDate fecha, LocalTime hora, String nota) throws MiException {
 
-        
-            Optional<UsuarioEntidad> enteRepuesta = usuarioRepositorio.findById(idEnte);
-            Optional<UsuarioEntidad> clienteRepuesta = usuarioRepositorio.findById(idCliente);
-            Optional<PropiedadEntidad> propiedadRepuesta = propiedadRepositorio.findById(idPropiedad);
-            // Aqui deberia analizar si realmente es necesario el rollo anterior o solo guardar id / validar el horario  dentro de un rango, ver como ?? 
-
-            if (enteRepuesta.isPresent() && clienteRepuesta.isPresent() && propiedadRepuesta.isPresent()) {
-                // en el if verificar si esta cargado tambien el horario (fecha/hora)
-                UsuarioEntidad ente = enteRepuesta.get();
-                UsuarioEntidad cliente = clienteRepuesta.get();
-                PropiedadEntidad propiedad = propiedadRepuesta.get();
-
+                UsuarioEntidad cliente = usuarioRepositorio.findById(clienteid).get();
+                PropiedadEntidad propiedad = propiedadRepositorio.findById(propiedadid).get();
+                
                 CitaEntidad cita = new CitaEntidad();
                 cita.setCliente(cliente);
-                cita.setEnte(ente);
-                cita.setPropiedad(propiedad); // No estoy convencido, pero para la vista me sirve. Analizar la entidad Cita
-                cita.setFechahora(fechaHora); // Aqui deberia agregar el set de fecha / horario de la cita 
+                cita.setEnte(propiedad.getUsuario()); // no estoy seguro de lo que hago aqui para saber el dueño ??
+                cita.setPropiedad(propiedad); 
+                cita.setFecha(fecha); // Adecuat al manejo de fecha
+                cita.setHora(hora); // Adecuat al manejo de hora 
                 cita.setNota(nota);
-                cita.setAcepto(false);
+                cita.setEstado(Cita.PENDIENTE);
 
                 citaRepositorio.save(cita);
-            } else {
-                // >> No estan los datos necesarios !!
-                // System.out.println(" no deberia ocurrir, que paso ???");
-            }
-       
-
+     
     }
+
+@Transactional
+    public void cambiarEstadoCita(String id, String estado) throws MiException {
+        Optional<CitaEntidad> respuesta = citaRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            CitaEntidad cita = respuesta.get();
+            cita.setEstado(Cita.valueOf(estado));
+            citaRepositorio.save(cita);
+        }
+    }
+
+    @Transactional
+    public void eliminarCita(String id) throws MiException {
+        citaRepositorio.deleteById(id);
+    }
+
+    @Transactional
+    public List<CitaEntidad> obtenerTodasLasCitas() {
+        return citaRepositorio.findAll();
+    }
+
+    public String aceptarCita(String id) {
+        CitaEntidad cita = citaRepositorio.findById(id).get();
+        cita.setEstado(Cita.ACEPTADA);
+        citaRepositorio.save(cita);
+        return null;
+    }
+
+    public String rechazarCita(String id) {
+        CitaEntidad cita = citaRepositorio.findById(id).get();
+        cita.setEstado(Cita.RECHAZADA);
+        citaRepositorio.save(cita);
+        return null;
+    }
+
 }
+
+

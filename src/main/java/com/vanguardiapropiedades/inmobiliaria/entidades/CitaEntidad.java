@@ -1,11 +1,20 @@
 package com.vanguardiapropiedades.inmobiliaria.entidades;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.hibernate.annotations.GenericGenerator;
 
+import com.vanguardiapropiedades.inmobiliaria.Enums.Cita;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -25,15 +34,17 @@ public class CitaEntidad {
     @ManyToOne
     private PropiedadEntidad propiedad; // Sera necesario ???
 
-    private String nota; // para un texto o nota agregado en el pedido de reunion
+    private String nota;  // para ingresar un texto (datos de contacto) en el pedido de reunion
 
-    private String fechahora; // ver que es mejor como alternativa para fecha y hora
+    @Temporal(TemporalType.DATE)
+    private LocalDate fecha;
+
+    @Temporal(TemporalType.TIME)
+    private LocalTime hora; // ver que es mejor como alternativa para fecha y hora
+
+    @Enumerated(EnumType.STRING)
+    private Cita estado; // el que recibe la cita la Acepta o Rechaza
+
     
-    private Boolean acepto; // el que recibe la cita cambia este estado a true (aceptado)
-
-    // Agregar lo relativo al calendario de la cita =>  fecha y hora. Ver que conviene hacer
-    // private Date fechacita;
-
-    // private Time  horacita;
 
 }
