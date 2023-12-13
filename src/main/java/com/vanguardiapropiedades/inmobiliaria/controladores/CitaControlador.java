@@ -67,13 +67,13 @@ public class CitaControlador {
     }
 
     @GetMapping("/aceptar/{id}")
-    public String aceptarCita(@RequestParam String id, ModelMap modelo) {
+    public String aceptarCita(@PathVariable String id, ModelMap modelo) {
         try {
             citaServicio.aceptarCita(id);
             List<CitaEntidad> citas = citaServicio.obtenerTodasLasCitas();
             modelo.put("citas", citas);
             modelo.put("exito", "La cita fue aceptada con éxito");
-            return "Propiedades/propiedad_citas.html";
+            return "Propiedades/propiedad_cita.html";
         } catch (Exception e) {
 
         }
@@ -81,13 +81,13 @@ public class CitaControlador {
     }
 
     @GetMapping("/denegar/{id}")
-    public String rechazarCita(@RequestParam String id, ModelMap modelo) {
+    public String rechazarCita(@PathVariable String id, ModelMap modelo) {
         try {
             citaServicio.rechazarCita(id);
             List<CitaEntidad> citas = citaServicio.obtenerTodasLasCitas();
             modelo.put("citas", citas);
             modelo.put("exito", "La cita se rechazó con éxito");
-            return "Propiedades/propiedad_citas.html";
+            return "Propiedades/propiedad_cita.html";
         } catch (Exception e) {
 
         }
