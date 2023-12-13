@@ -103,7 +103,6 @@
         <option value="20" th:selected="${pageSize == 20}">20</option>
         <!-- Agrega más opciones según sea necesario -->
     </select>
-
     <!-- Paginación -->
     <nav>
         <!-- justify-content-center/end/start -->
@@ -128,7 +127,6 @@
             </li>
         </ul>
     </nav>
-
     <div class="text-center">
         <p class="text-muted">Total de páginas: <span th:text="${page.totalPages}"></span>, Total de resultados: <span
                 th:text="${page.totalElements}"></span></p>
