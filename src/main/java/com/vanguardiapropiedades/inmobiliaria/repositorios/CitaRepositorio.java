@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
 
 @Repository
-public interface CitaRepositorio extends JpaRepository<CitaEntidad,String> {
-    
+public interface CitaRepositorio extends JpaRepository<CitaEntidad, String> {
 
 }

@@ -21,7 +21,7 @@ import lombok.Data;
 public class CitaEntidad {
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2") 
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
     @ManyToOne
@@ -33,15 +33,13 @@ public class CitaEntidad {
     @ManyToOne
     private PropiedadEntidad propiedad; 
 
-    private String nota;  // para ingresar un texto (datos de contacto) en el pedido de reunion
+    private String nota; // para ingresar un texto (datos de contacto) en el pedido de reunion
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaHora;
+    private Date fecha;
 
     
     @Enumerated(EnumType.STRING)
     private Cita estado; // el que recibe la cita la Acepta o Rechaza
-
-    
 
 }
