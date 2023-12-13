@@ -33,6 +33,7 @@
             <thead>
                 <tr>
                     <th>Propiedad</th>
+                    <th>Dueño</th>
                     <th>Valor de Oferta</th>
                     <th>Usuario</th>
                     <th>Estado</th>
@@ -44,6 +45,7 @@
                 <!-- Iterar sobre las ofertas -->
                 <tr th:each="oferta : ${ofertas}">
                     <td th:text="${oferta.propiedad.descripcion}"></td>
+                    <td th:text="${oferta.propiedad.usuario.nombre}"></td>
                     <td th:text="${oferta.valorOferta}"></td>
                     <td th:text="${oferta.usuario.nombre}"></td>
                     <td th:text="${oferta.estado}"></td>

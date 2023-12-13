@@ -32,7 +32,7 @@ public class OfertaControlador {
         // Obtener la lista de ofertas y agregarla al modelo
         List<OfertaEntidad> ofertas = ofertaServicio.obtenerTodasLasOfertas();
         modelo.put("ofertas", ofertas);
-        return "Propiedades/propiedad_ofertas.html";
+        return "Admin/propiedad_ofertas_admin.html";
     }
 
     // TODO vincular a la vista
