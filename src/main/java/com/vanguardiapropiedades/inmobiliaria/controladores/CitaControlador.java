@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
-import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;

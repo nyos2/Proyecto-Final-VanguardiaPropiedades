@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Cita;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
-import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
