@@ -1,0 +1,162 @@
+/* --- BLOQUE "Sobre Nosotros" --- */
+/* Estilo para el texto */
+@font-face {
+  font-family: 'Aero Matics Stencil Regular';
+  src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.page-heading {
+  color: #cdcdcd; 
+  text-align: center; 
+  padding: 100px 0; 
+
+/* Estilo para la imagen */
+  img {
+     width: 100%; 
+     max-width: 100vw; 
+     height: auto; 
+     display: block; 
+     margin: 10px auto 0; 
+     border: 5px solid #11111F; 
+     border-radius: 15px; 
+  }
+
+  .text-content {
+    color: #cdcdcd; 
+    text-align: center; 
+    padding: 20px 0; 
+    background-color: #11111F; 
+    border-radius: 5px; 
+    font-family: 'Aero Matics Stencil Regular', sans-serif; 
+  }
+}
+
+/* --- BLOQUE "Nuestra Empresa" --- */
+.best-features {
+  padding-top: 20px; 
+  margin-bottom: 50px; 
+}
+
+.best-features h2 {
+  color: #cdcdcd; 
+  text-align: center; 
+  padding: 20px 0; 
+  background-color: #11111F; 
+  border-radius: 5px; 
+  font-family: 'Aero Matics Stencil Regular', sans-serif; 
+}
+
+.right-image img {
+  width: 100%;
+  border: 5px solid #11111F;
+  border-radius: 15px;
+  margin-top: 70px;
+}
+
+.left-content {
+  padding: 0 20px;
+}
+
+.centered-text {
+  text-align: justify;
+}
+
+/* Estilos redes sociales */
+.social-icons {
+  list-style: none;
+  padding: 20px 0 0; 
+  text-align: center;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #11111F;
+  padding: 10px; 
+  border-radius: 5px;
+}
+
+.social-icons i {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* --- BLOQUE "Nuestros Servicios" --- */
+.our-services {
+  margin-top: 20px;
+}
+
+.our-services h1 {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 10px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+  width: 100%; 
+}
+
+.our-services p {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.services-icon-wap {
+  border: 5px solid #11111F;
+  border-radius: 15px; 
+  overflow: hidden; 
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 90%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+
+/* --- BLOQUE "Nuestro Equipo" --- */
+.container.py-5 {
+  padding-top: 20px;
+  margin-bottom: 0px;
+}
+
+.container.py-5 h1 {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.container.py-5 p {
+  color: #cdcdcd;
+  text-align: center;
+  padding: 20px 0;
+  background-color: #11111F;
+  border-radius: 5px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
+.card {
+  border: 8px solid #1e1055 !important;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
