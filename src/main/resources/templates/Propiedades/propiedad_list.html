@@ -81,12 +81,6 @@
                                 </div>
                             </div>
                         </div>
-                     <!-- Iterar sobre todas las imágenes -->
-                     <!-- ESTE FUNCIONA -->
-                    <div th:each="imagen : ${page.imagenes}">
-                        <img class="logo" th:src="@{/imagen/__${imagen.id}__}" alt="" />
-                    </div>
-
                         <h5 class="card-title" th:text="${page.tipo}"></h5>
                         <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
                         <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
