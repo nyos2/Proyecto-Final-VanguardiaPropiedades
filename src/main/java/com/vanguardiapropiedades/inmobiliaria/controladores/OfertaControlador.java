@@ -3,6 +3,7 @@ package com.vanguardiapropiedades.inmobiliaria.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class OfertaControlador {
 
     @Autowired
     private OfertaServicio ofertaServicio;
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/ofertas")
     public String listaOfertas(ModelMap modelo) {
         // Obtener la lista de ofertas y agregarla al modelo
