@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
 import com.vanguardiapropiedades.inmobiliaria.servicios.CitaServicio;
 import com.vanguardiapropiedades.inmobiliaria.servicios.PropiedadServicio;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/cita")
@@ -30,6 +35,7 @@ public class CitaControlador {
     @Autowired
     private PropiedadServicio propiedadServicio;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/listar")
     public String listarCitas(ModelMap modelo) {
         try {
@@ -40,6 +46,16 @@ public class CitaControlador {
             modelo.put("error", "Error al obtener la lista de citas");
             return "error.html"; // Puedes crear una página de error personalizada
         }
+    }
+        // TODO vincular a la vista
+    @GetMapping("/citas-ente")
+    public String listaOfertasEnte(HttpSession httpSession, ModelMap modelo) {
+        UsuarioEntidad logueado = (UsuarioEntidad) httpSession.getAttribute("usuariosession");
+        String idUsuario = logueado.getId();
+        // Obtener la lista de ofertas y agregarla al modelo
+        List<CitaEntidad> cita = citaServicio.obtenerTodasLasCitasEnte(idUsuario);
+        modelo.put("citas", cita);
+        return "Propiedades/propiedad_cita.html";
     }
 
     @GetMapping("/crear-cita/{idPropiedad}")

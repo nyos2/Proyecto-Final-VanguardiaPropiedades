@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.vanguardiapropiedades.inmobiliaria.Enums.Cita;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -83,4 +84,8 @@ public class CitaServicio {
         return null;
     }
 
+    @Transactional
+    public List<CitaEntidad> obtenerTodasLasCitasEnte(String id) {
+        return citaRepositorio.buscarPorEnte(id);
+    }
 }
