@@ -1,7 +1,6 @@
 package com.vanguardiapropiedades.inmobiliaria.entidades;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,7 +21,7 @@ import lombok.Data;
 public class CitaEntidad {
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2") 
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
 
     @ManyToOne
@@ -34,17 +33,12 @@ public class CitaEntidad {
     @ManyToOne
     private PropiedadEntidad propiedad; // Sera necesario ???
 
-    private String nota;  // para ingresar un texto (datos de contacto) en el pedido de reunion
+    private String nota; // para ingresar un texto (datos de contacto) en el pedido de reunion
 
-    @Temporal(TemporalType.DATE)
-    private LocalDate fecha;
-
-    @Temporal(TemporalType.TIME)
-    private LocalTime hora; // ver que es mejor como alternativa para fecha y hora
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fecha;
 
     @Enumerated(EnumType.STRING)
     private Cita estado; // el que recibe la cita la Acepta o Rechaza
-
-    
 
 }

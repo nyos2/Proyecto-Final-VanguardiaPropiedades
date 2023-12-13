@@ -1,7 +1,6 @@
 package com.vanguardiapropiedades.inmobiliaria.servicios;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,28 +29,27 @@ public class CitaServicio {
 
     @Autowired
     PropiedadRepositorio propiedadRepositorio;
-    
+
     @Transactional
-    public void crearCita(String enteid, String clienteid, String propiedadid, 
-        LocalDate fecha, LocalTime hora, String nota) throws MiException {
+    public void crearCita(String enteid, String clienteid, String propiedadid,
+            Date fecha, String nota) throws MiException {
 
-                UsuarioEntidad cliente = usuarioRepositorio.findById(clienteid).get();
-                PropiedadEntidad propiedad = propiedadRepositorio.findById(propiedadid).get();
-                
-                CitaEntidad cita = new CitaEntidad();
-                cita.setCliente(cliente);
-                cita.setEnte(propiedad.getUsuario()); // no estoy seguro de lo que hago aqui para saber el dueño ??
-                cita.setPropiedad(propiedad); 
-                cita.setFecha(fecha); // Adecuat al manejo de fecha
-                cita.setHora(hora); // Adecuat al manejo de hora 
-                cita.setNota(nota);
-                cita.setEstado(Cita.PENDIENTE);
+        UsuarioEntidad cliente = usuarioRepositorio.findById(clienteid).get();
+        PropiedadEntidad propiedad = propiedadRepositorio.findById(propiedadid).get();
 
-                citaRepositorio.save(cita);
-     
+        CitaEntidad cita = new CitaEntidad();
+        cita.setCliente(cliente);
+        cita.setEnte(propiedad.getUsuario());
+        cita.setPropiedad(propiedad);
+        cita.setFecha(fecha);
+        cita.setNota(nota);
+        cita.setEstado(Cita.PENDIENTE);
+
+        citaRepositorio.save(cita);
+
     }
 
-@Transactional
+    @Transactional
     public void cambiarEstadoCita(String id, String estado) throws MiException {
         Optional<CitaEntidad> respuesta = citaRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -86,5 +84,3 @@ public class CitaServicio {
     }
 
 }
-
-
