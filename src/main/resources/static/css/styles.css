@@ -38,6 +38,8 @@ body {
 .carousel-caption h4.text-highlight,
 .carousel-caption h1.text-highlight {
   text-shadow: 4px 4px 3px #000000cc;
+  background-color: #0000004f;
+  border-radius: 10px;
 }
 
 /* Estilos de la sección principal */
