@@ -124,4 +124,28 @@ public class UsuarioControlador {
         model.addAttribute("totalPages", page.getTotalPages());
         return "Admin/usuario_list_admin.html";
     }
+
+    @PostMapping("/buscar")
+    public String buscarUsuario(@PageableDefault(page = 0, size = 5) Pageable pageable, @RequestParam String searchBy,
+            @RequestParam String searchTerm, Model model) {
+        if (searchBy.equals("email")) {
+            System.out.println("Entramos por email");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.buscarPorEmail(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        } else{
+            System.out.println("Entramos por dni");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuariosAdmin(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        }
+    }
 }

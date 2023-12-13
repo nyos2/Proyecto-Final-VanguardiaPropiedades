@@ -11,7 +11,8 @@
         <hr>
         <form th:action="@{/usuario/editar-usuario/__${usuario.id}__}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <input hidden th:value="${id}" name="id" />
+                <input hidden type="text" th:value="${usuario.id}" name="id" />
+                <!-- <input hidden type="text" th:value="${id}" name="id" /> -->
                 <!-- <label for="nombre">Nombre:</label> -->
                 <input hidden type="text" th:value="${usuario.nombre}" name="nombre" class="form-control" />
             </div>

@@ -11,14 +11,13 @@
         <hr />
 
         <nav class="navbar navbar-light bg-light custom-navbar">
-            <form class="form-inline" th:action="@{/usuario/buscar}" th:method="get">
+            <form class="form-inline" th:action="@{/usuario/buscar}" method="post">
                 <label class="mr-2">Buscar por:</label>
                 <select class="form-control mr-2" name="searchBy">
                     <option value="email" selected>Email</option>
                     <option value="dni">DNI</option>
                 </select>
-                <input type="text" class="form-control mr-2" name="searchTerm"
-                    placeholder="Ingrese término de búsqueda">
+                <input type="text" class="form-control mr-2" name="searchTerm" placeholder="Ingrese término de búsqueda">
                 <button class="btn btn-outline-secondary" type="submit">Buscar</button>
             </form>
         </nav>
@@ -108,7 +107,7 @@
         <!-- justify-content-center/end/start -->
         <ul class="pagination justify-content-center">
             <li class="page-item" th:if="${currentPage > 0}">
-                <a class="page-link" th:href="@{usuario/listar(page=${currentPage - 1}, size=${page.Size})}"
+                <a class="page-link" th:href="@{/usuario/listar(page=${currentPage - 1}, size=${page.Size})}"
                     aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
@@ -120,7 +119,7 @@
             </li>
 
             <li class="page-item" th:if="${currentPage < totalPages - 1}">
-                <a class="page-link" th:href="@{usuario/listar(page=${currentPage + 1}, size=${page.Size})}"
+                <a class="page-link" th:href="@{/usuario/listar(page=${currentPage + 1}, size=${page.Size})}"
                     aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>

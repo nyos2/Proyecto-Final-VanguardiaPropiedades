@@ -70,7 +70,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             // ? Validar datos
-            validar(nombre, dni, email, password, password2);
+            // validar(nombre, dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
@@ -101,7 +101,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             // ? Validar datos
-            validar(nombre, dni, email, password, password2);
+            // validar(nombre, dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
@@ -209,5 +209,14 @@ public class UsuarioServicio implements UserDetailsService {
     public List<PropiedadEntidad> propiedadesUsuario(String id) {
         UsuarioEntidad user = buscarPorId(id).get();
         return user.getPropiedades();
+    }
+
+    // ? Metodos buscar usuario para el administrador
+    public Page<UsuarioEntidad> listarUsuariosAdmin(String dni, Pageable pageable) {
+        return usuarioRepositorio.findByDni(dni, pageable);
+    }
+
+    public Page<UsuarioEntidad> buscarPorEmail(String email, Pageable pageable) {
+        return usuarioRepositorio.buscarporEmail(email, pageable);
     }
 }
