@@ -30,6 +30,18 @@ public class CitaControlador {
     @Autowired
     private PropiedadServicio propiedadServicio;
 
+    @GetMapping("/listar")
+    public String listarCitas(ModelMap modelo) {
+        try {
+            List<CitaEntidad> citas = citaServicio.obtenerTodasLasCitas();
+            modelo.put("citas", citas);
+            return "Propiedades/propiedad_cita.html";
+        } catch (Exception e) {
+            modelo.put("error", "Error al obtener la lista de citas");
+            return "error.html"; // Puedes crear una página de error personalizada
+        }
+    }
+
     @GetMapping("/crear-cita/{idPropiedad}")
     public String registrarCita(@PathVariable String idPropiedad, ModelMap modelo) {
         PropiedadEntidad propiedad = propiedadServicio.buscarPorId(idPropiedad).get();

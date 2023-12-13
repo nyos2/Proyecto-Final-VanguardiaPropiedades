@@ -5,11 +5,10 @@
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div class="container">
+    <div class="container card">
         <br>
         <h2>Listado de Ofertas</h2>
         <hr>
-
         <nav class="navbar navbar-light bg-light custom-navbar">
             <form class="form-inline" th:action="@{/oferta/ofertas}" th:method="get">
                 <label class="mr-2">Ordenar por:</label>
@@ -29,43 +28,48 @@
             </form>
         </nav>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Propiedad</th>
-                    <th>Valor de Oferta</th>
-                    <th>Usuario</th>
-                    <th>Estado</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Iterar sobre las ofertas -->
-                <tr th:each="oferta : ${ofertas}">
-                    <td th:text="${oferta.propiedad.descripcion}"></td>
-                    <td th:text="${oferta.valorOferta}"></td>
-                    <td th:text="${oferta.usuario.nombre}"></td>
-                    <td th:text="${oferta.estado}"></td>
-                    <td th:text="${oferta.fecha}"></td>
-                    <td>
-                        <div th:if="${#strings.equals(oferta.estado, 'PENDIENTE')} == true">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class=" btn-group">
-                                    <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
-                                        class="btn btn-sm btn-outline-success">Aceptar</a>
-                                    <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
-                                        class="btn btn-sm btn-outline-danger"
-                                        onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
-                                    <!-- <a th:href="@{'/oferta/eliminar/' + ${oferta.id}}"
-                                    class="btn btn-sm btn-outline-secondary">Eliminar</a> -->
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Propiedad</th>
+                            <th>Valor de Oferta</th>
+                            <th>Usuario</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterar sobre las ofertas -->
+                        <tr th:each="oferta : ${ofertas}">
+                            <td th:text="${oferta.propiedad.descripcion}"></td>
+                            <td th:text="${oferta.valorOferta}"></td>
+                            <td th:text="${oferta.usuario.nombre}"></td>
+                            <td th:text="${oferta.estado}"></td>
+                            <td th:text="${oferta.fecha}"></td>
+                            <td>
+                                <div th:if="${#strings.equals(oferta.estado, 'PENDIENTE')} == true">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
+                                                class="btn btn-sm btn-success">Aceptar</a>
+                                            <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
+                                                class="btn btn-sm btn-danger"
+                                                onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
+                                            <!-- <a th:href="@{'/oferta/eliminar/' + ${oferta.id}}"
+                                            class="btn btn-sm btn-secondary">Eliminar</a> -->
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
 

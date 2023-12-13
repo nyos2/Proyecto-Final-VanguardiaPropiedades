@@ -97,7 +97,6 @@
                         </div>
                     </div>
                     <!-- Formulario para ofertar -->
-                    <!-- TODO No mostrar al dueño -->
                     <form class="form-oferta" action="/oferta/crear" method="post"
                         sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
                         <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}" />

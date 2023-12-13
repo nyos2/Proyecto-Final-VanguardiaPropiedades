@@ -8,6 +8,7 @@
         <div class="container card">
             <div class="container col-md-6 text-center">
                 <h2>Solicitar Cita</h2>
+                <hr>
                 <form th:action="@{/cita/crear}" method="post" th:object="${propiedad}">
                     <div class="mb-3" hidden>
                         <label for="enteid" class="form-label">EnteID</label>
