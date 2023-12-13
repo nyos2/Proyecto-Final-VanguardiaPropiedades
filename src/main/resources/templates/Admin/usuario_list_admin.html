@@ -17,8 +17,10 @@
                     <option value="email" selected>Email</option>
                     <option value="dni">DNI</option>
                 </select>
-                <input type="text" class="form-control mr-2" name="searchTerm" placeholder="Ingrese término de búsqueda">
+                <input type="text" class="form-control mr-2" name="searchTerm"
+                    placeholder="Ingrese término de búsqueda">
                 <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                <a class="button" href="/usuario/listar">Recargar lista</a>
             </form>
         </nav>
 
@@ -92,16 +94,18 @@
                 </div>
             </div>
         </div>
+
+        <!-- Selector de cantidad de registros a mostrar -->
+        <label for="pageSize">Mostrar:</label>
+        <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
+            <option value="0" th:selected="${pageSize == 0}">-</option>
+            <option value="5" th:selected="${pageSize == 5}">5</option>
+            <option value="10" th:selected="${pageSize == 10}">10</option>
+            <option value="20" th:selected="${pageSize == 20}">20</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
     </div>
-    <!-- Selector de cantidad de registros a mostrar -->
-    <label for="pageSize">Mostrar:</label>
-    <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
-        <option value="0" th:selected="${pageSize == 0}">-</option>
-        <option value="5" th:selected="${pageSize == 5}">5</option>
-        <option value="10" th:selected="${pageSize == 10}">10</option>
-        <option value="20" th:selected="${pageSize == 20}">20</option>
-        <!-- Agrega más opciones según sea necesario -->
-    </select>
+
     <!-- Paginación -->
     <nav>
         <!-- justify-content-center/end/start -->

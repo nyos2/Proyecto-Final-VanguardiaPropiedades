@@ -28,6 +28,23 @@
             </form>
         </nav>
 
+        <div class="container my-1">
+            <!-- Mensajes Condicionales -->
+            <div th:if="${error != null}">
+                <div class="alert text-center alert-danger fade show" role="alert">
+                    <strong>ERROR</strong>
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}">
+                <div class="alert text-center alert-success fade show" role="alert">
+                    <strong>EXITO</strong>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+            <!-- Mensajes Condicionales -->
+        </div>
+
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
