@@ -219,4 +219,13 @@ public class UsuarioServicio implements UserDetailsService {
     public Page<UsuarioEntidad> buscarPorEmail(String email, Pageable pageable) {
         return usuarioRepositorio.buscarporEmail(email, pageable);
     }
+    public void cambiarRol(String id){
+        UsuarioEntidad user = buscarPorId(id).get();
+        if (user.getRol().toString().equals("CLIENT")) {
+            user.setRol(Rol.ENTE);
+        }else{
+            user.setRol(Rol.CLIENT);
+        }
+        usuarioRepositorio.save(user);
+    }
 }

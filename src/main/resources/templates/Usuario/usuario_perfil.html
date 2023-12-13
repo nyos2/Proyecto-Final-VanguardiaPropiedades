@@ -32,11 +32,11 @@
                         <p><strong>Rol:</strong> <span th:text="${session.usuariosession.rol}"></span></p>
                         <!-- Logica de CLIENTE A ENTE -->
 
-                        <form sec:authorize="hasRole('ROLE_CLIENT')" action="/cambiar-a-ente" method="post">
+                        <form sec:authorize="hasRole('ROLE_CLIENT')" action="/usuario/cambiar-rol" method="post">
                             <input type="hidden" name="userId" th:value="${session.usuariosession.id}" />
                             <button type="submit" class="btn-warning">Solicitar Cambio a ENTE</button>
                         </form>
-                        <form sec:authorize="hasRole('ROLE_ENTE')" action="/cambiar-a-cliente" method="post">
+                        <form sec:authorize="hasRole('ROLE_ENTE')" action="/usuario/cambiar-rol" method="post">
                             <input type="hidden" name="userId" th:value="${session.usuariosession.id}" />
                             <button type="submit" class="btn-warning">Solicitar Cambio a CLIENTE</button>
                         </form>

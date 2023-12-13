@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -148,4 +149,10 @@ public class UsuarioControlador {
             return "Admin/usuario_list_admin.html";
         }
     }
+    @PostMapping("/cambiar-rol")
+   public String cambiarRol(@RequestParam String userId, RedirectAttributes model){
+        usuarioServicio.cambiarRol(userId);
+        model.addFlashAttribute("exito", "Rol cambiado con éxito");
+        return "redirect:/login";
+   }
 }
