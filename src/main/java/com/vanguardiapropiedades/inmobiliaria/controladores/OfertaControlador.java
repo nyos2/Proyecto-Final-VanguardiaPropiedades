@@ -26,6 +26,7 @@ public class OfertaControlador {
 
     @Autowired
     private OfertaServicio ofertaServicio;
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/ofertas")
     public String listaOfertas(ModelMap modelo) {
