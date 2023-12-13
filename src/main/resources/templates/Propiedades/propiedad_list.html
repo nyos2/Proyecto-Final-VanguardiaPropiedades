@@ -1,4 +1,5 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +60,7 @@
                 <div class="card mb-4 box-shadow">
                     <div class="card-body">
 
-                        <h5 class="card-title" th:text="${page.tipo}"></h5>
+                        <h5 class="card-title text-bold" th:text="${page.tipo}"></h5>
                         <hr>
 
                         <!-- Mostrar imágenes existentes -->
@@ -81,11 +82,18 @@
                                 </div>
                             </div>
                         </div>
-                        <h5 class="card-title" th:text="${page.tipo}"></h5>
-                        <p class="card-text" th:text="'Precio: ' + ${page.precio}"></p>
-                        <p class="card-text" th:text="'Propietario: ' + ${page.usuario.nombre}"></p>
-                        <p class="card-text" th:text="'Descripcion: ' + ${page.descripcion}"></p>
-                        <p class="card-text" th:text="'Direccion: ' + ${page.direccion}"></p>
+                        <p class="card-text">
+                            <span class="text-bold">Precio:</span> <span th:text="${page.precio}"></span>
+                        </p>
+                        <p class="card-text">
+                            <span class="text-bold">Propietario:</span> <span th:text="${page.usuario.nombre}"></span>
+                        </p>
+                        <p class="card-text">
+                            <span class="text-bold">Descripción:</span> <span th:text="${page.descripcion}"></span>
+                        </p>
+                        <p class="card-text">
+                            <span class="text-bold">Dirección:</span> <span th:text="${page.direccion}"></span>
+                        </p>
                     </div>
 
 
@@ -101,12 +109,13 @@
                         sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ENTE') ">
                         <input type="hidden" name="usuarioId" th:value="${session.usuariosession.id}" />
                         <input type="hidden" name="propiedadId" th:value="${page.id}" />
-                        <label for="monto">Tu oferta:</label>
+                        <label class="text-bold" for="monto">Tu oferta:</label>
                         <br>
                         <input type="number" name="valorOferta" required />
                         <button type="submit" class="btn btn-primary">Ofertar</button>
                     </form>
-                    <button type="button" class="btn btn-dark"><a th:href="@{/cita/crear-cita/__${page.id}__}">Solicitar Cita</a></button>
+                    <button type="button" class="btn btn-dark"><a th:href="@{/cita/crear-cita/__${page.id}__}">Solicitar
+                            Cita</a></button>
                 </div>
 
             </div>
