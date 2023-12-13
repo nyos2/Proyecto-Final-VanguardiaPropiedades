@@ -1,7 +1,6 @@
 package com.vanguardiapropiedades.inmobiliaria.controladores;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +31,12 @@ public class CitaControlador {
     @PostMapping("/crear") 
 
         public String crearCita(String enteid, String clienteid, String propiedadid, 
-        LocalDate fecha, LocalTime hora, String nota, RedirectAttributes redirectAttributes) 
+        Date fechahora, String nota, RedirectAttributes redirectAttributes) 
         throws MiException {
                 // no me queda claro si tomar propiedad tambien, puede ser necesario
                 try {
                     
-                    citaServicio.crearCita(enteid, clienteid, propiedadid, fecha, hora, nota);
+                    citaServicio.crearCita(enteid, clienteid, propiedadid, fechahora, nota);
                     
                     redirectAttributes.addFlashAttribute("exito", "La cita se creo correctamente");
                     return "cita1_form.html";
@@ -50,7 +49,26 @@ public class CitaControlador {
         }
                 return "cita1_form.html"; // ver que devolver o /redirect:/nose"??
     }
-    
+    @PostMapping("/crear2") 
+
+        public String crearCita(Date fechahora, RedirectAttributes redirectAttributes) 
+        throws MiException {
+                // no me queda claro si tomar propiedad tambien, puede ser necesario
+                try {
+                    
+                    citaServicio.crearCita2(fechahora);
+                    
+                    redirectAttributes.addFlashAttribute("exito", "La cita se creo correctamente");
+                    return "cita1_form.html";
+                } catch (Exception e) {
+                    // modelo.addAttribute("error", "la cita no se pudo crear !!");
+                    
+
+                    redirectAttributes.addFlashAttribute("error", "la cita no se pudo crear !!");
+                    
+        }
+                return "cita1_form.html"; // ver que devolver o /redirect:/nose"??
+    }
     @GetMapping("/aceptar/{id}")
     public String aceptarCita(@RequestParam String id, ModelMap modelo) {
         try {

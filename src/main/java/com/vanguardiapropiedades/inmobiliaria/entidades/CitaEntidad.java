@@ -1,7 +1,6 @@
 package com.vanguardiapropiedades.inmobiliaria.entidades;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -32,16 +31,14 @@ public class CitaEntidad {
     private UsuarioEntidad ente; // ente o dueño de la propiedad
 
     @ManyToOne
-    private PropiedadEntidad propiedad; // Sera necesario ???
+    private PropiedadEntidad propiedad; 
 
     private String nota;  // para ingresar un texto (datos de contacto) en el pedido de reunion
 
-    @Temporal(TemporalType.DATE)
-    private LocalDate fecha;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaHora;
 
-    @Temporal(TemporalType.TIME)
-    private LocalTime hora; // ver que es mejor como alternativa para fecha y hora
-
+    
     @Enumerated(EnumType.STRING)
     private Cita estado; // el que recibe la cita la Acepta o Rechaza
 
