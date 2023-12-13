@@ -15,7 +15,11 @@ body {
   text-align: center;
 }
 
-.carousel-caption h4,
+.carousel-caption h4 {
+  margin: 0;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
+}
+
 .carousel-caption h1 {
   margin: 0;
 }
@@ -59,6 +63,7 @@ body {
   color: #ffffff;
   text-align: center;
   font-size: 17px;
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
 }
 
 .banner-info {
