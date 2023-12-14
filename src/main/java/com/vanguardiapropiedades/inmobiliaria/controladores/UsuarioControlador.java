@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -98,7 +99,7 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("exito", "Usuario eliminado.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         } catch (Exception e) {
             Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
             model.addAttribute("page", page);
@@ -106,7 +107,7 @@ public class UsuarioControlador {
             model.addAttribute("totalItems", page.getTotalElements());
             model.addAttribute("totalPages", page.getTotalPages());
             model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
-            return "Usuario/usuario_list.html";
+            return "Admin/usuario_list_admin.html";
         }
     }
 
@@ -124,4 +125,34 @@ public class UsuarioControlador {
         model.addAttribute("totalPages", page.getTotalPages());
         return "Admin/usuario_list_admin.html";
     }
+
+    @PostMapping("/buscar")
+    public String buscarUsuario(@PageableDefault(page = 0, size = 5) Pageable pageable, @RequestParam String searchBy,
+            @RequestParam String searchTerm, Model model) {
+        if (searchBy.equals("email")) {
+            System.out.println("Entramos por email");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.buscarPorEmail(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        } else{
+            System.out.println("Entramos por dni");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuariosAdmin(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        }
+    }
+    @PostMapping("/cambiar-rol")
+   public String cambiarRol(@RequestParam String userId, RedirectAttributes model){
+        usuarioServicio.cambiarRol(userId);
+        model.addFlashAttribute("exito", "Rol cambiado con éxito");
+        return "redirect:/login";
+   }
 }

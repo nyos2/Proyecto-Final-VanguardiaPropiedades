@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container card">
+        <br>
+        <h2>Listado de Ofertas</h2>
+        <hr>
+        <nav class="navbar navbar-light bg-light custom-navbar">
+            <form class="form-inline" th:action="@{/oferta/ofertas}" th:method="get">
+                <label class="mr-2">Ordenar por:</label>
+                <select class="form-control mr-2" name="orderBy">
+                    <option value="usuario.nombre">Usuario</option>
+                    <option value="propiedad.estado">Estado</option>
+                </select>
+                <div class="form-group mr-2">
+                    <label for="fechaInicio">Fecha Inicio:</label>
+                    <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" />
+                </div>
+                <div class="form-group mr-2">
+                    <label for="fechaFin">Fecha Fin:</label>
+                    <input type="date" class="form-control" id="fechaFin" name="fechaFin" />
+                </div>
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </form>
+        </nav>
+
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Propiedad</th>
+                            <th>Valor de Oferta</th>
+                            <th>Usuario</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterar sobre las ofertas -->
+                        <tr th:each="oferta : ${ofertas}">
+                            <td th:text="${oferta.propiedad.descripcion}"></td>
+                            <td th:text="${oferta.valorOferta}"></td>
+                            <td th:text="${oferta.usuario.nombre}"></td>
+                            <td th:text="${oferta.estado}"></td>
+                            <td th:text="${oferta.fecha}"></td>
+                            <td>
+                                <div th:if="${#strings.equals(oferta.estado, 'PENDIENTE')} == true">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a th:href="@{'/oferta/aceptar/' + ${oferta.id}}"
+                                                class="btn btn-sm btn-success">Aceptar</a>
+                                            <a th:href="@{'/oferta/denegar/' + ${oferta.id}}"
+                                                class="btn btn-sm btn-danger"
+                                                onclick="return confirm('¿Estás seguro de que deseas denegar este Elemento?')">Denegar</a>
+                                            <!-- <a th:href="@{'/oferta/eliminar/' + ${oferta.id}}"
+                                            class="btn btn-sm btn-secondary">Eliminar</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <script>
+        // Función para cambiar el tamaño de la página
+        function changePageSize(size) {
+            // Redirige a la primera página cuando cambias el tamaño
+            window.location.href = "/usuario/listar?page=0&size=" + size;
+        }
+    </script>
+
+
+
+</body>
+
+</html>

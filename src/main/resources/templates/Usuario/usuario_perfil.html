@@ -16,6 +16,15 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
+
+                        <!-- Imagen del Usuario -->
+                        <div class="card-body">
+                            <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
+                                alt="Sin Imagen del Usuario">
+                        </div>
+
+                        <hr>
+                        
                         <h5 class="card-title">Información del Usuario </h5>
                         <p><strong>Nombre:</strong> <span th:text="${session.usuariosession.nombre}"></span></p>
                         <p><strong>DNI:</strong> <span th:text="${session.usuariosession.dni}"></span></p>
@@ -23,47 +32,18 @@
                         <p><strong>Rol:</strong> <span th:text="${session.usuariosession.rol}"></span></p>
                         <!-- Logica de CLIENTE A ENTE -->
 
-                        <form sec:authorize="hasRole('ROLE_CLIENT')" action="/cambiar-a-ente" method="post">
+                        <form sec:authorize="hasRole('ROLE_CLIENT')" action="/usuario/cambiar-rol" method="post">
                             <input type="hidden" name="userId" th:value="${session.usuariosession.id}" />
                             <button type="submit" class="btn-warning">Solicitar Cambio a ENTE</button>
                         </form>
-                        <form sec:authorize="hasRole('ROLE_ENTE')" action="/cambiar-a-cliente" method="post">
+                        <form sec:authorize="hasRole('ROLE_ENTE')" action="/usuario/cambiar-rol" method="post">
                             <input type="hidden" name="userId" th:value="${session.usuariosession.id}" />
                             <button type="submit" class="btn-warning">Solicitar Cambio a CLIENTE</button>
                         </form>
                     </div>
 
-
-
-                    <!-- Imagen del Usuario -->
-                    <div class="card-body">
-                        <h5 class="card-title">Imagen del Usuario</h5>
-                        <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}"
-                            alt="Sin Imagen del Usuario">
-                    </div>
-
                 </div>
             </div>
-
-            <!-- Inmuebles Adquiridos -->
-            <!-- <div class="col-md-6">
-                <h3>Inmuebles Adquiridos</h3>
-                <div class="card">
-                    <div class="card-body">
-                        <h3>Datos</h3> -->
-            <!-- Verificar si hay propiedades -->
-            <!-- <th:block th:if="${not #lists.isEmpty(session.usuariosession.propiedad)}"> -->
-            <!-- <div th:each="propiedad : ${page.propiedades}">
-                                <h4 th:text="${page.propiedad.titulo}"></h4>
-                            </div> -->
-            <!-- </th:block> -->
-            <!-- Mostrar mensaje si no hay propiedades -->
-            <!-- <th:block th:if="${#lists.isEmpty(session.usuariosession.propiedad)}">
-                            <p>No tiene propiedades aún.</p>
-                        </th:block> -->
-            <!-- </div>
-                </div>
-            </div> -->
         </div>
 
         <!-- Botones de Acción -->

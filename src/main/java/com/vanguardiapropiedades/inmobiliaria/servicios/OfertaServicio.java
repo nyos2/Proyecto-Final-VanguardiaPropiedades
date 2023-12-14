@@ -1,6 +1,7 @@
 package com.vanguardiapropiedades.inmobiliaria.servicios;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,33 @@ public class OfertaServicio {
     @Transactional
     public void eliminarOferta(String id) throws MiException {
         ofertaRepositorio.deleteById(id);
+    }
+
+    @Transactional
+    public List<OfertaEntidad> obtenerTodasLasOfertas() {
+        return ofertaRepositorio.findAll();
+    }
+
+    @Transactional
+    public List<OfertaEntidad> obtenerTodasLasOfertasEnte(String id) {
+        return ofertaRepositorio.buscarPorPropiedad(id);
+    }
+
+    public String aceptarOferta(String id) {
+        OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
+        oferta.setEstado(Oferta.ACEPTADA);
+        ofertaRepositorio.save(oferta);
+        PropiedadEntidad propiedad = oferta.getPropiedad();
+        propiedad.setEstado(false);
+        propiedadRepositorio.save(propiedad);
+        return null;
+    }
+
+    public String rechazarOferta(String id) {
+        OfertaEntidad oferta = ofertaRepositorio.findById(id).get();
+        oferta.setEstado(Oferta.RECHAZADA);
+        ofertaRepositorio.save(oferta);
+        return null;
     }
 
 }

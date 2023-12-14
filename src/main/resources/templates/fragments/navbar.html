@@ -33,6 +33,12 @@
           <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
             <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
           </div>
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
+            <a class="dropdown-item" href="/oferta/ofertas-ente">Ofertas de Propiedades</a>
+          </div>
+          <div sec:authorize="hasRole('ROLE_ENTE')">
+            <a class="dropdown-item" href="/cita/citas-ente">Citas de Propiedades</a>
+          </div>
         </div>
       </li>
 
@@ -65,7 +71,10 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/admin/listar-propiedades">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
-            <a class="dropdown-item" href="/cargar/usuarios">Cargar Usuarios </a>
+            <a class="dropdown-item" href="/oferta/ofertas">Administrar Ofertas </a>
+            <a class="dropdown-item" href="/cita/listar">Administrar Citas </a>
+            <a class="dropdown-item" href="/cargar/usuarios">Cargar 20 Usuarios </a>
+            <a class="dropdown-item" href="/cargar/roles">Cargar Roles </a>
           </div>
         </li>
       </div>
