@@ -44,7 +44,7 @@ public class UsuarioServicio implements UserDetailsService {
     public void crearUsuario(String nombre, String dni, String email, String password, String password2)
             throws MiException {
         UsuarioEntidad user = new UsuarioEntidad();
-        validar(nombre,dni, email, password, password2);
+        validar(nombre, dni, email, password, password2);
         user.setNombre(nombre);
         user.setEmail(email);
         user.setDni(dni);
@@ -70,7 +70,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             // ? Validar datos
-            validar(nombre, dni, email, password, password2);
+            // validar(nombre, dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
@@ -91,15 +91,17 @@ public class UsuarioServicio implements UserDetailsService {
             usuarioRepositorio.save(user);
         }
     }
-        // UPDATE
-    public void editarUsuarioAdmin(String id, String dni, String nombre, String email, String password, String password2,
+
+    // UPDATE
+    public void editarUsuarioAdmin(String id, String dni, String nombre, String email, String password,
+            String password2,
             MultipartFile foto, String rol)
             throws MiException {
         Optional<UsuarioEntidad> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
             UsuarioEntidad user = respuesta.get();
             // ? Validar datos
-            validar(nombre, dni, email, password, password2);
+            // validar(nombre, dni, email, password, password2);
             // ? Verificar si el usuario tiene foto
             if (user.getImagen() == null) {
                 if (foto.getSize() > 0) {
@@ -207,5 +209,23 @@ public class UsuarioServicio implements UserDetailsService {
     public List<PropiedadEntidad> propiedadesUsuario(String id) {
         UsuarioEntidad user = buscarPorId(id).get();
         return user.getPropiedades();
+    }
+
+    // ? Metodos buscar usuario para el administrador
+    public Page<UsuarioEntidad> listarUsuariosAdmin(String dni, Pageable pageable) {
+        return usuarioRepositorio.findByDni(dni, pageable);
+    }
+
+    public Page<UsuarioEntidad> buscarPorEmail(String email, Pageable pageable) {
+        return usuarioRepositorio.buscarporEmail(email, pageable);
+    }
+    public void cambiarRol(String id){
+        UsuarioEntidad user = buscarPorId(id).get();
+        if (user.getRol().toString().equals("CLIENT")) {
+            user.setRol(Rol.ENTE);
+        }else{
+            user.setRol(Rol.CLIENT);
+        }
+        usuarioRepositorio.save(user);
     }
 }

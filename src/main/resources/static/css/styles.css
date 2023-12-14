@@ -1,8 +1,3 @@
-/* Estilo del fonde de la página completa */
-body {
-  background-color: #ffffff;
-}
-
 /* Estilos del carrusel */
 .carousel-caption {
   position: absolute;
@@ -11,25 +6,16 @@ body {
   text-align: center;
 }
 
-.carousel-caption h4,
-.carousel-caption h1 {
-  margin: 0;
+.carousel-inner .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  width: 45px;
-  height: -50px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  margin-bottom: -2px;
-}
-
-.carousel-caption h4.text-highlight,
-.carousel-caption h1.text-highlight {
-  text-shadow: 4px 4px 3px #000000cc;
+#carouselExample {
+  max-width: 100%;
+  height: 220px; 
+  overflow: hidden; 
 }
 
 /* Estilos de la sección principal */
@@ -117,9 +103,16 @@ body {
   padding: 10px;
 }
 
-.card-title {
+@font-face {
+  font-family: 'Aero Matics Stencil Regular';
+  src: url('/fonts/Aero Matics Stencil Regular.ttf') format('truetype');
+}
+
+.card-title2 {
+  font-family: 'Aero Matics Stencil Regular', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
+  color: white
 }
 
 .card-text {
@@ -184,41 +177,12 @@ body {
   border: 1px solid black;
 }
 
+ footer{
+  bottom:0px;
+  position:relative;
+  width: 100%; 
+}
 
-:root {
-  --color-green: #00a878;
-  --color-red: #fe5e41;
-  --color-button: #fdffff;
-  --color-black: #000;
-}
-.switch-button {
-  display: inline-block;
-}
-.switch-button .switch-button__checkbox {
-  display: none;
-}
-.switch-button .switch-button__label {
-  background-color: var(--color-red);
-  width: 5rem;
-  height: 3rem;
-  border-radius: 3rem;
-  display: inline-block;
-  position: relative;
-}
-.switch-button .switch-button__label:before {
-  transition: .2s;
-  display: block;
-  position: absolute;
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--color-button);
-  content: '';
-  border-radius: 50%;
-  box-shadow: inset 0px 0px 0px 1px var(--color-black);
-}
-.switch-button .switch-button__checkbox:checked + .switch-button__label {
-  background-color: var(--color-green);
-}
-.switch-button .switch-button__checkbox:checked + .switch-button__label:before {
-  transform: translateX(2rem);
+.text-bold {
+  font-weight: bold;
 }

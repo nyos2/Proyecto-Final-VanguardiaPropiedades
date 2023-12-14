@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:replace="~{fragments/head :: head}"></div>
+
+    <body>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+        <div class="container card">
+            <div class="container col-md-6 text-center">
+                <h2>Solicitar Cita</h2>
+                <hr>
+                <form th:action="@{/cita/crear}" method="post" th:object="${propiedad}">
+                    <div class="mb-3" hidden>
+                        <label for="enteid" class="form-label">EnteID</label>
+                        <input type="text" class="form-control" id="enteid" name="enteid" th:value="*{usuario.id}" hidden readonly />
+                    </div>
+                    <div class="mb-3" hidden>
+                        <label for="clienteid" class="form-label">ClienteID</label>
+                        <input type="text" class="form-control" id="clienteid" name="clienteid" th:value="${session.usuariosession.id}" readonly/>
+                    </div>
+
+                    <div class="mb-3" hidden>
+                        <label for="propiedadid" class="form-label">Propiedad</label>
+                        <input type="text" class="form-control" id="propiedadid" name="propiedadid" th:value="*{id}"readonly />
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nota" class="form-label">Nota</label>
+                        <input type="text" class="form-control" id="nota" name="nota" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                <div class="container my-1">
+                    <!-- Mensajes Condicionales -->
+                    <div th:if="${error != null}">
+                        <div class="alert text-center alert-danger fade show" role="alert">
+                            <strong>ERROR</strong>
+                            <p th:text="${error}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${exito != null}">
+                        <div class="alert text-center alert-success fade show" role="alert">
+                            <strong>EXITO</strong>
+                            <p th:text="${exito}"></p>
+                        </div>
+                    </div>
+                    <!-- Mensajes Condicionales -->
+                </div>
+                <br />
+            </div>
+        </div>
+
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </body>
+</html>

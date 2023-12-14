@@ -7,13 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.vanguardiapropiedades.inmobiliaria.entidades.OfertaEntidad;
+import com.vanguardiapropiedades.inmobiliaria.entidades.CitaEntidad;
 
 @Repository
-public interface OfertaRepositorio extends JpaRepository<OfertaEntidad, String> {
+public interface CitaRepositorio extends JpaRepository<CitaEntidad, String> {
 
     // ? Traer ofertas de un ente
-    @Query("SELECT o FROM OfertaEntidad o WHERE o.propiedad.usuario.id = :id")
-    public List<OfertaEntidad> buscarPorPropiedad(@Param("id") String id);
-
+    @Query("SELECT c FROM CitaEntidad c WHERE c.ente.id = :id")
+    public List<CitaEntidad> buscarPorEnte(@Param("id") String id);
 }

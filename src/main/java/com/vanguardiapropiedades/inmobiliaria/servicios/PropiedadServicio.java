@@ -78,11 +78,13 @@ public class PropiedadServicio {
         PropiedadEntidad propiedad = propiedadRepositorio.findById(id).orElse(null);
         return Optional.ofNullable(propiedad);
     }
-    //? Muestra TODAS las propiedades
+
+    // ? Muestra TODAS las propiedades
     public Page<PropiedadEntidad> listarPropiedades(Pageable pageable) {
         return propiedadRepositorio.findAll(pageable);
     }
-    //? Muestra las propiedades con estado True (disponibles)
+
+    // ? Muestra las propiedades con estado True (disponibles)
     public Page<PropiedadEntidad> listarPropiedadesLibres(Pageable pageable) {
         return propiedadRepositorio.findByEstadoTrue(pageable);
     }
