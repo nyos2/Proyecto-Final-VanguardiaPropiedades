@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.vanguardiapropiedades.inmobiliaria.enums.Tipo;
+import com.vanguardiapropiedades.inmobiliaria.Enums.Tipo;
 import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.PropiedadEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
@@ -79,14 +79,7 @@ public class PropiedadServicio {
         return Optional.ofNullable(propiedad);
     }
 
-    // ? Muestra TODAS las propiedades
     public Page<PropiedadEntidad> listarPropiedades(Pageable pageable) {
         return propiedadRepositorio.findAll(pageable);
     }
-
-    // ? Muestra las propiedades con estado True (disponibles)
-    public Page<PropiedadEntidad> listarPropiedadesLibres(Pageable pageable) {
-        return propiedadRepositorio.findByEstadoTrue(pageable);
-    }
-
 }
