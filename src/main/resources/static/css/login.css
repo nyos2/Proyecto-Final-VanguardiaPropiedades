@@ -1,0 +1,27 @@
+.col-md-6{
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.col-md-8{ /*formulario registro*/
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 550px;
+    border-radius: 15px;
+}
+
+.espacio-en-blanco {
+    height: 90px; 
+}
+.row{/*lista propiedades*/
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    width: 100%;
+}
+.col-md-4{/*Form propiedades */
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    border-radius: 15px;
+}

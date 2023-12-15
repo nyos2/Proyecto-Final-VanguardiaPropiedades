@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container">
+        <br />
+        <h3>Lista de Usuarios</h3>
+        <hr />
+
+        <nav class="navbar navbar-light bg-light custom-navbar">
+            <form class="form-inline" th:action="@{/usuario/buscar}" method="post">
+                <label class="mr-2">Buscar por:</label>
+                <select class="form-control mr-2" name="searchBy">
+                    <option value="email" selected>Email</option>
+                    <option value="dni">DNI</option>
+                </select>
+                <input type="text" class="form-control mr-2" name="searchTerm"
+                    placeholder="Ingrese término de búsqueda">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                <a class="button" href="/usuario/listar">Recargar lista</a>
+            </form>
+        </nav>
+
+        <div class="container my-1">
+            <!-- Mensajes Condicionales -->
+            <div th:if="${error != null}">
+                <div class="alert text-center alert-danger fade show" role="alert">
+                    <strong>ERROR</strong>
+                    <p th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}">
+                <div class="alert text-center alert-success fade show" role="alert">
+                    <strong>EXITO</strong>
+                    <p th:text="${exito}"></p>
+                </div>
+            </div>
+            <!-- Mensajes Condicionales -->
+        </div>
+
+        <div class="row">
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>DNI</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Solicitud</th>
+                                <th>Peticion</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="usuario : ${page.content}">
+                                <td th:text="${usuario.nombre}"></td>
+                                <td th:text="${usuario.dni}"></td>
+                                <td th:text="${usuario.email}"></td>
+                                <td th:text="${usuario.rol}">
+
+                                </td>
+                                <!-- TODO Solicitud de cambio de ROL -->
+                                <td>
+                                    Sin Solicitud
+                                </td>
+                                <td>
+                                    Sin Peticion
+                                </td>
+                                <!-- <td th:class="${solicitud ? 'solicitado' : 'sin-solicitud'}">
+                                    <span th:text="${solicitud ? 'Solicitado' : 'Sin solicitud'}"></span>
+                                </td> -->
+                                <td>
+                                    <img class="logo" th:src="@{/imagen/perfil/__${usuario.id}__}"
+                                        alt="Sin Imagen del Usuario" />
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a th:href="@{'/admin/editar-perfil/' + ${usuario.id}}"
+                                            class="btn btn-sm btn-outline-secondary">Modificar</a>
+                                        <a th:href="@{'/usuario/eliminar-usuario/' + ${usuario.id}}"
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selector de cantidad de registros a mostrar -->
+        <label for="pageSize">Mostrar:</label>
+        <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
+            <option value="0" th:selected="${pageSize == 0}">-</option>
+            <option value="5" th:selected="${pageSize == 5}">5</option>
+            <option value="10" th:selected="${pageSize == 10}">10</option>
+            <option value="20" th:selected="${pageSize == 20}">20</option>
+            <!-- Agrega más opciones según sea necesario -->
+        </select>
+    </div>
+
+    <!-- Paginación -->
+    <nav>
+        <!-- justify-content-center/end/start -->
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:if="${currentPage > 0}">
+                <a class="page-link" th:href="@{/usuario/listar(page=${currentPage - 1}, size=${page.Size})}"
+                    aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
+                th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                <a class="page-link" th:href="@{/usuario/listar(page=${i}, size=${page.Size})}" th:text="${i + 1}"></a>
+            </li>
+
+            <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                <a class="page-link" th:href="@{/usuario/listar(page=${currentPage + 1}, size=${page.Size})}"
+                    aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="text-center">
+        <p class="text-muted">Total de páginas: <span th:text="${page.totalPages}"></span>, Total de resultados: <span
+                th:text="${page.totalElements}"></span></p>
+    </div>
+    <script>
+        // Función para cambiar el tamaño de la página
+        function changePageSize(size) {
+            // Redirige a la primera página cuando cambias el tamaño
+            window.location.href = "/usuario/listar?page=0&size=" + size;
+        }
+    </script>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>

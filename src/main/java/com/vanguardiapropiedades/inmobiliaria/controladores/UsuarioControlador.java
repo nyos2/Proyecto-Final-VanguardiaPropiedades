@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
 import com.vanguardiapropiedades.inmobiliaria.excepciones.MiException;
@@ -54,14 +55,10 @@ public class UsuarioControlador {
     }
 
     // UPDATE
-    @GetMapping("/editar/{id}")
-    public String editarUsuario(@PathVariable String id, ModelMap modelo) {
-        Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
-        if (usuario.isPresent()) {
-            modelo.put("usuario", usuario.get());
-        } else {
-            modelo.put("usuario", null);
-        }
+    @GetMapping("/editar-perfil/{id}")
+    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
+        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
+        modelo.put("usuario", usuario);
         return "Usuario/usuario_mod.html";
     }
 
@@ -69,10 +66,11 @@ public class UsuarioControlador {
     public String editarUsuario(@PathVariable String id, @RequestParam String nombre, @RequestParam String dni,
             @RequestParam String email,
             @RequestParam String password,
-            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto, ModelMap modelo)
+            @RequestParam String password2, @RequestParam(required = false) MultipartFile foto,
+            @RequestParam String rol, ModelMap modelo)
             throws MiException {
         try {
-            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto);
+            usuarioServicio.editarUsuario(id, dni, nombre, email, password, password2, foto, rol);
             Optional<UsuarioEntidad> usuario = usuarioServicio.buscarPorId(id);
             modelo.put("usuario", usuario.get());
             modelo.put("exito", "Usuario actualizado con éxito");
@@ -91,22 +89,31 @@ public class UsuarioControlador {
     // DELETE
     @RequestMapping("/eliminar-usuario/{id}")
     // @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String eliminarUsuario(@PathVariable String id, ModelMap modelo) throws MiException {
-        usuarioServicio.eliminarUsuario(id);
-
-        return "Usuario/usuario_list.html";
+    public String eliminarUsuario(@PathVariable String id, @PageableDefault(page = 0, size = 5) Pageable pageable,
+            ModelMap model) throws MiException {
+        try {
+            usuarioServicio.eliminarUsuario(id);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.put("exito", "Usuario eliminado.");
+            return "Admin/usuario_list_admin.html";
+        } catch (Exception e) {
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuarios(pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.put("error", "No se pudo eliminar el Usuario, verifique que no tengas propiedades registradas.");
+            return "Admin/usuario_list_admin.html";
+        }
     }
 
     @GetMapping("/perfil")
     public String perfilUsuario() {
         return "Usuario/usuario_perfil.html";
-    }
-
-    @GetMapping("/editar-perfil/{id}")
-    public String editarPerfil(@PathVariable String id, ModelMap modelo) {
-        UsuarioEntidad usuario = usuarioServicio.buscarPorId(id).get();
-        modelo.put("usuario", usuario);
-        return "Usuario/usuario_mod.html";
     }
 
     @GetMapping("/listar")
@@ -116,6 +123,36 @@ public class UsuarioControlador {
         model.addAttribute("currentPage", page.getNumber());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("totalPages", page.getTotalPages());
-        return "Usuario/usuario_list.html";
+        return "Admin/usuario_list_admin.html";
     }
+
+    @PostMapping("/buscar")
+    public String buscarUsuario(@PageableDefault(page = 0, size = 5) Pageable pageable, @RequestParam String searchBy,
+            @RequestParam String searchTerm, Model model) {
+        if (searchBy.equals("email")) {
+            System.out.println("Entramos por email");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.buscarPorEmail(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        } else{
+            System.out.println("Entramos por dni");
+            System.out.println(searchTerm);
+            Page<UsuarioEntidad> page = usuarioServicio.listarUsuariosAdmin(searchTerm, pageable);
+            model.addAttribute("page", page);
+            model.addAttribute("currentPage", page.getNumber());
+            model.addAttribute("totalItems", page.getTotalElements());
+            model.addAttribute("totalPages", page.getTotalPages());
+            return "Admin/usuario_list_admin.html";
+        }
+    }
+    @PostMapping("/cambiar-rol")
+   public String cambiarRol(@RequestParam String userId, RedirectAttributes model){
+        usuarioServicio.cambiarRol(userId);
+        model.addFlashAttribute("exito", "Rol cambiado con éxito");
+        return "redirect:/login";
+   }
 }

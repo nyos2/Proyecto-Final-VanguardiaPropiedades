@@ -22,4 +22,9 @@ public class PortalControlador {
         }
         return "login.html";
     }
+
+    @GetMapping("/sobrenosotros")
+    public String sobreNosotros() {
+        return "sobre_nosotros.html";
+    }
 }

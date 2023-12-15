@@ -20,18 +20,24 @@
         <a class="nav-link" href="/">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a>
+        <a class="nav-link" href="/sobrenosotros">Sobre Nosotros</a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Propiedades
         </a>
         <div class="dropdown-menu" aria-labelledby="propiedadesDropdown">
           <a class="dropdown-item" href="/propiedad/listar">Lista de Propiedades</a>
-          <div sec:authorize="hasRole('ROLE_CLIENT') or hasRole('ROLE_ADMIN')">
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
             <a class="dropdown-item" href="/propiedad/registrar">Agregar Propiedades</a>
+          </div>
+          <div sec:authorize="hasRole('ROLE_ENTE') or hasRole('ROLE_ADMIN')">
+            <a class="dropdown-item" href="/oferta/ofertas-ente">Ofertas de Propiedades</a>
+          </div>
+          <div sec:authorize="hasRole('ROLE_ENTE')">
+            <a class="dropdown-item" href="/cita/citas-ente">Citas de Propiedades</a>
           </div>
         </div>
       </li>
@@ -63,8 +69,12 @@
             Admin
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/propiedad/listar">Administrar Propiedades </a>
+            <a class="dropdown-item" href="/admin/listar-propiedades">Administrar Propiedades </a>
             <a class="dropdown-item" href="/usuario/listar">Administrar Usuarios </a>
+            <a class="dropdown-item" href="/oferta/ofertas">Administrar Ofertas </a>
+            <a class="dropdown-item" href="/cita/listar">Administrar Citas </a>
+            <a class="dropdown-item" href="/cargar/usuarios">Cargar 20 Usuarios </a>
+            <a class="dropdown-item" href="/cargar/roles">Cargar Roles </a>
           </div>
         </li>
       </div>

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.vanguardiapropiedades.inmobiliaria.entidades.ImagenEntidad;
 import com.vanguardiapropiedades.inmobiliaria.entidades.UsuarioEntidad;
+import com.vanguardiapropiedades.inmobiliaria.servicios.ImagenServicio;
 import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 
 @Controller
@@ -20,6 +22,8 @@ import com.vanguardiapropiedades.inmobiliaria.servicios.UsuarioServicio;
 public class ImagenControlador {
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private ImagenServicio imagenServicio;
 
     @GetMapping("/perfil/{id}")
     public ResponseEntity<byte[]> imagenUsuario(@PathVariable String id) {
@@ -36,5 +40,23 @@ public class ImagenControlador {
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<byte[]> imagen(@PathVariable String id) {
+        try {
+            ImagenEntidad img = imagenServicio.buscarPorId(id);
+
+            byte[] imagen = img.getContenido();
+
+            HttpHeaders headers = new HttpHeaders();
+
+            headers.setContentType(MediaType.IMAGE_JPEG);
+
+            return new ResponseEntity<>(imagen, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

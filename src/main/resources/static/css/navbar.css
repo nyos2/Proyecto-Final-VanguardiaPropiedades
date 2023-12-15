@@ -61,3 +61,40 @@ body {
 .navbar-toggler-icon {
   background-color: #ffffff;
 }
+
+/* Estilos para la clase custom-navbar */
+.custom-navbar {
+  background-color: #f8f9fa; 
+  color: #212529; 
+  padding: 10px; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilos para los elementos dentro de custom-navbar */
+.custom-navbar label,
+.custom-navbar select,
+.custom-navbar input,
+.custom-navbar button {
+  margin-right: 10px;
+}
+
+/* Cambio de color al pasar el ratón sobre custom-navbar */
+.custom-navbar:hover {
+  background-color: #e2e6ea; 
+}
+
+/* Estilos para el botón dentro de custom-navbar */
+.custom-navbar button {
+  background-color: #007bff; 
+  color: #ffffff; 
+  border: 1px solid #007bff; 
+  border-radius: 3px; 
+}
+
+/* Cambio de color al pasar el ratón sobre el botón dentro de custom-navbar */
+.custom-navbar button:hover {
+  background-color: #0056b3; 
+  border-color: #0056b3; 
+}
+

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sobreNos.css}" />
+    <title>SobreNosotros</title>
+
+    <!-- Incluye el fragmento de la cabeza -->
+    <div th:replace="~{fragments/head :: head}"></div>
+
+</head>
+
+<body>
+
+    <!-- Incluye el fragmento de la barra de navegación -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <!--  --- BLOQUE "Sobre Nosotros" ---  -->
+    <div class="page-heading about-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h2>Sobre Nosotros</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <img th:src="@{/images/sobreNos.jpg}" alt="Sobre Nosotros">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  --- BLOQUE "Nuestra Empresa" ---  -->
+    <div class="best-features about-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2>Nuestra Empresa</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-image">
+                        <img th:src="@{/images/inmobiliaria.jpg}" alt="Inmobiliaria">
+                    </div>
+                    <ul class="social-icons">
+                        <a href="https://www.facebook.com/EggCooperation" class="social-icon facebook"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/egglive_" class="social-icon instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Egg-Live" class="social-icon youtube"><i
+                                class="fab fa-youtube"></i></a>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="left-content">
+                        <p class="centered-text">
+                            Decidimos dar un paso audaz y llevar nuestro modelo de negocio a un lugar tan paradisíaco como desafiante: Hawái. Con la belleza natural de las islas y un mercado único, sabíamos que enfrentaríamos nuevos desafíos, pero estábamos listos para superarlos. <br>
+                            Nos instalamos en Honolulu, la capital. Con el tiempo, nos ganamos la confianza de la comunidad local al demostrar nuestro compromiso y conocimiento del mercado. Nuestra dedicación y enfoque en proporcionar un servicio personalizado nos permitieron destacarnos en el competitivo mundo inmobiliario. <br>
+                            El éxito de nuestra empresa no pasó desapercibido. Pronto, comenzamos a recibir reconocimientos y premios por nuestro enfoque innovador y ético en el mundo inmobiliario. Organizaciones locales y nacionales nos otorgaron premios por nuestro compromiso con la excelencia, la integridad y la contribución positiva a la comunidad. <br>
+                            A medida que nuestra empresa se consolidaba como líder, no perdimos de vista nuestras raíces y la importancia de ayudar a las personas a encontrar la casa de sus sueños. Continuamos innovando, adoptando tecnologías emergentes y adaptándonos a las cambiantes necesidades del mercado, siempre con el objetivo de brindar el mejor servicio posible a nuestros clientes. <br>
+                            Hoy en día, somos reconocidos como pioneros en el mercado inmobiliario de Hawái, y nuestro compromiso con la excelencia y la ética nos ha convertido en un referente en la industria. Estamos agradecidos por cumplir nuestro sueño y estamos emocionados por el futuro que nos espera.</p>
+                        </p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  --- BLOQUE "Nuestros Servicios" ---  -->
+    <section class="container py-5 our-services">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Nuestros Servicios</h1>
+                <p>Les ofrecemos a nuestros clientes tres diferentes servicios<br>en casas, departamentos y oficinas respectivamente.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/comprar.png" alt="Comprar">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/vender.png" alt="Vender">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="image-container text-center">
+                        <img src="images/alquilar.png" alt="Alquilar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--  --- BLOQUE "Nuestro Equipo" ---  -->
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Nuestro Equipo</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team1.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Jonathan Acuña</p>
+                        <p class="card-text">Líder Técnico</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/nyos2" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:jonha.mdq@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team2.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Eduardo Moreno</p>
+                        <p class="card-text">Agile Delivery Manager</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/EduMMorenolp" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://www.linkedin.com/in/eduardo-m-moreno-programador/'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:e.m.morenolp@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team3.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Florencia Martignoni</p>
+                        <p class="card-text">Scrum Master</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/FlorMartignoni" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:fl.martignoni@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team4.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Augusto Laguna</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/Augus23" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:augustolaguna30@yahoo.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team5.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Eduardo Gonzalez</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/nyos2" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:egonzalez.tecnico@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team6.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Gimena Ampuero</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="hhttps://github.com/GIMENA98" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://www.linkedin.com/in/gime-ampuero-089939266/'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:ampuerogime8@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team7.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Karina Rabino</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/KarinaElianaRabino" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:kary2202rab@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team8.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Luis Nievas</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/ilrayo" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:luis.nievas@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team9.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Nicolás Santos</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/NicoSantosLR" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:mailto:nicolasasantos@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-5 mx-auto">
+                <div class="card">
+                    <img th:src="@{/images/team10.png}" class="card-img-top" alt="Team Member" />
+                    <div class="card-body">
+                        <p class="card-text">Yasar Efrain Chavez</p>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="social-icons">
+                            <a href="https://github.com/YasarChavez" class="social-icon github"><i 
+                                class="fab fa-github"></i></a>
+                            <a th:href="'https://ar.linkedin.com/company/egglive'" class="social-icon"><i 
+                                class="fab fa-linkedin"></i></a>
+                            <a href="mailto:chavezyasar@gmail.com" class="social-icon"><i 
+                                class="fas fa-envelope"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incluye el fragmento del pie de página -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>

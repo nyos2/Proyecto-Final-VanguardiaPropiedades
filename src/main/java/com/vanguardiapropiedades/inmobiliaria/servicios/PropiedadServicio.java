@@ -44,7 +44,8 @@ public class PropiedadServicio {
         propiedadRepositorio.save(propiedad);
     }
 
-    public void editarPropiedad(String id, int precio, Tipo tipo, List<MultipartFile> imagen, Boolean estado,
+    @Transactional
+    public void editarPropiedad(String id, Integer precio, String tipo, List<MultipartFile> imagen, String estado,
             String descripcion, String direccion)
             throws Exception {
         Optional<PropiedadEntidad> respuesta = propiedadRepositorio.findById(id);
@@ -61,8 +62,8 @@ public class PropiedadServicio {
                 imagen = null;
             }
             propiedad.setPrecio(precio);
-            propiedad.setTipo(tipo);
-            propiedad.setEstado(estado);
+            propiedad.setTipo(Tipo.valueOf(tipo));
+            propiedad.setEstado(Boolean.valueOf(estado));
             propiedad.setDescripcion(descripcion);
             propiedad.setDireccion(direccion);
             propiedadRepositorio.save(propiedad);
@@ -78,7 +79,14 @@ public class PropiedadServicio {
         return Optional.ofNullable(propiedad);
     }
 
+    // ? Muestra TODAS las propiedades
     public Page<PropiedadEntidad> listarPropiedades(Pageable pageable) {
         return propiedadRepositorio.findAll(pageable);
     }
+
+    // ? Muestra las propiedades con estado True (disponibles)
+    public Page<PropiedadEntidad> listarPropiedadesLibres(Pageable pageable) {
+        return propiedadRepositorio.findByEstadoTrue(pageable);
+    }
+
 }

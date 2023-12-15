@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head}"></div>
+
+<body>
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container">
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <br>
+            <h2>Lista de Propiedades ADMIN</h2>
+            <hr>
+
+            <nav class="navbar navbar-light bg-light custom-navbar">
+                <form class="form-inline" th:action="@{/propiedad/listar}" th:method="get">
+                    <label class="mr-2">Ordenar por:</label>
+                    <select class="form-control mr-2" name="orderBy">
+                        <option value="">Seleccionar</option>
+                        <option th:each="propiedad : ${page.content}" th:value="${'tipo'}" th:text="${propiedad.tipo}">
+                        </option>
+                    </select>
+            
+                    <!-- Campo de búsqueda por nombre -->
+                    <input type="text" class="form-control mr-2" name="nombre" placeholder="Por nombre Propietario">
+            
+                    <!-- Botón de búsqueda -->
+                    <button class="btn btn-outline-secondary" type="submit">Ordenar</button>
+                </form>
+            </nav>
+
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Propietario</th>
+                        <th>Descripcion</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="page, iterStat : ${page.content}">
+                        <td th:text="${page.tipo}"></td>
+                        <td th:text="${page.precio}"></td>
+                        <td th:text="${page.usuario.nombre}"></td>
+                        <td th:text="${page.direccion}"></td>
+                        <td th:text="${page.usuario.rol}"></td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="@{'/propiedad/editar/' + ${page.id}}"
+                                    class="btn btn-sm btn-outline-secondary">Modificar</a>
+                                <a th:href="@{'/propiedad/eliminar-propiedad/' + ${page.id}}"
+                                    class="btn btn-sm btn-outline-secondary"
+                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este Elemento?')">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Selector de cantidad de registros a mostrar -->
+        <label for="pageSize">Mostrar:</label>
+        <select id="pageSize" name="pageSize" onchange="changePageSize(this.value)">
+            <option value="0" th:selected="${pageSize == 0}">-</option>
+            <option value="5" th:selected="${pageSize == 5}">5</option>
+            <option value="10" th:selected="${pageSize == 10}">10</option>
+            <option value="20" th:selected="${pageSize == 20}">20</option>
+        </select>
+
+        <!-- Paginación -->
+        <nav>
+            <!-- justify-content-center/end/start -->
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:if="${currentPage > 0}">
+                    <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage - 1}, size=${page.Size})}"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                <li th:each="i : ${#numbers.sequence(currentPage - 1, currentPage + 1)}"
+                    th:if="${i >= 0 and i < totalPages}" th:class="${currentPage == i} ? 'active' : ''">
+                    <a class="page-link" th:href="@{/propiedad/listar(page=${i}, size=${page.Size})}"
+                        th:text="${i + 1}"></a>
+                </li>
+
+                <li class="page-item" th:if="${currentPage < totalPages - 1}">
+                    <a class="page-link" th:href="@{/propiedad/listar(page=${currentPage + 1}, size=${page.Size})}"
+                        aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="text-center">
+        <p>Total de páginas <span th:text="${page.totalPages}"></span>, total de resultados <span
+                th:text="${page.totalElements}"></span></p>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        function changePageSize(size) {
+            window.location.href = "/propiedad/listar?page=0&size=" + size;
+        }
+    </script>
+</body>
+
+</html>
